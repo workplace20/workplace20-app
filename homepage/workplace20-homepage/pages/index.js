@@ -46,18 +46,18 @@ export default function Home() {
 										</div>
 									</div>
 									<div class="hidden md:flex md:space-x-10">
-										<a href="#" class="font-medium text-gray-500 hover:text-gray-900">How  we work?</a>
+										<a href="#how-we-work" class="font-medium text-gray-500 hover:text-gray-900">How  we work?</a>
 
-										<a href="#" class="font-medium text-gray-500 hover:text-gray-900">For Creator</a>
+										<a href="#for-engineer" class="font-medium text-gray-500 hover:text-gray-900">For Sofware Engineers</a>
 
-										<a href="#" class="font-medium text-gray-500 hover:text-gray-900">For Business</a>
+										<a href="#for-business" class="font-medium text-gray-500 hover:text-gray-900">For Business</a>
 
-										<a href="#" class="font-medium text-gray-500 hover:text-gray-900">Blog</a>
+										<a href="/blogs" class="font-medium text-gray-500 hover:text-gray-900">Blog</a>
 										<a href="#" class="font-medium text-gray-500 hover:text-gray-900"></a>
 									</div>
 									<div class="hidden md:absolute md:flex md:items-center md:justify-end md:inset-y-0 md:right-0">
 										<span class="inline-flex rounded-md shadow">
-											<a href="#" class="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-orange-600 bg-white hover:bg-gray-50">
+											<a href="https://app.workplace20.com" class="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-orange-600 bg-white hover:bg-gray-50">
 												Log in
 											</a>
 										</span>
@@ -68,7 +68,7 @@ export default function Home() {
 								<div class="rounded-lg shadow-md bg-white ring-1 ring-black ring-opacity-5 overflow-hidden">
 									<div class="px-5 pt-4 flex items-center justify-between">
 										<div>
-											<img class="h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-orange-600.svg" alt=""/>
+											<Logo/>
 										</div>
 										<div class="-mr-2">
 											<button type="button" class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-orange-500">
@@ -81,15 +81,15 @@ export default function Home() {
 									</div>
 									<div role="menu" aria-orientation="vertical" aria-labelledby="main-menu">
 										<div class="px-2 pt-2 pb-3" role="none">
-											<a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50" role="menuitem">How we work?</a>
+											<a href="#how-we-work" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50" role="menuitem">How we work?</a>
 
-											<a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50" role="menuitem">For Creator</a>
+											<a href="#for-engineer" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50" role="menuitem">For Software Engieers</a>
 
-											<a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50" role="menuitem">For Business</a>
-											<a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50" role="menuitem">Blog</a>
+											<a href="#for-business" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50" role="menuitem">For Business</a>
+											<a href="/blogs" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50" role="menuitem">Blog</a>
 										</div>
 										<div role="none">
-											<a href="#" class="block w-full px-5 py-3 text-center font-medium text-orange-600 bg-gray-50 hover:bg-gray-100" role="menuitem">
+											<a href="https://app.workplace20.com" class="block w-full px-5 py-3 text-center font-medium text-orange-600 bg-gray-50 hover:bg-gray-100" role="menuitem">
 												Log in
 											</a>
 										</div>
@@ -114,7 +114,7 @@ export default function Home() {
 				<div class="relative bg-white">
 					<div class="relative pt-12 pb-16 px-4 ">
 							<div class="text-base max-w-4xl mx-auto ">
-								<h3 class="text-3xl pb-16 leading-8 font-extrabold tracking-tight text-orange-500 sm:text-4xl">How we work?</h3>
+								<h3  id="how-we-work" class="text-3xl pb-16 leading-8 font-extrabold tracking-tight text-orange-500 sm:text-4xl">How we work?</h3>
 
 								<div class="flex">
 										<svg class="flex-shrink-0 h-6 w-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -158,8 +158,8 @@ export default function Home() {
 							</div>
 					</div>
 					<div class="max-w-4xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
-						<h2 class="text-3xl font-extrabold text-gray">
-							For software engineers
+						<h2 id="for-engineer" class="text-3xl font-extrabold text-gray">
+							For Software Engineers
 						</h2>
 						<div class="mt-2 border-t border-opacity-25 pt-10 text-gray-500">
 							<dl class="space-y-10 md:space-y-0 md:grid md:grid-cols-1 md:gap-x-4 md:gap-y-6">
@@ -197,7 +197,7 @@ export default function Home() {
 							</div>
 						</div>
 						<div class="max-w-4xl mx-auto">
-							<h2 class="text-3xl font-extrabold text-gray">
+							<h2 id="for-business" class="text-3xl font-extrabold text-gray">
 								For Business
 							</h2>
 							<div class="mt-2 border-t border-opacity-25 pt-10 text-gray-500">
