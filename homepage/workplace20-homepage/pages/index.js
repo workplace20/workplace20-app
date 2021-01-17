@@ -103,8 +103,9 @@ export default function Home() {
 										<span class="block xl:inline">The future of work</span>
 									</h1>
 									<p class="mt-3 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
-		2020 has changed our work place and working in 
-		the office is an optional. Workplace20 is private community of sofware engineers and sofware product business
+										2020 has changed our work place and working in 
+										the office is an optional. 
+										Workplace20 is a private community of sofware engineers in Viet Nam and sofware development business around the world.
 									</p>
 								</div>
 							</main>
@@ -121,13 +122,13 @@ export default function Home() {
 										</svg>
 										<div class="ml-3">
 											<dt class="text-lg leading-6 font-medium text-gray-900">
-												For the creators
+												For software engineers
 											</dt>
 											<dd class="mt-2 text-base text-gray-500">
 												As remote work only “worked” in trusted environment. 
-												The creators on Workplace20 are invited only by trusted people who 
-												showing what they can working on and their skill set. By only invited people, 
-												we make sure that our creator is selective and higt skill.
+												The sofware engineer on Workplace20 are invited only by trusted people who 
+												showing what they can working on and their skill set. By connect to only invited people, 
+												we make sure that our sofware engineers are selective and highly skill.
 											</dd>
 										</div>
 								</div>
@@ -140,8 +141,8 @@ export default function Home() {
 												For the business
 											</dt>
 											<dd class="mt-2 text-base text-gray-500">
-												The business on workplace20 offer remote work and a culture to help creator to
-												ship the software. Only pay based on hourly rate or service based.
+												The business on workplace20 offer remote work and a culture to help sofware engineer to
+												ship the software. Only pay based on hourly rate, service based or flexible contract.
 											</dd>
 										</div>
 								</div>
@@ -153,38 +154,30 @@ export default function Home() {
 				<div class="relative bg-white">
 					<div class="relative px-4 ">
 							<div class="text-base max-w-4xl mx-auto ">
-								<h3 class="text-3xl leading-8 font-extrabold tracking-tight text-orange-500 sm:text-4xl">What we are offer?</h3>
+								<h3 class="text-3xl leading-8 font-extrabold tracking-tight text-orange-500 sm:text-4xl">Why should you join us?</h3>
 							</div>
 					</div>
 					<div class="max-w-4xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
 						<h2 class="text-3xl font-extrabold text-gray">
-							For Creators
+							For software engineers
 						</h2>
-						<div class="mt-2 border-t border-opacity-25 pt-10">
+						<div class="mt-2 border-t border-opacity-25 pt-10 text-gray-500">
 							<dl class="space-y-10 md:space-y-0 md:grid md:grid-cols-1 md:gap-x-4 md:gap-y-6">
 								<div>
 									<dt class="text-lg font-medium text-gray">
-									✨ A community of business who provides the remote work, flexible of culture and
-									innovative product
+									✨ A growth of business community which provides the remote work, flexible of culture and
+									innovative products.
 									</dt>
 								</div>
 								<div>
 									<dt class="text-lg font-medium text-grey">
-									✨ You as creator working as partnership with the business. No full-time employee so 
-									you have the flexible to growth and balance your life.
+									✨ The community of likeminded people who can supportive and sharing experience on remote work, self-discipline and motivating.
 									</dt>
 								</div>
 
 								<div>
 									<dt class="text-lg leading-6 font-medium text-gray">
-									 ✨ As creator, you are focus on your software product development, hassle free of politics, 
-									heavily process and multi level of management.
-									</dt>
-								</div>
-
-								<div>
-									<dt class="text-lg leading-6 font-medium text-gray">
-									✨ Pay at your skill level not where you live.
+									 ✨ As you're working remotely, you can work anywhere. Balance your lifestyle and freedom.
 									</dt>
 								</div>
 							</dl>
@@ -192,12 +185,11 @@ export default function Home() {
 								<div class="max-w-7xl mx-auto text-center py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
 									<h2 class="font-extrabold tracking-tight text-gray-700 ">
 										<span class="block text-3xl sm:text-4xl">Ready to dive in?</span>
-										<span class="block text-xl">Request an invite code now</span>
 									</h2>
 									<div class="mt-8 flex justify-center">
 										<div class="inline-flex rounded-md shadow">
 											<a href="#" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700">
-												Get started
+		Get invite code
 											</a>
 										</div>
 									</div>
@@ -208,17 +200,16 @@ export default function Home() {
 							<h2 class="text-3xl font-extrabold text-gray">
 								For Business
 							</h2>
-							<div class="mt-2 border-t border-opacity-25 pt-10">
+							<div class="mt-2 border-t border-opacity-25 pt-10 text-gray-500">
 								<dl class="space-y-10 md:space-y-0 md:grid md:grid-cols-1 md:gap-x-4 md:gap-y-6">
 									<div>
 										<dt class="text-lg font-medium text-gray">
-										✨ A selective of creators in community built on trust. They can do what they say, no cheat in level of creator.
+										✨ A selective of sofware engineers in community which built on trust. They can do what they say.
 										</dt>
 									</div>
 									<div>
 										<dt class="text-lg font-medium text-grey">
-										 ✨ Our creator as your business partner, treating them like that so they can high focus on the.
-										Building software product instead of other things like office rules, approval process, paper work.
+										 ✨ The community of sofware engineers who are ambition and grit. They have experienced on remote work, self-discipline, highly skill and commitment.
 										</dt>
 									</div>
 
@@ -230,21 +221,16 @@ export default function Home() {
 
 									<div>
 										<dt class="text-lg leading-6 font-medium text-gray">
-										✨ Reduce the cost of trust as no office, assets cost anymore.
+										✨ Reduce the cost of trust as no office.
 										</dt>
 									</div>
 		
-									<div>
-										<dt class="text-lg leading-6 font-medium text-gray">
-											✨ We secure the work creator has done and all creator signed the Non-disclose aggrements.
-										</dt>
-									</div>
 									<div class="bg-white">
 											<div class="max-w-7xl mx-auto sm:px-6 lg:py-8 lg:px-2">
-												<h2 class="inline text-3xl font-extrabold tracking-tight text-gray-900 sm:block sm:text-4xl">
+												<h2 class="inline text-3xl font-extrabold tracking-tight text-gray-700 sm:block sm:text-4xl">
 													Get in touch?
 												</h2>
-												<p class="inline text-3xl font-extrabold tracking-tight text-orange-600 sm:block sm:text-xl px-1">Give us your business email, we will get back to you.</p>
+												<p class="inline text-3xl font-extrabold tracking-tight text-orange-400 sm:block sm:text-xl px-1">Give us your business email, we will get back to you.</p>
 												<form class="mt-8 sm:flex">
 													<label htmlFor="emailAddress" class="sr-only">Email address</label>
 													<input id="emailAddress" name="email" type="email" autoComplete="email" required class="w-full px-5 py-3 border-2 border-gray-200 placeholder-gray-500 focus:ring-orange-500 focus:border-orange-500 sm:max-w-xs rounded-md" placeholder="Enter your email"/>
@@ -266,7 +252,7 @@ export default function Home() {
 						<div class="px-4 py-6 bg-orange-500 rounded-lg md:py-12 md:px-12 lg:py-16 lg:px-16 xl:flex xl:items-center">
 							<div class="xl:w-0 xl:flex-1">
 								<h2 class="text-2xl font-extrabold tracking-tight text-white sm:text-3xl">
-									Want products news and updates?
+									Want to learn more about news and updates from our community?
 								</h2>
 								<p class="mt-3 max-w-3xl text-lg leading-6 text-orange-200">
 									Sign up for our newsletter to stay up to date.
