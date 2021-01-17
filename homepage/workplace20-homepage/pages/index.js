@@ -52,6 +52,7 @@ export default function Home() {
 
 										<a href="#" class="font-medium text-gray-500 hover:text-gray-900">For Business</a>
 
+										<a href="#" class="font-medium text-gray-500 hover:text-gray-900">Blog</a>
 										<a href="#" class="font-medium text-gray-500 hover:text-gray-900"></a>
 									</div>
 									<div class="hidden md:absolute md:flex md:items-center md:justify-end md:inset-y-0 md:right-0">
@@ -85,6 +86,7 @@ export default function Home() {
 											<a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50" role="menuitem">For Creator</a>
 
 											<a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50" role="menuitem">For Business</a>
+											<a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50" role="menuitem">Blog</a>
 										</div>
 										<div role="none">
 											<a href="#" class="block w-full px-5 py-3 text-center font-medium text-orange-600 bg-gray-50 hover:bg-gray-100" role="menuitem">
