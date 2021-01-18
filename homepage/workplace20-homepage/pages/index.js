@@ -1,7 +1,11 @@
 import Head from 'next/head'
 import Layout from '../components/layout'
 import Logo from '../components/home-logo'
+import { Transition } from '@headlessui/react';
+import { useState } from 'react';
 export default function Home() {
+	const [isOpen, setIsOpen] = useState(false);
+
   return (
 	<Layout>
     <div>
@@ -39,8 +43,11 @@ export default function Home() {
 										<div class="flex items-center justify-between w-full md:w-auto">
 											<Logo/>
 											<div class="-mr-2 flex items-center md:hidden">
-												<button type="button" class="bg-gray-50 rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-orange-500" id="main-menu" aria-haspopup="true">
+												<button onClick={() => setIsOpen(!isOpen)} type="button" class="bg-gray-50 rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-orange-500" id="main-menu" aria-haspopup="true">
 													<span class="sr-only">Open main menu</span>
+<svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+		                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+		                </svg>
 												</button>
 											</div>
 										</div>
@@ -64,14 +71,25 @@ export default function Home() {
 									</div>
 								</nav>
 							</div>
-							<div class="absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden">
+		<Transition
+		        show={isOpen}
+		        enter="duration-150 ease-out"
+		        enterFrom="opacity-0 scale-95"
+		        enterTo="opacity-100 scale-100"
+		        leave="duration-100 ease-in"
+		        leaveFrom="opacity-100 scale-100"
+		        leaveTo="opacity-0 scale-95"
+		      >
+		        {(ref) => (
+
+							<div ref={ref} class="absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden">
 								<div class="rounded-lg shadow-md bg-white ring-1 ring-black ring-opacity-5 overflow-hidden">
 									<div class="px-5 pt-4 flex items-center justify-between">
 										<div>
 											<Logo/>
 										</div>
 										<div class="-mr-2">
-											<button type="button" class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-orange-500">
+											<button onClick={() => setIsOpen(!isOpen)} type="button" class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-orange-500">
 												<span class="sr-only">Close menu</span>
 												<svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
 													<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -97,6 +115,9 @@ export default function Home() {
 								</div>
 							</div>
 
+
+							        )}
+		      </Transition>
 							<main class="mt-16 mx-auto max-w-7xl px-4 sm:mt-24">
 								<div class="text-center">
 									<h1 class="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
