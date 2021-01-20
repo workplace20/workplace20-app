@@ -1,0 +1,23 @@
+#  Template NodeJS build
+
+#  This template allows you to validate your NodeJS code.
+#  The workflow allows running tests and code linting on the default branch.
+
+image: node:15.5.1-alpine3.10
+
+pipelines:
+  default:
+    - parallel:
+        - step:
+            name: Build and Test
+            caches:
+              - node
+            script:
+              - cd workplace20.api
+              - npm install              
+        - step:
+            name: Deploy to test
+            deployment: test
+            # trigger: manual  # Uncomment to make this a manual deployment.
+            script:
+              - echo "Deploying to test environment"

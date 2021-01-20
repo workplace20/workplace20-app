@@ -1,17 +1,14 @@
 import { Transition } from '@headlessui/react';
-import { isMobileMenuOpened } from '../states/mobileMenu/selectors';
-import MobileMenuState from '../states/mobileMenu';
+import { isMobileMenuOpened } from '../../../states/mobileMenu/getters';
+import { closeMobileMenu } from '../../../states/mobileMenu/actions';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
+import MainMenuState from '../../../states/mainMenu';
+import { Link } from "react-router-dom";
 
 export default () => {
+  const menuItems = useRecoilValue(MainMenuState);
   const isOpened = useRecoilValue(isMobileMenuOpened);
-  const setMobileMenuState = useSetRecoilState(MobileMenuState);
-
-  const handleCloseMenuClick = () => {
-    setMobileMenuState({
-      isOpened: false,
-    })
-  }
+  const handleCloseMenuClick = useSetRecoilState(closeMobileMenu);
 
   return (
     <>
@@ -60,11 +57,11 @@ export default () => {
                   </div>
                 </div>
                 <div className="mt-3 px-2 space-y-1">
-                  <a href="#" className="block rounded-md px-3 py-2 text-base text-gray-900 font-medium hover:bg-gray-100 hover:text-gray-800">Home</a>
-                  <a href="#" className="block rounded-md px-3 py-2 text-base text-gray-900 font-medium hover:bg-gray-100 hover:text-gray-800">Profile</a>
-                  <a href="#" className="block rounded-md px-3 py-2 text-base text-gray-900 font-medium hover:bg-gray-100 hover:text-gray-800">Resources</a>
-                  <a href="#" className="block rounded-md px-3 py-2 text-base text-gray-900 font-medium hover:bg-gray-100 hover:text-gray-800">Company Directory</a>
-                  <a href="#" className="block rounded-md px-3 py-2 text-base text-gray-900 font-medium hover:bg-gray-100 hover:text-gray-800">Openings</a>
+                {
+                  menuItems.map(item => (
+                    <Link className="block rounded-md px-3 py-2 text-base text-gray-900 font-medium hover:bg-gray-100 hover:text-gray-800" to={item.path}>{item.name}</Link>
+                  ))
+                }
                 </div>
               </div>
               <div className="pt-4 pb-2">
