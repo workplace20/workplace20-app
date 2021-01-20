@@ -1,0 +1,28 @@
+{
+  "name": "Workspace20",
+  "version": "0.0.1",
+  "engines": {
+    "node": "15.0"
+  },
+  "private": true,
+  "main": "server.js",
+  "scripts": {
+    "test-ignore": "NODE_ENV=test casperjs test test/integration-test"
+  },
+  "dependencies": {
+    "body-parser": "^1.14.0",
+    "cookie-parser": "^1.4.5",
+    "debug": "^4.3.1",
+    "debug-logger": "^0.4.1",
+    "errorhandler": "^1.4.2",
+    "es6-promise": "~1.0.0",
+    "express": "^4.17.1",
+    "method-override": "^2.3.5",
+    "mongodb": "^3.6.3",
+    "mongoose": "^5.11.12",
+    "request": "^2.88.2",
+    "request-promise-json": "^1.0.4",
+    "underscore": "~1.6.0",
+    "utf8": "^2.1.1"
+  }
+}
