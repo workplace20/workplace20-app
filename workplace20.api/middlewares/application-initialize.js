@@ -8,7 +8,7 @@ var debug = require('debug')('acione:application initialize'),
   AuthorityMiddleWare = require('./authority');
 
 let MONGODB='';
-let HOST_PORT=8080;
+let HOST_PORT=8900;
 function ApplicationInitialize() {
   var self = this;
   self.expressApp = null;
