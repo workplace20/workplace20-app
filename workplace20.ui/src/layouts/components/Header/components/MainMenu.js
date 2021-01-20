@@ -1,4 +1,4 @@
-import MainMenuState from '../states/mainMenu';
+import MainMenuState from '../../../states/mainMenu';
 import { useRecoilValue } from 'recoil';
 import {
   BrowserRouter as Router,

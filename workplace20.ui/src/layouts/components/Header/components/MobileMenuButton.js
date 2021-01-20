@@ -1,16 +1,10 @@
-import { isMobileMenuOpened } from '../states/mobileMenu/selectors';
-import MobileMenuState from '../states/mobileMenu';
+import { isMobileMenuOpened } from '../../../states/mobileMenu/getters';
+import { openMobileMenu } from '../../../states/mobileMenu/actions';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 
 const MobileMenuButton = () => {
   const isOpened = useRecoilValue(isMobileMenuOpened);
-  const setMobileMenuState = useSetRecoilState(MobileMenuState);
-
-  const handleOpenMenuClick = () => {
-    setMobileMenuState({
-      isOpened: true,
-    })
-  }
+  const handleOpenMenuClick = useSetRecoilState(openMobileMenu);
 
   return (
     <>

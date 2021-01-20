@@ -1,17 +1,11 @@
 import { Transition } from '@headlessui/react';
-import { isMobileMenuOpened } from '../states/mobileMenu/selectors';
-import MobileMenuState from '../states/mobileMenu';
+import { isMobileMenuOpened } from '../../../states/mobileMenu/getters';
+import { closeMobileMenu } from '../../../states/mobileMenu/actions';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 
 export default () => {
   const isOpened = useRecoilValue(isMobileMenuOpened);
-  const setMobileMenuState = useSetRecoilState(MobileMenuState);
-
-  const handleCloseMenuClick = () => {
-    setMobileMenuState({
-      isOpened: false,
-    })
-  }
+  const handleCloseMenuClick = useSetRecoilState(closeMobileMenu);
 
   return (
     <>
