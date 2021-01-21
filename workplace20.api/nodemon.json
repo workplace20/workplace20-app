@@ -1,6 +1,6 @@
 {
     "verbose": true,
-    "watch": ["server.js", "views/index/src/index.html", "controllers/*", "routes/*", "helpers/*", "middlewares/*", "configs/*", "gearman/*"],
+    "watch": ["*.js", "controllers/*", "routes/*", "middlewares/*"],
     "execMap": {
         "js": "export USER=sangcu ; NODE_ENV=test DEBUG=cione:* node",
         "pde": "processing --sketch={{pwd}} --run"
