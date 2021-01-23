@@ -217,8 +217,8 @@ export default function Home() {
 									</h2>
 									<div class="mt-8 flex justify-center">
 										<div class="inline-flex rounded-md shadow">
-											<a href="#" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700">
-		Get invite code
+											<a href="https://linkedin.com/company/workplace20" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700">
+		Connect with us on LinkedIn
 											</a>
 										</div>
 									</div>
@@ -253,30 +253,31 @@ export default function Home() {
 										✨ Reduce the cost of trust as no office.
 										</dt>
 									</div>
-		
+		{/*
 									<div class="bg-white">
-											<div class="max-w-7xl mx-auto sm:px-6 lg:py-8 lg:px-2">
-												<h2 class="inline text-3xl font-extrabold tracking-tight text-gray-700 sm:block sm:text-4xl">
-													Get in touch?
-												</h2>
-												<p class="inline text-3xl font-extrabold tracking-tight text-orange-400 sm:block sm:text-xl px-1">Give us your business email, we will get back to you.</p>
-												<form class="mt-8 sm:flex">
-													<label htmlFor="emailAddress" class="sr-only">Email address</label>
-													<input id="emailAddress" name="email" type="email" autoComplete="email" required class="w-full px-5 py-3 border-2 border-gray-200 placeholder-gray-500 focus:ring-orange-500 focus:border-orange-500 sm:max-w-xs rounded-md" placeholder="Enter your email"/>
-													<div class="mt-3 rounded-md shadow sm:mt-0 sm:ml-3 sm:flex-shrink-0">
-														<button type="submit" class="w-full flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500">
-															Submit
-														</button>
-													</div>
-												</form>
-											</div>
+										<div class="max-w-7xl mx-auto sm:px-6 lg:py-8 lg:px-2">
+											<h2 class="inline text-3xl font-extrabold tracking-tight text-gray-700 sm:block sm:text-4xl">
+												Get in touch?
+											</h2>
+											<p class="inline text-3xl font-extrabold tracking-tight text-orange-400 sm:block sm:text-xl px-1">Give us your business email, we will get back to you.</p>
+											<form class="mt-8 sm:flex">
+												<label htmlFor="emailAddress" class="sr-only">Email address</label>
+												<input id="emailAddress" name="email" type="email" autoComplete="email" required class="w-full px-5 py-3 border-2 border-gray-200 placeholder-gray-500 focus:ring-orange-500 focus:border-orange-500 sm:max-w-xs rounded-md" placeholder="Enter your email"/>
+												<div class="mt-3 rounded-md shadow sm:mt-0 sm:ml-3 sm:flex-shrink-0">
+													<button type="submit" class="w-full flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500">
+														Submit
+													</button>
+												</div>
+											</form>
 										</div>
+									</div>
+									*/}
 								</dl>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="bg-white">
+		{/*<div class="bg-white">
 					<div class="max-w-7xl mx-auto px-4 m:px-6 lg:px-8">
 						<div class="px-4 py-6 bg-orange-500 rounded-lg md:py-12 md:px-12 lg:py-16 lg:px-16 xl:flex xl:items-center">
 							<div class="xl:w-0 xl:flex-1">
@@ -305,6 +306,7 @@ export default function Home() {
 						</div>
 					</div>
 				</div>
+				*/}
       <footer>
 				 <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
 						<div class="max-w-8xl mx-auto mt-8 border-t border-gray-200 pt-8 md:flex md:items-center md:justify-between">
