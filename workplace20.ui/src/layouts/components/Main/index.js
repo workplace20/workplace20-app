@@ -1,6 +1,6 @@
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
-import MainMenuState from '../../states/mainMenu';
+import MainMenuState from '@/layouts/states/mainMenu';
 
 const Main = () => {
   const menuItems = useRecoilValue(MainMenuState);
