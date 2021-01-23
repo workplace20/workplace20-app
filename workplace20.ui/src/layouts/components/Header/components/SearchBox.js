@@ -1,4 +1,4 @@
-export default () => (
+const SearchBox = () => (
   <div className="px-12 lg:px-0">
     {/* Search */}
     <div className="max-w-xs mx-auto w-full lg:max-w-md">
@@ -15,3 +15,5 @@ export default () => (
     </div>
   </div>
 )
+
+export default SearchBox;

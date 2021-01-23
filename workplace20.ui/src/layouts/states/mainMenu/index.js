@@ -1,8 +1,8 @@
 import { atom } from 'recoil';
-import DashboardPage from '../../../pages/dashboard';
-import ProfileAndSkillsPage from '../../../pages/profileAndSkills';
-import EmploymentHistoryPage from '../../../pages/employmentHistory';
-import NetworksPage from '../../../pages/networks';
+import DashboardPage from '@/pages/dashboard';
+import ProfileAndSkillsPage from '@/pages/profileAndSkills';
+import EmploymentHistoryPage from '@/pages/employmentHistory';
+import NetworksPage from '@/pages/networks';
 
 export default atom({
   key: "main_menu_state",

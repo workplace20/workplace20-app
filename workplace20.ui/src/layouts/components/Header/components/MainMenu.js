@@ -1,12 +1,12 @@
-import MainMenuState from '../../../states/mainMenu';
+import MainMenuState from '@/layouts/states/mainMenu';
 import { useRecoilValue } from 'recoil';
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
-export default () => {
+const MainMenu = () => {
   const menuItems = useRecoilValue(MainMenuState);
   const location = useLocation();
-  const isActive = (pathname) => location.pathname == pathname;
+  const isActive = (pathname) => location.pathname === pathname;
 
   return (
     <div className="hidden lg:block lg:col-span-2">
@@ -20,3 +20,5 @@ export default () => {
     </div>
   )
 }
+
+export default MainMenu;

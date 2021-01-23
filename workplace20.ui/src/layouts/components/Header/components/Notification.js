@@ -1,4 +1,4 @@
-export default () => (
+const Notification = () => (
   <button type="button" className="flex-shrink-0 p-1 text-cyan-200 rounded-full hover:text-white hover:bg-white hover:bg-opacity-10 focus:outline-none focus:ring-2 focus:ring-white">
     <span className="sr-only">View notifications</span>
     {/* Heroicon name: bell */}
@@ -7,3 +7,5 @@ export default () => (
     </svg>
   </button>
 )
+
+export default Notification;

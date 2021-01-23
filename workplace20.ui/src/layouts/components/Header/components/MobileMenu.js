@@ -1,12 +1,14 @@
 import { Transition } from '@headlessui/react';
-import { isMobileMenuOpened } from '../../../states/mobileMenu/getters';
-import { closeMobileMenu } from '../../../states/mobileMenu/actions';
+import { isMobileMenuOpened } from '@/layouts/states/mobileMenu/getters';
+import { closeMobileMenu } from '@/layouts/states/mobileMenu/actions';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
-import MainMenuState from '../../../states/mainMenu';
+import MainMenuState from '@/layouts/states/mainMenu';
+import ProfileMenuState from '@/layouts/states/profileMenu';
 import { Link } from "react-router-dom";
 
-export default () => {
+const MobileMenu = () => {
   const menuItems = useRecoilValue(MainMenuState);
+  const profileMenuItems = useRecoilValue(ProfileMenuState);
   const isOpened = useRecoilValue(isMobileMenuOpened);
   const handleCloseMenuClick = useSetRecoilState(closeMobileMenu);
 
@@ -43,8 +45,8 @@ export default () => {
                     <img className="h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-cyan-600.svg" alt="Workflow" />
                   </div>
                   <div className="-mr-2">
-                    <button 
-                      type="button" 
+                    <button
+                      type="button"
                       className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-cyan-500"
                       onClick={handleCloseMenuClick}
                     >
@@ -57,17 +59,17 @@ export default () => {
                   </div>
                 </div>
                 <div className="mt-3 px-2 space-y-1">
-                {
-                  menuItems.map(item => (
-                    <Link className="block rounded-md px-3 py-2 text-base text-gray-900 font-medium hover:bg-gray-100 hover:text-gray-800" to={item.path}>{item.name}</Link>
-                  ))
-                }
+                  {
+                    menuItems.map(item => (
+                      <Link className="block rounded-md px-3 py-2 text-base text-gray-900 font-medium hover:bg-gray-100 hover:text-gray-800" to={item.path}>{item.name}</Link>
+                    ))
+                  }
                 </div>
               </div>
               <div className="pt-4 pb-2">
                 <div className="flex items-center px-5">
                   <div className="flex-shrink-0">
-                    <img className="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt />
+                    <img className="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="avatar"/>
                   </div>
                   <div className="ml-3 min-w-0 flex-1">
                     <div className="text-base font-medium text-gray-800 truncate">Rebecca Nicholas</div>
@@ -82,9 +84,11 @@ export default () => {
                   </button>
                 </div>
                 <div className="mt-3 px-2 space-y-1">
-                  <a href="#" className="block rounded-md px-3 py-2 text-base text-gray-900 font-medium hover:bg-gray-100 hover:text-gray-800">Your Profile</a>
-                  <a href="#" className="block rounded-md px-3 py-2 text-base text-gray-900 font-medium hover:bg-gray-100 hover:text-gray-800">Settings</a>
-                  <a href="#" className="block rounded-md px-3 py-2 text-base text-gray-900 font-medium hover:bg-gray-100 hover:text-gray-800">Sign out</a>
+                  {
+                    profileMenuItems.map(item => (
+                      <Link className="block rounded-md px-3 py-2 text-base text-gray-900 font-medium hover:bg-gray-100 hover:text-gray-800" to={item.path}> {item.name} </Link>
+                    ))
+                  }
                 </div>
               </div>
             </div>
@@ -94,3 +98,5 @@ export default () => {
     </>
   )
 }
+
+export default MobileMenu;

@@ -1,5 +1,5 @@
-import { isMobileMenuOpened } from '../../../states/mobileMenu/getters';
-import { openMobileMenu } from '../../../states/mobileMenu/actions';
+import { isMobileMenuOpened } from '@/layouts/states/mobileMenu/getters';
+import { openMobileMenu } from '@/layouts/states/mobileMenu/actions';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 
 const MobileMenuButton = () => {
