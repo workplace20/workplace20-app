@@ -126,7 +126,7 @@ export default function Home() {
 									<p class="mt-3 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
 										2020 has changed our work place and working in 
 										the office is an optional. 
-										Workplace20 is a private community of sofware engineers in Viet Nam and sofware development business around the world.
+										Workplace20 is a private community of software engineers in Viet Nam and sofware development business around the world.
 									</p>
 								</div>
 							</main>
@@ -147,9 +147,9 @@ export default function Home() {
 											</dt>
 											<dd class="mt-2 text-base text-gray-500">
 												As remote work only “worked” in trusted environment. 
-												The sofware engineer on Workplace20 are invited only by trusted people who 
+												The software engineer on Workplace20 are invited only by trusted people who 
 												showing what they can working on and their skill set. By connect to only invited people, 
-												we make sure that our sofware engineers are selective and highly skill.
+												we make sure that our software engineers are selective and highly skill.
 											</dd>
 										</div>
 								</div>
@@ -162,7 +162,7 @@ export default function Home() {
 												For the business
 											</dt>
 											<dd class="mt-2 text-base text-gray-500">
-												The business on workplace20 offer remote work and a culture to help sofware engineer to
+												The business on workplace20 offer remote work and a culture to help software engineer to
 												ship the software. Only pay based on hourly rate, service based or flexible contract.
 											</dd>
 										</div>
@@ -225,12 +225,12 @@ export default function Home() {
 								<dl class="space-y-10 md:space-y-0 md:grid md:grid-cols-1 md:gap-x-4 md:gap-y-6">
 									<div>
 										<dt class="text-lg font-medium text-gray">
-										✨ A selective of sofware engineers in community which built on trust. They can do what they say.
+										✨ A selective of software engineers in community which built on trust. They can do what they say.
 										</dt>
 									</div>
 									<div>
 										<dt class="text-lg font-medium text-grey">
-										 ✨ The community of sofware engineers who are ambition and grit. They have experienced on remote work, self-discipline, highly skill and commitment.
+										 ✨ The community of software engineers who are ambition and grit. They have experienced on remote work, self-discipline, highly skill and commitment.
 										</dt>
 									</div>
 
