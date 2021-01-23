@@ -14,7 +14,7 @@ export default function Home() {
         <title>Workspace20 - A private community for creators as software engineer and business which offer remote work environment</title>
         <link rel="icon" href="/favicon.ico" />
 			<Fragment>
-					<script dangerouslySetInnerHTML={{
+					<script id="mcjs" dangerouslySetInnerHTML={{
 																							__html: `
 																								!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/c4d577219c0dd969db452d25b/9c8b3fc6b38fecd3f6df1cc32.js");											                  `,
 																							}}
