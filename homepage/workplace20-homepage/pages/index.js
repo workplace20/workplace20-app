@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import { Fragment } from 'react'
 import Layout from '../components/layout'
 import Logo from '../components/home-logo'
 import { Transition } from '@headlessui/react';
@@ -12,6 +13,13 @@ export default function Home() {
       <Head>
         <title>Workspace20 - A private community for creators as software engineer and business which offer remote work environment</title>
         <link rel="icon" href="/favicon.ico" />
+			<Fragment>
+					<script id="mcjs" dangerouslySetInnerHTML={{
+																							__html: `
+																								!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/c4d577219c0dd969db452d25b/9c8b3fc6b38fecd3f6df1cc32.js");											                  `,
+																							}}
+												/>
+		 </Fragment>
       </Head>
 			<div class="relative bg-gray-50 overflow-hidden">
 
@@ -126,7 +134,7 @@ export default function Home() {
 									<p class="mt-3 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
 										2020 has changed our work place and working in 
 										the office is an optional. 
-										Workplace20 is a private community of sofware engineers in Viet Nam and sofware development business around the world.
+										Workplace20 is a private community of software engineers in Viet Nam and sofware development business around the world.
 									</p>
 								</div>
 							</main>
@@ -147,9 +155,9 @@ export default function Home() {
 											</dt>
 											<dd class="mt-2 text-base text-gray-500">
 												As remote work only “worked” in trusted environment. 
-												The sofware engineer on Workplace20 are invited only by trusted people who 
+												The software engineer on Workplace20 are invited only by trusted people who 
 												showing what they can working on and their skill set. By connect to only invited people, 
-												we make sure that our sofware engineers are selective and highly skill.
+												we make sure that our software engineers are selective and highly skill.
 											</dd>
 										</div>
 								</div>
@@ -162,7 +170,7 @@ export default function Home() {
 												For the business
 											</dt>
 											<dd class="mt-2 text-base text-gray-500">
-												The business on workplace20 offer remote work and a culture to help sofware engineer to
+												The business on workplace20 offer remote work and a culture to help software engineer to
 												ship the software. Only pay based on hourly rate, service based or flexible contract.
 											</dd>
 										</div>
@@ -185,6 +193,11 @@ export default function Home() {
 						<div class="mt-2 border-t border-opacity-25 pt-10 text-gray-500">
 							<dl class="space-y-10 md:space-y-0 md:grid md:grid-cols-1 md:gap-x-4 md:gap-y-6">
 								<div>
+									<dt class="text-lg leading-6 font-medium text-gray">
+									 ✨ As you're working remotely, you can work anywhere. Balance your lifestyle and freedom.
+									</dt>
+								</div>
+								<div>
 									<dt class="text-lg font-medium text-gray">
 									✨ A growth of business community which provides the remote work, flexible of culture and
 									innovative products.
@@ -196,28 +209,9 @@ export default function Home() {
 									</dt>
 								</div>
 
-								<div>
-									<dt class="text-lg leading-6 font-medium text-gray">
-									 ✨ As you're working remotely, you can work anywhere. Balance your lifestyle and freedom.
-									</dt>
-								</div>
 							</dl>
-							<div class="bg-white">
-								<div class="max-w-7xl mx-auto text-center py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
-									<h2 class="font-extrabold tracking-tight text-gray-700 ">
-										<span class="block text-3xl sm:text-4xl">Ready to dive in?</span>
-									</h2>
-									<div class="mt-8 flex justify-center">
-										<div class="inline-flex rounded-md shadow">
-											<a href="#" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700">
-		Get invite code
-											</a>
-										</div>
-									</div>
-								</div>
-							</div>
 						</div>
-						<div class="max-w-4xl mx-auto">
+						<div class="max-w-4xl mx-auto py-12">
 							<h2 id="for-business" class="text-3xl font-extrabold text-gray">
 								For Business
 							</h2>
@@ -225,12 +219,12 @@ export default function Home() {
 								<dl class="space-y-10 md:space-y-0 md:grid md:grid-cols-1 md:gap-x-4 md:gap-y-6">
 									<div>
 										<dt class="text-lg font-medium text-gray">
-										✨ A selective of sofware engineers in community which built on trust. They can do what they say.
+										✨ A selective of software engineers in community which built on trust. They can do what they say.
 										</dt>
 									</div>
 									<div>
 										<dt class="text-lg font-medium text-grey">
-										 ✨ The community of sofware engineers who are ambition and grit. They have experienced on remote work, self-discipline, highly skill and commitment.
+										 ✨ The community of software engineers who are ambition and grit. They have experienced on remote work, self-discipline, highly skill and commitment.
 										</dt>
 									</div>
 
@@ -245,30 +239,31 @@ export default function Home() {
 										✨ Reduce the cost of trust as no office.
 										</dt>
 									</div>
-		
+		{/*
 									<div class="bg-white">
-											<div class="max-w-7xl mx-auto sm:px-6 lg:py-8 lg:px-2">
-												<h2 class="inline text-3xl font-extrabold tracking-tight text-gray-700 sm:block sm:text-4xl">
-													Get in touch?
-												</h2>
-												<p class="inline text-3xl font-extrabold tracking-tight text-orange-400 sm:block sm:text-xl px-1">Give us your business email, we will get back to you.</p>
-												<form class="mt-8 sm:flex">
-													<label htmlFor="emailAddress" class="sr-only">Email address</label>
-													<input id="emailAddress" name="email" type="email" autoComplete="email" required class="w-full px-5 py-3 border-2 border-gray-200 placeholder-gray-500 focus:ring-orange-500 focus:border-orange-500 sm:max-w-xs rounded-md" placeholder="Enter your email"/>
-													<div class="mt-3 rounded-md shadow sm:mt-0 sm:ml-3 sm:flex-shrink-0">
-														<button type="submit" class="w-full flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500">
-															Submit
-														</button>
-													</div>
-												</form>
-											</div>
+										<div class="max-w-7xl mx-auto sm:px-6 lg:py-8 lg:px-2">
+											<h2 class="inline text-3xl font-extrabold tracking-tight text-gray-700 sm:block sm:text-4xl">
+												Get in touch?
+											</h2>
+											<p class="inline text-3xl font-extrabold tracking-tight text-orange-400 sm:block sm:text-xl px-1">Give us your business email, we will get back to you.</p>
+											<form class="mt-8 sm:flex">
+												<label htmlFor="emailAddress" class="sr-only">Email address</label>
+												<input id="emailAddress" name="email" type="email" autoComplete="email" required class="w-full px-5 py-3 border-2 border-gray-200 placeholder-gray-500 focus:ring-orange-500 focus:border-orange-500 sm:max-w-xs rounded-md" placeholder="Enter your email"/>
+												<div class="mt-3 rounded-md shadow sm:mt-0 sm:ml-3 sm:flex-shrink-0">
+													<button type="submit" class="w-full flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500">
+														Submit
+													</button>
+												</div>
+											</form>
 										</div>
+									</div>
+									*/}
 								</dl>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="bg-white">
+		{/*<div class="bg-white">
 					<div class="max-w-7xl mx-auto px-4 m:px-6 lg:px-8">
 						<div class="px-4 py-6 bg-orange-500 rounded-lg md:py-12 md:px-12 lg:py-16 lg:px-16 xl:flex xl:items-center">
 							<div class="xl:w-0 xl:flex-1">
@@ -297,6 +292,21 @@ export default function Home() {
 						</div>
 					</div>
 				</div>
+				*/}
+			<div class="bg-white">
+				<div class="max-w-7xl mx-auto text-center py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
+					<h2 class="font-extrabold tracking-tight text-gray-700 ">
+						<span class="block text-3xl sm:text-4xl">Ready to dive in?</span>
+					</h2>
+					<div class="mt-8 flex justify-center">
+						<div class="inline-flex rounded-md shadow">
+							<a href="https://linkedin.com/company/workplace20" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700">
+Connect with us on LinkedIn
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
       <footer>
 				 <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
 						<div class="max-w-8xl mx-auto mt-8 border-t border-gray-200 pt-8 md:flex md:items-center md:justify-between">

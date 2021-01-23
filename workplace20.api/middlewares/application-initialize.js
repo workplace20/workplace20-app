@@ -1,5 +1,4 @@
 var debug = require('debug')('acione:application initialize'),
-  mongoose = require('mongoose'),
   _ = require('underscore'),
   fs = require('fs'),
   ErrorHandler = require('errorhandler'),
@@ -7,8 +6,7 @@ var debug = require('debug')('acione:application initialize'),
 	ModuleHelper = require('../module-helper');
   AuthorityMiddleWare = require('./authority');
 
-let MONGODB='';
-let HOST_PORT=8080;
+
 function ApplicationInitialize() {
   var self = this;
   self.expressApp = null;
@@ -52,22 +50,9 @@ function ApplicationInitialize() {
     });
     return self;
   };
-
-  this.setupDatabase = function(mongoose) {
-		return self;
-    mongoose.Promise = Promise;
-    mongoose.connect(MONGODB, {
-      server: {
-        auto_reconnect: true
-      },
-      promiseLibrary: Promise
-    });
-    return self;
-  };
-
-  this.startApplication = function() {
-    self.server.listen(HOST_PORT, function() {
-      debug('Listening on port', HOST_PORT);
+  this.startApplication = function(hostPort) {
+    self.server.listen(hostPort, function() {
+      debug('Listening on port', hostPort);
     });
     return self;
   };
