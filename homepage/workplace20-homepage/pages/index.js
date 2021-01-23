@@ -193,6 +193,11 @@ export default function Home() {
 						<div class="mt-2 border-t border-opacity-25 pt-10 text-gray-500">
 							<dl class="space-y-10 md:space-y-0 md:grid md:grid-cols-1 md:gap-x-4 md:gap-y-6">
 								<div>
+									<dt class="text-lg leading-6 font-medium text-gray">
+									 ✨ As you're working remotely, you can work anywhere. Balance your lifestyle and freedom.
+									</dt>
+								</div>
+								<div>
 									<dt class="text-lg font-medium text-gray">
 									✨ A growth of business community which provides the remote work, flexible of culture and
 									innovative products.
@@ -204,28 +209,9 @@ export default function Home() {
 									</dt>
 								</div>
 
-								<div>
-									<dt class="text-lg leading-6 font-medium text-gray">
-									 ✨ As you're working remotely, you can work anywhere. Balance your lifestyle and freedom.
-									</dt>
-								</div>
 							</dl>
-							<div class="bg-white">
-								<div class="max-w-7xl mx-auto text-center py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
-									<h2 class="font-extrabold tracking-tight text-gray-700 ">
-										<span class="block text-3xl sm:text-4xl">Ready to dive in?</span>
-									</h2>
-									<div class="mt-8 flex justify-center">
-										<div class="inline-flex rounded-md shadow">
-											<a href="https://linkedin.com/company/workplace20" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700">
-		Connect with us on LinkedIn
-											</a>
-										</div>
-									</div>
-								</div>
-							</div>
 						</div>
-						<div class="max-w-4xl mx-auto">
+						<div class="max-w-4xl mx-auto py-12">
 							<h2 id="for-business" class="text-3xl font-extrabold text-gray">
 								For Business
 							</h2>
@@ -307,6 +293,20 @@ export default function Home() {
 					</div>
 				</div>
 				*/}
+			<div class="bg-white">
+				<div class="max-w-7xl mx-auto text-center py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
+					<h2 class="font-extrabold tracking-tight text-gray-700 ">
+						<span class="block text-3xl sm:text-4xl">Ready to dive in?</span>
+					</h2>
+					<div class="mt-8 flex justify-center">
+						<div class="inline-flex rounded-md shadow">
+							<a href="https://linkedin.com/company/workplace20" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700">
+Connect with us on LinkedIn
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
       <footer>
 				 <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
 						<div class="max-w-8xl mx-auto mt-8 border-t border-gray-200 pt-8 md:flex md:items-center md:justify-between">
