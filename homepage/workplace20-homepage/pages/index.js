@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import { Fragment } from 'react'
 import Layout from '../components/layout'
 import Logo from '../components/home-logo'
 import { Transition } from '@headlessui/react';
@@ -12,6 +13,13 @@ export default function Home() {
       <Head>
         <title>Workspace20 - A private community for creators as software engineer and business which offer remote work environment</title>
         <link rel="icon" href="/favicon.ico" />
+			<Fragment>
+					<script dangerouslySetInnerHTML={{
+																							__html: `
+																								!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/c4d577219c0dd969db452d25b/9c8b3fc6b38fecd3f6df1cc32.js");											                  `,
+																							}}
+												/>
+		 </Fragment>
       </Head>
 			<div class="relative bg-gray-50 overflow-hidden">
 
