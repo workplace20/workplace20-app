@@ -2,6 +2,7 @@ import ProfileOverview from './components/ProfileOverview';
 import NetWork from './components/Network';
 import PotentialJobList from './components/PotentialJobList';
 import NewList from './components/NewList';
+import withAuthSecure from 'components/withAuthSecure';
 
 const DashBoard = () => (
   <>
@@ -27,4 +28,4 @@ const DashBoard = () => (
   </>
 )
 
-export default DashBoard;
+export default withAuthSecure(DashBoard);

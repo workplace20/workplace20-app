@@ -1,0 +1,21 @@
+{
+  "name": "workplace-20.ui",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@headlessui/react": "^0.2.0",
+    "autoprefixer": "^10.2.3",
+    "next": "10.0.5",
+    "next-auth": "^3.1.0",
+    "postcss": "^8.2.4",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "recoil": "^0.1.2",
+    "tailwindcss": "^2.0.2"
+  }
+}
