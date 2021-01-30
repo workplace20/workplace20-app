@@ -7,10 +7,41 @@ import { signIn } from 'next-auth/client';
 const options = {
   // https://next-auth.js.org/configuration/providers
   providers: [
-    Providers.LinkedIn({
+    {
+      id: 'linkedin',
+      name: 'LinkedIn',
+      type: 'oauth',
+      version: '2.0',
+      scope: 'r_liteprofile r_emailaddress',
+      params: {
+        grant_type: 'authorization_code',
+        client_id: process.env.LINKEDIN_CLIENT_ID,
+        client_secret: process.env.LINKEDIN_CLIENT_SECRET
+      },
+      accessTokenUrl: 'https://www.linkedin.com/oauth/v2/accessToken',
+      authorizationUrl: 'https://www.linkedin.com/oauth/v2/authorization?response_type=code',
+      profileUrl: 'https://api.linkedin.com/v2/me?projection=(id,localizedFirstName,localizedLastName,profilePicture(displayImage~digitalmediaAsset:playableStreams))',
+      profile: (profile) => {
+        var result = {
+          id: profile.id,
+          name: `${profile.localizedFirstName} ${profile.localizedLastName}`,
+          email: profile.emailaddress,
+          image: profile.picture
+        }
+
+        if (profile.profilePicture && profile.profilePicture['displayImage~']) {
+          const { elements } = profile.profilePicture['displayImage~'];
+
+          if (elements && elements.length > 0) {
+            result.image = elements.find(x => x.artifact.endsWith('400_400)'))?.identifiers[0]?.identifier;
+          }
+        }
+
+        return result;
+      },
       clientId: process.env.LINKEDIN_CLIENT_ID,
       clientSecret: process.env.LINKEDIN_CLIENT_SECRET
-    }),
+    },
     Providers.GitHub({
       clientId: process.env.GITHUB_ID,
       clientSecret: process.env.GITHUB_SECRET
@@ -82,7 +113,7 @@ const options = {
   callbacks: { 
     signIn: async (user, account, profile) => { 
       if (account.provider == 'linkedin') {
-        const res = await fetch('https://api.linkedin.com/v2/me?projection=(profilePicture(displayImage~digitalmediaAsset:playableStreams))', {
+        const res = await fetch('https://api.linkedin.com/v2/clientAwareMemberHandles?q=members&projection=(elements*(primary,type,handle~))', {
           headers: [
             ['Authorization', `Bearer ${account.accessToken}`]
           ]
@@ -90,11 +121,12 @@ const options = {
 
         const json = await res.json();
         
-        if (json.profilePicture && json.profilePicture['displayImage~']) {
-          const { elements } = json.profilePicture['displayImage~'];
+        const { elements } = json;
 
-          if (elements && elements.length > 0) {
-            user.image = elements.find(x => x.artifact.endsWith('400_400)'))?.identifiers[0]?.identifier;
+        if (elements && elements.length > 0) {
+          var emailElement = elements.find(x => x.type === 'EMAIL');
+          if (emailElement) {
+            user.email = emailElement['handle~']?.emailAddress;
           }
         }
       }
