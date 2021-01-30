@@ -87,9 +87,16 @@ const options = {
             ['Authorization', `Bearer ${account.accessToken}`]
           ]
         });
-        const json = await res.json()
-        const { elements } = json.profilePicture['displayImage~'];
-        user.image = elements.find(x => x.artifact.endsWith('400_400)')).identifiers[0].identifier;
+
+        const json = await res.json();
+        
+        if (json.profilePicture && json.profilePicture['displayImage~']) {
+          const { elements } = json.profilePicture['displayImage~'];
+
+          if (elements && elements.length > 0) {
+            user.image = elements.find(x => x.artifact.endsWith('400_400)'))?.identifiers[0]?.identifier;
+          }
+        }
       }
 
       return Promise.resolve(true);
