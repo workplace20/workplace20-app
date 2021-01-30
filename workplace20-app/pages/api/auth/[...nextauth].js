@@ -150,7 +150,7 @@ const options = {
           requirements: [],
           skillMatrix: []
         });
-        
+
         logger('created')
       } else {
         logger('profile existed. Ignore')

@@ -1,4 +1,4 @@
-import dbhelper from '../../database';
+import dbhelper from 'database';
 import jwt from 'next-auth/jwt'
 const secret = process.env.SECRET
 
