@@ -1,6 +1,8 @@
+import debug from 'debug'
 import NextAuth from 'next-auth'
 import Providers from 'next-auth/providers'
 import { signIn } from 'next-auth/client';
+import dbHelper from 'database'
 
 // For more information on each option (and a full list of options) go to
 // https://next-auth.js.org/configuration/options
@@ -68,8 +70,8 @@ const options = {
     // Use JSON Web Tokens for session instead of database sessions.
     // This option can be used with or without a database for users/accounts.
     // Note: `jwt` is automatically set to `true` if no database is specified.
-    jwt: true, 
-    
+    jwt: true,
+
     // Seconds - How long until an idle session expires and is no longer valid.
     // maxAge: 30 * 24 * 60 * 60, // 30 days
 
@@ -85,7 +87,7 @@ const options = {
   jwt: {
     // A secret to use for key generation (you should set this explicitly)
     // secret: 'INp8IvdIyeMcoGAgFGoA61DdBglwwSqnXJZkgz8PSnw', 
-    
+
     // Set to true to use encryption (default: false)
     // encryption: true,
 
@@ -110,8 +112,9 @@ const options = {
   // Callbacks are asynchronous functions you can use to control what happens
   // when an action is performed.
   // https://next-auth.js.org/configuration/callbacks 
-  callbacks: { 
-    signIn: async (user, account, profile) => { 
+  callbacks: {
+    signIn: async (user, account, profile) => {
+      const logger = debug('signIn');
       if (account.provider == 'linkedin') {
         const res = await fetch('https://api.linkedin.com/v2/clientAwareMemberHandles?q=members&projection=(elements*(primary,type,handle~))', {
           headers: [
@@ -120,7 +123,7 @@ const options = {
         });
 
         const json = await res.json();
-        
+
         const { elements } = json;
 
         if (elements && elements.length > 0) {
@@ -129,6 +132,28 @@ const options = {
             user.email = emailElement['handle~']?.emailAddress;
           }
         }
+      }
+
+      logger('create email profile if not exist')
+
+      const db = await dbHelper.getDb()
+      const profileCollection = await db.collection('profiles')
+      const emailProfile = await profileCollection.findOne({ email: user.email })
+
+      if (!emailProfile) {
+        logger(`profile for ${user.email} not found. creating...`)
+        await profileCollection.insertOne({
+          authKind: account.provider,
+          kind: '',
+          email: user.email,
+          name: user.name,
+          requirements: [],
+          skillMatrix: []
+        });
+        
+        logger('created')
+      } else {
+        logger('profile existed. Ignore')
       }
 
       return Promise.resolve(true);
@@ -144,7 +169,7 @@ const options = {
 
   // Events are useful for logging
   // https://next-auth.js.org/configuration/events
-  events: { },
+  events: {},
 
   // Enable debug messages in the console if you are having problems
   debug: false,

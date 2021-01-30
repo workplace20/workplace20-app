@@ -2,7 +2,7 @@ const {MongoClient} = require('mongodb');
 const mongoUri = process.env.MONGOURI || "mongodb://127.0.0.1:27017/workplace20?retryWrites=true&w=majority&useUnifiedTopology=true";
 
 const client = new MongoClient(mongoUri);
-const dbObject={
+const dbInstance={
         db:null
 };
 
@@ -14,15 +14,23 @@ export default {
                 console.log('connecting to mongodb');
                 await client.connect();
                 console.log('connected. Unique '+unique);
-                dbObject.db= await client.db('workplace20');                
+                dbInstance.db= await client.db('workplace20');                
         },
         getDb:  async function(){
                 console.log(`get db${unique}`);
 
-                if(!dbObject.db){
+                if(!dbInstance.db){
                         await this.connect();
                 }
                 
-                return dbObject.db;
+                return dbInstance.db;
+        },
+        collectionFor: async function(collectionName){
+                if(!dbInstance.db){
+                        await this.connect()
+                }
+
+                const collection = await dbInstance.db.collection(collectionName)
+                return collection
         }
 };
