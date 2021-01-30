@@ -1,11 +1,16 @@
 import NextAuth from 'next-auth'
 import Providers from 'next-auth/providers'
+import { signIn } from 'next-auth/client';
 
 // For more information on each option (and a full list of options) go to
 // https://next-auth.js.org/configuration/options
 const options = {
   // https://next-auth.js.org/configuration/providers
   providers: [
+    Providers.LinkedIn({
+      clientId: process.env.LINKEDIN_CLIENT_ID,
+      clientSecret: process.env.LINKEDIN_CLIENT_SECRET
+    }),
     Providers.GitHub({
       clientId: process.env.GITHUB_ID,
       clientSecret: process.env.GITHUB_SECRET
@@ -13,7 +18,7 @@ const options = {
     Providers.Google({
       clientId: process.env.GOOGLE_ID,
       clientSecret: process.env.GOOGLE_SECRET
-    })
+    }),
   ],
   // Database optional. MySQL, Maria DB, Postgres and MongoDB are supported.
   // https://next-auth.js.org/configuration/databases
@@ -75,10 +80,27 @@ const options = {
   // when an action is performed.
   // https://next-auth.js.org/configuration/callbacks 
   callbacks: { 
-    // signIn: async (user, account, profile) => { return Promise.resolve(true) },
+    signIn: async (user, account, profile) => { 
+      if (account.provider == 'linkedin') {
+        const res = await fetch('https://api.linkedin.com/v2/me?projection=(profilePicture(displayImage~digitalmediaAsset:playableStreams))', {
+          headers: [
+            ['Authorization', `Bearer ${account.accessToken}`]
+          ]
+        });
+        const json = await res.json()
+        const { elements } = json.profilePicture['displayImage~'];
+        user.image = elements.find(x => x.artifact.endsWith('400_400)')).identifiers[0].identifier;
+      }
+
+      return Promise.resolve(true);
+    },
     // redirect: async (url, baseUrl) => { return Promise.resolve(baseUrl) },
-    // session: async (session, user) => { return Promise.resolve(session) },
-    // jwt: async (token, user, account, profile, isNewUser) => { return Promise.resolve(token) }
+    // session: async (session, user) => { 
+    //   return Promise.resolve(session) 
+    // },
+    // jwt: async (token, user, account, profile, isNewUser) => { 
+    //   return Promise.resolve(token) 
+    // }
   },
 
   // Events are useful for logging
