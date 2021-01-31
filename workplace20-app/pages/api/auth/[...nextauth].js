@@ -2,7 +2,7 @@ import debug from 'debug'
 import NextAuth from 'next-auth'
 import Providers from 'next-auth/providers'
 import { signIn } from 'next-auth/client';
-import dbHelper from 'database'
+import dbHelper from 'lib/database'
 
 // For more information on each option (and a full list of options) go to
 // https://next-auth.js.org/configuration/options
