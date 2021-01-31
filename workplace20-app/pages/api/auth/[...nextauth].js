@@ -144,6 +144,7 @@ const options = {
         logger(`profile for ${user.email} not found. creating...`)
         await profileCollection.insertOne({
           authKind: account.provider,
+          status: 'new',
           kind: '',
           email: user.email,
           name: user.name,

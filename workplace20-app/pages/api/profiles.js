@@ -68,17 +68,32 @@ const projectionIgnoreIdField = { projection: { '_id': 0 } }
 /* BELOW IS PROFILE MODEL */
 const profileModel = {
     kind: ['business', 'creator'],
-    status: ['pending', 'review', 'active', 'deactive'],
+    status: ['new', 'review', 'active', 'deactive'],
     name: '',
     email: '',
     yearOfExperience: 10,
     jobAvailable: [true, false],
     domain: ['.net', 'java'],
-    skillmatrix: [],
+    skills: {
+        status: 'new', // new, review, verified
+        matrix: []
+    },
     requirement: {
+        status: 'new', // new, review, verified
         culture: 'freetext',
         rate: '40$',
         rateType: ['hours', 'contracts', 'full-time', 'long-term-contract'],
         hourPerWeek: 30
     }
 }
+
+
+/*
+
+1. check kind = business/creator
+
+2. check status is 'new', go to onboard screen, check all general required matched => status is 'active'
+
+3. Sent offer, status = 'active', skills.status='verified', requirement.status='verified'
+
+*/
