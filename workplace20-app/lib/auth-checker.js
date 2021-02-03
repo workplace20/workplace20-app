@@ -1,10 +1,11 @@
-import jwt from 'next-auth/jwt'
+import { getSession } from 'next-auth/client';
 
-const secret = process.env.SECRET
+const secret = process.env.SECRET;
 
 export default async function authCheck(req, res, next) {
-    const token = await jwt.getToken({ req, secret })
-    if (!token) {
+    const session = await getSession({ req })
+
+    if (!session) {
         res.status(401).send()
         return
     }

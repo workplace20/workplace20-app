@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
+import LoadingPage from 'pages-lib/loading';
 
 const Redirect = ({to}) => {
   const router = useRouter();
@@ -8,7 +9,7 @@ const Redirect = ({to}) => {
     router.push(to);
   }, [to])
 
-  return null;
+  return LoadingPage;
 }
 
 export default Redirect;

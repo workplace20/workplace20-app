@@ -1,6 +1,6 @@
 import dbhelper from 'lib/database';
 import authCheck from 'lib/auth-checker'
-import jwt from 'next-auth/jwt'
+import { getSession } from 'next-auth/client';
 
 const secret = process.env.SECRET
 
@@ -20,11 +20,9 @@ export default async function handler(req, res) {
 }
 
 async function handleGet(req, res) {
-
-    const token = await jwt.getToken({ req, secret })
-
+    const session = await getSession({ req });
     const profileCollection = await dbhelper.collectionFor('profiles');
-    const loggedProfile = await profileCollection.findOne({ email: token.email }, projectionIgnoreIdField)
+    const loggedProfile = await profileCollection.findOne({ email: session.user.email }, projectionIgnoreIdField)
 
     if (loggedProfile) {
         res.status(200).send(loggedProfile)
@@ -34,8 +32,7 @@ async function handleGet(req, res) {
 }
 
 async function handlePut(req, res) {
-
-    const token = await jwt.getToken({ req, secret })
+    const session = await getSession({ req })
 
     const profileCollection = await dbhelper.collectionFor('profiles')
 
@@ -54,13 +51,13 @@ async function handlePut(req, res) {
     }
 
     await profileCollection.updateOne(
-        { email: token.email },
+        { email: session.user.email },
         updater,
         { upsert: false })
 
-    const profile = await profileCollection.findOne({ email: token.email }, projectionIgnoreIdField)
+    const profile = await profileCollection.findOne({ email: session.user.email }, projectionIgnoreIdField)
 
-    res.status(200).send(profile)
+    res.status(200).send(profile);
 }
 // No need return _id of document to client in this api
 const projectionIgnoreIdField = { projection: { '_id': 0 } }
