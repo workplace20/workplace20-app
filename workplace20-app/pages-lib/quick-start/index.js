@@ -1,22 +1,24 @@
-import { useRouter } from 'next/router';
-import { useSetRecoilState, useRecoilValue } from 'recoil';
+import { useState } from 'react';
 import Redirect from 'components/Redirect';
-import { updateProfile } from 'pages-lib/_states/profile/actions';
-import ProfileRequest from 'pages-lib/_api-request/profiles';
-import ProfileState from 'pages-lib/_states/profile';
+import LoadingPage from 'pages-lib/loading';
+import { useRouter } from 'next/router';
+import { useQueryProfile, useMutateProfileKind } from 'pages-lib/_api-request/profiles';
 
-const Onboarding = () => {
+const QuickStart = () => {
+  const [profileKind, setProfileKind] = useState('');
+
   const router = useRouter();
-  const handleUpdateProfile = useSetRecoilState(updateProfile);
-  const profile = useRecoilValue(ProfileState);
-  if (profile.kind) return (<Redirect to="/challenge" />);
+  const { data: profile } = useQueryProfile();
 
-  const handleUserKindSelect = (userKind) => async () => {
-    const res = await ProfileRequest.updateProfile({ kind: userKind });
+  const { mutate, isLoading, isError } = useMutateProfileKind(() => router.push('/welcome'));
 
-    handleUpdateProfile(res);
+  if (profile.kind) {
+    return (<Redirect to="/welcome" />);
+  }
 
-    router.push('/challenge');
+  const handleUserKindSelect = (userKind) => () => {
+    setProfileKind(userKind);
+    mutate(userKind);
   }
 
   return (
@@ -26,9 +28,30 @@ const Onboarding = () => {
           <h1 className="text-5xl font-extrabold orange-700 text-gray-900 sm:text-center">To start, who are you?</h1>
         </div>
         <p className="mt-10 text-3xl text-gray-500 sm:text-center">I am a ...</p>
+        {
+          isError && (
+            <div class="rounded-md bg-red-50 p-4 mt-6">
+              <div className="flex">
+                <div className="flex-shrink-0">
+                  <svg class="h-5 w-5 text-red-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+                  </svg>
+                </div>
+                <div className="ml-3">
+                  <h3 className="text-sm text-red-700">
+                    Something went wrong while saving your selection.
+              </h3>
+                </div>
+              </div>
+            </div>
+          )
+        }
         <div className="group mt-6 space-y-4 sm:mt-8 sm:space-y-0 sm:grid sm:grid-cols-1 sm:gap-6 lg:max-w-2xl lg:mx-auto xl:max-w-none xl:mx-0 xl:grid-cols-2">
+          {
+            isLoading && (<LoadingPage />)
+          }
           <div
-            className='hover:bg-orange-100 hover:shadow-lg hover:border-transparent border border-gray-200 rounded-lg shadow-sm divide-y divide-gray-200 cursor-pointer'
+            className={`${profileKind === 'creator' ? 'bg-orange-200' : 'hover:bg-orange-100 hover:shadow-lg hover:border-transparent'} border border-gray-200 rounded-lg shadow-sm divide-y divide-gray-200 cursor-pointer`}
             onClick={handleUserKindSelect('creator')}
           >
             <div className="p-6">
@@ -37,7 +60,7 @@ const Onboarding = () => {
             </div>
           </div>
           <div
-            className='hover:bg-orange-100 hover:shadow-lg hover:border-transparent border border-gray-200 rounded-lg shadow-sm divide-y divide-gray-200 cursor-pointer'
+            className={`${profileKind === 'business' ? 'bg-orange-200' : 'hover:bg-orange-100 hover:shadow-lg hover:border-transparent'} border border-gray-200 rounded-lg shadow-sm divide-y divide-gray-200 cursor-pointer`}
             onClick={handleUserKindSelect('business')}
           >
             <div className="p-6">
@@ -51,4 +74,4 @@ const Onboarding = () => {
   )
 }
 
-export default Onboarding;
+export default QuickStart;

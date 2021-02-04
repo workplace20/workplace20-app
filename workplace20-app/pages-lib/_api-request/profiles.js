@@ -1,8 +1,20 @@
+import { useQuery, useMutation, useQueryClient } from 'react-query';
 import axiosWrapper from './axios-wrapper';
 
-const ProfileRequest = {
-  getProfile: () => axiosWrapper.get('/profiles'),
-  updateProfile: (content) => axiosWrapper.put('/profiles', content)
-}
+const queryProfileKey = 'my_profile';
 
-export default ProfileRequest;
+const getProfile = () => axiosWrapper.get('/profiles');
+const updateProfileKind = (userKind) => axiosWrapper.put('/profiles', { kind: userKind });
+
+export const useQueryProfile = () => useQuery(queryProfileKey, getProfile);
+
+export const useMutateProfileKind = (successCallback) => {
+  const queryClient = useQueryClient();
+
+  return useMutation(updateProfileKind, {
+    onSuccess: (data) => {
+      queryClient.setQueryData(queryProfileKey, data);
+      successCallback();
+    }
+  })
+};

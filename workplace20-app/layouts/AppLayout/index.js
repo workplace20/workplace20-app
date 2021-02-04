@@ -2,21 +2,30 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Redirect from 'components/Redirect';
 import { useRouter } from 'next/router';
-import { useRecoilValue } from 'recoil';
-import ProfileState from 'pages-lib/_states/profile';
+import { useQueryProfile } from 'pages-lib/_api-request/profiles';
+import LoadingPage from 'pages-lib/loading';
+import Error from 'next/error';
 
 const Layout = ({ children }) => {
   const router = useRouter();
 
+  const { isLoading, isError, data: profile, error } = useQueryProfile();
+
+  if (isLoading) {
+    return (<LoadingPage />)
+  }
+
+  if (isError) {
+    return (<Error statusCode={error.statusCode} />)
+  }
+
   if (router.pathname === '/quick-start') {
     return <>{children}</>
-  } 
-
-  const profile = useRecoilValue(ProfileState);
+  }
 
   if (!profile.kind) return (<Redirect to="/quick-start" />);
 
-  if (router.pathname === '/challenge' || router.pathname === '/') {
+  if (['/challenge', '/', '/welcome'].includes(router.pathname)) {
     return <>{children}</>
   } 
 
