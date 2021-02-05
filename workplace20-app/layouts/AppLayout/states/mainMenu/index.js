@@ -13,7 +13,7 @@ export default atom({
     },
     {
       name: 'Community',
-      path: '/comminity',
+      path: '/blog',
     }
   ]
 });

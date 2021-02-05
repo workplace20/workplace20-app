@@ -1,9 +1,9 @@
 import Link from 'next/link';
 
 const Jobs = () => (
-  <div className="lg:grid lg:grid-cols-12 lg:gap-x-5">
+  <div className="grid grid-cols-1 gap-4 items-start lg:gap-8 lg:grid lg:grid-cols-12">
     <aside className="lg:col-span-3">
-      <div className="bg-white shadow sm:rounded-lg py-4 px-2 sm:p-4 py-6 px-2 sm:px-6">
+      <div className="rounded-lg bg-white overflow-hidden shadow py-4 px-2 py-6 px-2 sm:px-6">
         <nav className="space-y-1">
           {/* Current: "bg-gray-50 text-orange-600 hover:bg-white", Default: "text-gray-900 hover:text-gray-900 hover:bg-gray-50" */}
           <a href="#" className="bg-gray-50 text-orange-600 hover:bg-white group rounded-md px-3 py-2 flex items-center text-sm font-medium" aria-current="page">
@@ -41,10 +41,10 @@ const Jobs = () => (
           </a>
         </nav>
       </div>
-      <div className="mt-10 sm:mt-0">
-        <div className="mt-5">
+      <div>
+        <div className="mt-4">
           <form>
-            <div className="shadow overflow-hidden sm:rounded-md">
+            <div className="rounded-lg bg-white overflow-hidden shadow">
               <div className="px-4 py-5 bg-white sm:p-6">
                 <div className="grid gap-y-6 gap-x-4">
                   <div className="sm:col-span-6">
@@ -90,10 +90,10 @@ const Jobs = () => (
 
     </aside>
 
-    <div className="space-y-6 sm:px-6 lg:px-0 lg:col-span-9">
+    <div className="space-y-6 lg:px-0 lg:col-span-9">
       {/* Payment details */}
       <section aria-labelledby="applicant-information-title">
-        <div className="bg-white shadow sm:rounded-lg">
+        <div className="rounded-lg bg-white overflow-hidden shadow">
           <div className="px-4 py-5 sm:px-6 group">
             <Link href='/jobs/new-job'>
               <a className="text-lg leading-6 font-medium text-gray-900 hover:text-orange-500">
@@ -143,7 +143,7 @@ const Jobs = () => (
         </div>
       </section>
       <section aria-labelledby="applicant-information-title">
-        <div className="bg-white bg-white shadow sm:rounded-lg">
+        <div className="rounded-lg bg-white overflow-hidden shadow">
           <div className="px-4 py-5 sm:px-6">
             <Link href='/jobs/applied-job'>
 
@@ -191,7 +191,7 @@ const Jobs = () => (
         </div>
       </section>
       <section aria-labelledby="applicant-information-title">
-        <div className="bg-white bg-white shadow sm:rounded-lg">
+        <div className="rounded-lg bg-white overflow-hidden shadow">
           <div className="px-4 py-5 sm:px-6">
             <Link href='/jobs/new-job'>
               <a className="text-lg leading-6 font-medium text-gray-900 hover:text-orange-500">
