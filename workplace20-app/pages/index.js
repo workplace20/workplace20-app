@@ -6,7 +6,7 @@ const Home = () => {
 
   if (!session) return (<Redirect to="/home" />);
 
-  return (<Redirect to="/dashboard" />)
+  return (<Redirect to="/profile" />)
 }
 
 export default Home;

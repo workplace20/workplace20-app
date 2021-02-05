@@ -4,20 +4,16 @@ export default atom({
   key: "main_menu_state",
   default: [
     {
-      name: 'Dashboard',
-      path: '/dashboard',
+      name: 'Profile',
+      path: '/profile',
     },
     {
-      name: 'Profile & Skills',
-      path: '/profileandskills',
+      name: 'Jobs',
+      path: '/jobs',
     },
     {
-      name: 'Employment History',
-      path: '/history',
-    },
-    {
-      name: 'Networks',
-      path: '/networks',
+      name: 'Community',
+      path: '/comminity',
     }
   ]
 });

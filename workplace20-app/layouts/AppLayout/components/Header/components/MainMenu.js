@@ -15,7 +15,7 @@ const MainMenu = () => {
           {
             menuItems.map(item => (
               <Link href={item.path}>
-                 <a className={`${isActive(item.path) ? 'text-white' : 'text-cyan-100'} text-sm font-medium rounded-md bg-white bg-opacity-0 px-3 py-2 hover:bg-opacity-10`}>{item.name}</a>
+                 <a className={`${isActive(item.path) ? 'text-white font-extrabold' : 'text-orange-200'} text-sm font-medium rounded-md bg-white bg-opacity-0 px-3 py-2 hover:bg-opacity-10`}>{item.name}</a>
               </Link>
             ))
           }

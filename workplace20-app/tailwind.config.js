@@ -10,6 +10,7 @@ module.exports = {
 			black: colors.black,
 			white: colors.white,
 			gray: colors.coolGray,
+			yellow: colors.yellow,
 			red: colors.red,
 			green: colors.green,
 			pink: colors.pink,
@@ -25,5 +26,8 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+		require('@tailwindcss/forms'),
+		require('@tailwindcss/typography'),
+	],
 }

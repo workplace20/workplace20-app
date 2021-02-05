@@ -7,7 +7,7 @@ import MobileMenuButton from './components/MobileMenuButton';
 import MobileMenu from './components/MobileMenu';
 
 const Header = () => (
-  <header className="pb-24 bg-gradient-to-r from-orange-500 to-yellow-500">
+  <header className="pb-24 bg-gradient-to-r from-orange-500 to-orange-300">
     <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:max-w-7xl lg:px-8">
       <div className="relative flex flex-wrap items-center justify-center lg:justify-between">
         <Logo />
@@ -18,7 +18,7 @@ const Header = () => (
         <div className="w-full py-5 lg:border-t lg:border-white lg:border-opacity-20">
           <div className="lg:grid lg:grid-cols-3 lg:gap-8 lg:items-center">
             <MainMenu />
-            <SearchBox />
+            {/* <SearchBox /> */}
           </div>
         </div>
         <div className="absolute right-0 flex-shrink-0 lg:hidden">

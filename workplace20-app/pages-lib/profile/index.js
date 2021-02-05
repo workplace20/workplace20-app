@@ -4,7 +4,7 @@ import PotentialJobList from './components/PotentialJobList';
 import NewList from './components/NewList';
 import withAuthSecure from 'components/withAuthSecure';
 
-const DashBoard = () => (
+const Profile = () => (
   <>
     <h1 className="sr-only">Profile</h1>
     {/* Main 3 column grid */}
@@ -21,11 +21,11 @@ const DashBoard = () => (
          {/* Recent Hires */}
          <PotentialJobList />
         {/* Announcements */}
-        <NewList />
+        {/* <NewList /> */}
        
       </div>
     </div>
   </>
 )
 
-export default withAuthSecure(DashBoard);
+export default withAuthSecure(Profile);

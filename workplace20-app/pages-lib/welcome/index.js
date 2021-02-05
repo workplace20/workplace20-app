@@ -7,7 +7,7 @@ const Welcome = () => {
         <div className="sm:flex sm:flex-col sm:align-center">
           <p className="text-4xl font-semibold orange-700 text-gray-900 sm:text-center">Next, please take a few minutes to share us about yourself and your working experience</p>
           <div className="mt-8 sm:text-center">
-            <Link href='/dashboard'>
+            <Link href='/profile'>
               <a class="py-2 px-4 border border-gray-300 rounded-md shadow-sm text-lg font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 bg-white inline-flex justify-center">
                 I will do it later
               </a>
