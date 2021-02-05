@@ -1,6 +1,6 @@
 const NetWork = () => (
   <section aria-labelledby="applicant-information-title">
-    <div className="bg-white shadow sm:rounded-lg">
+    <div className="rounded-lg bg-white overflow-hidden shadow">
       <div className="px-4 py-5 sm:px-6">
         <h2 id="applicant-information-title" className="text-lg leading-6 font-medium text-gray-900">
           General Information

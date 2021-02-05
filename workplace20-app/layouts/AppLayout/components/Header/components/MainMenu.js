@@ -7,7 +7,7 @@ const MainMenu = () => {
   const menuItems = useRecoilValue(MainMenuState);
   const router = useRouter();
 
-  const isActive = (pathname) => router.pathname === pathname;
+  const isActive = (pathname) => router.pathname.startsWith(pathname);
 
   return (
     <div className="hidden lg:block lg:col-span-2">

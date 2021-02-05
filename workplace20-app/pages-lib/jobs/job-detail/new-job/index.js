@@ -1,6 +1,4 @@
-import Link from 'next/link';
-
-const Jobs = () => (
+const JobDetail = () => (
   <div className="lg:grid lg:grid-cols-12 lg:gap-x-5">
     <aside className="lg:col-span-3">
       <div className="bg-white shadow sm:rounded-lg py-4 px-2 sm:p-4 py-6 px-2 sm:px-6">
@@ -90,16 +88,14 @@ const Jobs = () => (
 
     </aside>
 
+
     <div className="space-y-6 sm:px-6 lg:px-0 lg:col-span-9">
-      {/* Payment details */}
       <section aria-labelledby="applicant-information-title">
         <div className="bg-white shadow sm:rounded-lg">
-          <div className="px-4 py-5 sm:px-6 group">
-            <Link href='/jobs/new-job'>
-              <a className="text-lg leading-6 font-medium text-gray-900 hover:text-orange-500">
-                Full-stack developer
-              </a>
-            </Link>
+          <div className="px-4 py-5 sm:px-6">
+            <h2 id="applicant-information-title" className="text-lg leading-6 font-medium text-gray-900">
+              Full-stack developer
+            </h2>
           </div>
           <div className="border-t border-gray-200 px-4 py-5 sm:px-6">
             <dl className="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
@@ -127,122 +123,93 @@ const Jobs = () => (
                   Fugiat ipsum ipsum deserunt culpa aute sint do nostrud anim incididunt cillum culpa consequat. Excepteur qui ipsum aliquip consequat sint. Sit id mollit nulla mollit nostrud in ea officia proident. Irure nostrud pariatur mollit ad adipisicing reprehenderit deserunt qui eu.
             </dd>
               </div>
-            </dl>
-          </div>
-          <div className="px-4 py-3 bg-gray-50 sm:px-6 sm:rounded-b-lg">
-            <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-orange-400 text-white">
-              ReactJS
-            </span>
-            <span class="ml-2 inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-orange-400 text-white">
-              d3JS
-            </span>
-            <span class="ml-2 inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-orange-400 text-white">
-              Java
-            </span>
-          </div>
-        </div>
-      </section>
-      <section aria-labelledby="applicant-information-title">
-        <div className="bg-white bg-white shadow sm:rounded-lg">
-          <div className="px-4 py-5 sm:px-6">
-            <Link href='/jobs/applied-job'>
+              <div className="sm:col-span-2">
+                <dt className="text-sm font-medium text-gray-500">
+                  Job Responsibilities
+                </dt>
+                <dd className="mt-1 text-sm text-gray-900">
+                  <div className="prose max-w-none">
+                    <ul>
+                      <li>
+                        Tempor ultrices proin nunc fames nunc ut auctor vitae sed.
+    </li>
+                      <li>
+                        Turpis ac nunc adipiscing adipiscing metus tincidunt senectus tellus.
+    </li>
+                      <li>
+                        Semper interdum porta sit tincidunt. Dui suspendisse scelerisque amet metus eget sed.
+    </li>
+                    </ul>
+                  </div>
 
-              <a className="text-lg leading-6 font-medium text-gray-900 hover:text-orange-500">
-                Mobile developer
-            </a>
-            </Link>
-          </div>
-          <div className="border-t border-gray-200 px-4 py-5 sm:px-6">
-            <dl className="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
-              <div className="sm:col-span-1">
-                <dt className="text-sm font-medium text-gray-500">
-                  Level
-            </dt>
-                <dd className="mt-1 text-sm text-gray-900">
-                  Senior
-            </dd>
-              </div>
-              <div className="sm:col-span-1">
-                <dt className="text-sm font-medium text-gray-500">
-                  English
-          </dt>
-                <dd className="mt-1 text-sm text-gray-900">
-                  Basic
-            </dd>
+
+                </dd>
               </div>
               <div className="sm:col-span-2">
                 <dt className="text-sm font-medium text-gray-500">
-                  Introduction
-            </dt>
+                  Job Requirements
+                </dt>
                 <dd className="mt-1 text-sm text-gray-900">
-                  Fugiat ipsum ipsum deserunt culpa aute sint do nostrud anim incididunt cillum culpa consequat. Excepteur qui ipsum aliquip consequat sint. Sit id mollit nulla mollit nostrud in ea officia proident. Irure nostrud pariatur mollit ad adipisicing reprehenderit deserunt qui eu.
-            </dd>
-              </div>
-            </dl>
-          </div>
-          <div className="px-4 py-3 bg-gray-50 sm:px-6 sm:rounded-b-lg">
-            <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-orange-400 text-white">
-              Xamarin
-            </span>
-            <span class="ml-2 inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-orange-400 text-white">
-              C#
-            </span>
-          </div>
-        </div>
-      </section>
-      <section aria-labelledby="applicant-information-title">
-        <div className="bg-white bg-white shadow sm:rounded-lg">
-          <div className="px-4 py-5 sm:px-6">
-            <Link href='/jobs/new-job'>
-              <a className="text-lg leading-6 font-medium text-gray-900 hover:text-orange-500">
-                Front-end developer
-            </a>
-            </Link>
-          </div>
-          <div className="border-t border-gray-200 px-4 py-5 sm:px-6">
-            <dl className="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
-              <div className="sm:col-span-1">
-                <dt className="text-sm font-medium text-gray-500">
-                  Level
-            </dt>
-                <dd className="mt-1 text-sm text-gray-900">
-                  Junior
-            </dd>
-              </div>
-              <div className="sm:col-span-1">
-                <dt className="text-sm font-medium text-gray-500">
-                  English
-          </dt>
-                <dd className="mt-1 text-sm text-gray-900">
-                  Basic
-            </dd>
+                  <div className="prose max-w-none">
+                    <ul>
+                      <li>
+                        Tempor ultrices proin nunc fames nunc ut auctor vitae sed.
+    </li>
+                      <li>
+                        Turpis ac nunc adipiscing adipiscing metus tincidunt senectus tellus.
+    </li>
+                      <li>
+                        Semper interdum porta sit tincidunt. Dui suspendisse scelerisque amet metus eget sed.
+    </li>
+                    </ul>
+                  </div>
+
+
+                </dd>
               </div>
               <div className="sm:col-span-2">
                 <dt className="text-sm font-medium text-gray-500">
-                  Introduction
-            </dt>
+                  Additional Requirements
+                </dt>
                 <dd className="mt-1 text-sm text-gray-900">
-                  Fugiat ipsum ipsum deserunt culpa aute sint do nostrud anim incididunt cillum culpa consequat. Excepteur qui ipsum aliquip consequat sint. Sit id mollit nulla mollit nostrud in ea officia proident. Irure nostrud pariatur mollit ad adipisicing reprehenderit deserunt qui eu.
-            </dd>
+                  <div className="prose max-w-none">
+                    <ul>
+                      <li>
+                        Tempor ultrices proin nunc fames nunc ut auctor vitae sed.
+    </li>
+                      <li>
+                        Turpis ac nunc adipiscing adipiscing metus tincidunt senectus tellus.
+    </li>
+                    </ul>
+                  </div>
+
+
+                </dd>
               </div>
             </dl>
           </div>
-          <div className="px-4 py-3 bg-gray-50 sm:px-6 sm:rounded-b-lg">
-            <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-orange-400 text-white">
-              Javascript
-            </span>
-            <span class="ml-2 inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-orange-400 text-white">
-              Functional Programing
-            </span>
-            <span class="ml-2 inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-orange-400 text-white">
-              AngularJS
-            </span>
+
+          <div className="block bg-gray-50 text-sm font-medium text-gray-500 text-center px-4 py-4 hover:text-gray-700 sm:rounded-b-lg flex justify-between">
+          <button type="submit" className="inline-flex items-center px-3 py-2 border border-orange-300 shadow-sm text-sm leading-4 font-medium rounded-md text-orange-600 bg-white hover:bg-orange-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500">
+          <svg className="-ml-0.5 mr-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+</svg>
+            Back
+          </button>
+          <button type="submit" className="inline-flex items-center px-3 py-2 border border-transparent shadow-sm text-sm leading-4 font-medium rounded-md text-white bg-orange-500 hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500">
+          <svg className="-ml-0.5 mr-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 4H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-2m-4-1v8m0 0l3-3m-3 3L9 8m-5 5h2.586a1 1 0 01.707.293l2.414 2.414a1 1 0 00.707.293h3.172a1 1 0 00.707-.293l2.414-2.414a1 1 0 01.707-.293H20" />
+</svg>
+            Apply
+          </button>
+            {/* <a href="#" >Read full application</a> */}
           </div>
         </div>
       </section>
+
     </div>
   </div>
 
 )
 
-export default Jobs;
+export default JobDetail;
