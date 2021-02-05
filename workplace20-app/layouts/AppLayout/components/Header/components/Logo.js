@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 const Logo = () => (
-	<div className="absolute left-0 py-5 flex-shrink-0 lg:static">
+	<div className="flex-shrink-0">
 		<Link href='/'>
 			<div>
 				<span className="sr-only">Workflow</span>

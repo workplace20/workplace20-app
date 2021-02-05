@@ -1,5 +1,5 @@
 const Notification = () => (
-  <button type="button" className="flex-shrink-0 p-1 text-cyan-200 rounded-full hover:text-white hover:bg-white hover:bg-opacity-10 focus:outline-none focus:ring-2 focus:ring-white">
+  <button type="button" className="flex-shrink-0 p-1 text-orange-100 rounded-full hover:text-white hover:bg-white hover:bg-opacity-10 focus:outline-none focus:ring-2 focus:ring-white">
     <span className="sr-only">View notifications</span>
     {/* Heroicon name: bell */}
     <svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">

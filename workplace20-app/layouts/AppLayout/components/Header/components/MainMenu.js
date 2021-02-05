@@ -10,7 +10,7 @@ const MainMenu = () => {
   const isActive = (pathname) => router.pathname.startsWith(pathname);
 
   return (
-    <div className="hidden lg:block lg:col-span-2">
+    <div className="hidden lg:block">
       <nav className="flex space-x-4">
           {
             menuItems.map(item => (

@@ -10,7 +10,7 @@ const MobileMenuButton = () => {
     <>
       {/* Mobile menu button */}
       <button
-        className="bg-transparent p-2 rounded-md inline-flex items-center justify-center text-cyan-200 hover:text-white hover:bg-white hover:bg-opacity-10 focus:outline-none focus:ring-2 focus:ring-white" aria-expanded="false"
+        className="bg-transparent p-2 rounded-md inline-flex items-center justify-center text-orange-50 hover:text-white hover:bg-white hover:bg-opacity-10 focus:outline-none focus:ring-2 focus:ring-white" aria-expanded="false"
         onClick={handleOpenMenuClick}
       >
         <span className="sr-only">Open main menu</span>
