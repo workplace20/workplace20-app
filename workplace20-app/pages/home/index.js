@@ -3,13 +3,13 @@ const Home = () => (
     <div>
       <div class="mx-auto max-w-7xl px-4 ">
         <div class="text-center">
-          <h1 class="text-4xl tracking-tight font-extrabold text-gray-600 sm:text-5xl md:text-6xl">
-            <span class="block xl:inline">The future of work</span>
+          <h1 class="text-2xl tracking-tight font-extrabold text-gray-600 sm:text-4xl md:text-4xl">
+            <span class="block xl:inline">Remote jobs for developers in Viet Nam</span>
           </h1>
           <p class="mt-3 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
             2020 has changed our work place and working in
             the office is an optional.
-            Workplace20 is a private community of developers in Viet Nam and sofware development business which offer remote jobs.
+            Workplace20 is a private community of developers and sofware development business which offer remote jobs in Viet Nam.
 				</p>
         </div>
       </div>
@@ -172,7 +172,7 @@ const Home = () => (
       <div class="bg-white">
         <div class="max-w-7xl mx-auto text-center py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
           <h2 class="font-extrabold tracking-tight text-gray-700 ">
-            <span class="block text-3xl sm:text-4xl">Ready to dive in?</span>
+            <span class="block text-3xl sm:text-4xl">Want to build a remote development team?</span>
           </h2>
           <div class="mt-8 flex justify-center">
             <div class="inline-flex rounded-md shadow">

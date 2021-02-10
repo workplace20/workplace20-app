@@ -45,7 +45,7 @@ const questions = {
     requirement: []
 }
 
-export default function handler(req, res) {
+export default async function handler(req, res) {
     switch (req.method) {
         case 'GET':
             await authCheck(req, res, handleGet)

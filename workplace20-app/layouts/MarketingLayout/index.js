@@ -11,8 +11,24 @@ const MarketingLayout = ({ children }) => {
   return (
     <div>
       <Head>
-        <title>Workspace20 - A private community for creators as software engineer and business which offer remote work environment</title>
+        <title>Workspace20 - Developers ready for remote jobs in Viet Nam</title>
         <link rel="icon" href="/favicon.ico" />
+        <Fragment>
+      {/* Google Tag */}
+
+          <script dangerouslySetInnerHTML={{
+            __html: `
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PKB227P');
+            `,
+          }}
+          />
+      {/* Google Tag */}
+
+        </Fragment>
         <Fragment>
           <script id="mcjs" dangerouslySetInnerHTML={{
             __html: `
@@ -21,6 +37,10 @@ const MarketingLayout = ({ children }) => {
           />
         </Fragment>
       </Head>
+      {/* Google Tag */}
+      <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PKB227P"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+      {/* End google tag */}
       <div class="relative bg-white overflow-hidden">
         <div>
           <div class="relative pt-6 pb-16 sm:pb-24">
