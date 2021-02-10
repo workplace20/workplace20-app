@@ -1,8 +1,0 @@
-{
-    "verbose": true,
-    "watch": ["*.js", "controllers/*", "routes/*", "middlewares/*"],
-    "execMap": {
-        "js": "export USER=sangcu ; NODE_ENV=test DEBUG=cione:* node",
-        "pde": "processing --sketch={{pwd}} --run"
-    }
-}
