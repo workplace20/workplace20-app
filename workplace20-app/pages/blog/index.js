@@ -1,1 +1,1 @@
-export { default } from 'pages-lib/blog';
+export { default  } from 'pages-lib/blog';
