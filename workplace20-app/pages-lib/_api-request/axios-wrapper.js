@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const axiosWrapper = axios.create({
-  baseURL: `${process.env.API_URL}/api`,
+  baseURL: '/api',
 });
 
 axiosWrapper.interceptors.response.use(
