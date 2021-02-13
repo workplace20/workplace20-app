@@ -135,7 +135,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               </div>)}
           </Transition>
         </div>
-        <main class="mt-16 mx-auto max-w-7xl px-4 sm:mt-24">
+        <main class="mx-auto max-w-7xl px-4">
           {children}
         </main>
       </div>
