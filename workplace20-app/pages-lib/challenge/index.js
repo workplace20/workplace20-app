@@ -1,5 +1,3 @@
-import withAuthSecure from 'components/withAuthSecure';
-
 const Challenge = () => {
   return (
     <div className="m-16">
@@ -68,4 +66,4 @@ const Challenge = () => {
   )
 }
 
-export default withAuthSecure(Challenge);
+export default Challenge;

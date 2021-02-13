@@ -2,7 +2,6 @@ import ProfileOverview from './components/ProfileOverview';
 import NetWork from './components/Network';
 import PotentialJobList from './components/PotentialJobList';
 import NewList from './components/NewList';
-import withAuthSecure from 'components/withAuthSecure';
 
 const Profile = () => (
   <>
@@ -28,4 +27,4 @@ const Profile = () => (
   </>
 )
 
-export default withAuthSecure(Profile);
+export default Profile;

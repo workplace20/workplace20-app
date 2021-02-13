@@ -1,3 +1,5 @@
+import withMarketingLayout from 'layouts/MarketingLayout/withMarketingLayout';
+
 const Home = () => (
   <>
     <div>
@@ -188,4 +190,4 @@ const Home = () => (
   </>
 )
 
-export default Home;
+export default withMarketingLayout(Home);
