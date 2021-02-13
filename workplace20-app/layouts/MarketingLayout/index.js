@@ -38,8 +38,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </Fragment>
       </Head>
       {/* Google Tag */}
-      <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PKB227P"
-      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+      <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PKB227P" height={0} width={0} style={{display: 'none', visibility: 'hidden'}}></iframe>
+      </noscript>
       {/* End google tag */}
       <div class="relative bg-white overflow-hidden">
         <div>
@@ -48,7 +49,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               <nav class="relative flex items-center justify-between sm:h-10 md:justify-center" aria-label="Global">
                 <div class="flex items-center flex-1 md:absolute md:inset-y-0 md:left-0">
                   <div class="flex items-center justify-between w-full md:w-auto">
-                    <Link href="/">
+                    <Link href="/home">
                       <Logo />
                     </Link>
                     <div class="mr-2 flex items-center md:hidden">
@@ -62,10 +63,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                   </div>
                 </div>
                 <div class="hidden md:flex md:space-x-10">
-                  <Link href="/#for-engineer">
+                  <Link href="/home#for-engineer">
                     <a class="font-medium text-gray-500 hover:text-gray-900">For Developers</a>
                   </Link>
-                  <Link href="/#for-business">
+                  <Link href="/home#for-business">
                     <a class="font-medium text-gray-500 hover:text-gray-900">For Business</a>
                   </Link>
 

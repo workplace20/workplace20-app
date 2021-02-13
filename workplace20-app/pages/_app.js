@@ -1,5 +1,5 @@
 import "tailwindcss/tailwind.css";
-import Layout from 'layouts';
+import { RecoilRoot } from 'recoil';
 import { Provider } from 'next-auth/client'
 import { QueryClient, QueryClientProvider } from 'react-query';
 
@@ -27,9 +27,9 @@ function MyApp({ Component, pageProps }) {
           keepAlive: 0
         }}
         session={pageProps.session} >
-        <Layout>
+        <RecoilRoot>
           <Component {...pageProps} />
-        </Layout>
+        </RecoilRoot>
       </Provider>
     </QueryClientProvider>
   )
