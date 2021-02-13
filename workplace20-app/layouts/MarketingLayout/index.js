@@ -76,7 +76,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 </div>
                 <div class="hidden md:absolute md:flex md:items-center md:justify-end md:inset-y-0 md:right-0">
                   <span class="inline-flex rounded-md shadow">
-                    <Link href="/api/auth/signin" class="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50">
+                    <Link href="/api/auth/signin" className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50">
                       Log in
 								    </Link>
                   </span>
@@ -135,7 +135,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               </div>)}
           </Transition>
         </div>
-        <main class="mt-16 mx-auto max-w-7xl px-4 sm:mt-24">
+        <main class="mx-auto max-w-7xl px-4">
           {children}
         </main>
       </div>
