@@ -1,7 +1,7 @@
+import { withAppLayout } from 'pages-lib/_layouts';
 import ProfileOverview from './components/ProfileOverview';
 import NetWork from './components/Network';
 import PotentialJobList from './components/PotentialJobList';
-import NewList from './components/NewList';
 
 const Profile = () => (
   <>
@@ -21,10 +21,9 @@ const Profile = () => (
          <PotentialJobList />
         {/* Announcements */}
         {/* <NewList /> */}
-       
       </div>
     </div>
   </>
 )
 
-export default Profile;
+export default withAppLayout(Profile);

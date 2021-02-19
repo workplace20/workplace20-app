@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import ErrorPage from 'next/error'
-import withMarketingLayout from 'layouts/MarketingLayout/withMarketingLayout';
+import withMarketingLayout from 'pages-lib/_layouts/MarketingLayout/withMarketingLayout';
 import { getPostBySlug, getAllPosts } from 'lib/blog-helper'
 import Head from 'next/head'
 import markdownToHtml from 'lib/markdownToHtml'

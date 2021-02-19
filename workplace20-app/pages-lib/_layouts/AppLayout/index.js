@@ -1,14 +1,11 @@
 import Header from './components/Header';
 import Footer from './components/Footer';
-import Redirect from 'components/Redirect';
-import { useRouter } from 'next/router';
+import Redirect from 'pages-lib/_components/Redirect';
 import { useQueryProfile } from 'pages-lib/_states/server';
 import LoadingPage from 'pages-lib/loading';
 import Error from 'next/error';
 
-const Layout = ({ children }) => {
-  const router = useRouter();
-
+const AppLayout = ({ children }) => {
   const { isLoading, isError, data: profile, error } = useQueryProfile();
 
   if (isLoading) {
@@ -19,15 +16,7 @@ const Layout = ({ children }) => {
     return (<Error statusCode={error.statusCode} />)
   }
 
-  if (router.pathname === '/quick-start') {
-    return <>{children}</>
-  }
-
   if (!profile.kind) return (<Redirect to="/quick-start" />);
-
-  if (['/challenges', '/'].includes(router.pathname)) {
-    return <>{children}</>
-  } 
 
   return (
     <div className="min-h-screen bg-gray-100">
@@ -42,4 +31,4 @@ const Layout = ({ children }) => {
   )
 }
 
-export default Layout;
+export default AppLayout;

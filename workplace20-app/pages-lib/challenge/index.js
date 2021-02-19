@@ -1,3 +1,5 @@
+import { withEmptyLayout } from 'pages-lib/_layouts';
+
 import {
   useQueryChallengeQuestions,
   useQueryCurrentQuestionNumber,
@@ -17,7 +19,6 @@ import {
   useMutateShowSubmitPageQuestion
 } from './states/client';
 
-import withChallengeLayout from './layouts/withChallengeLayout';
 import LoadingPage from 'pages-lib/loading';
 import Navigation from './components/Navigation';
 import Header from './components/Header';
@@ -144,4 +145,4 @@ const getDefaultCurrentQuestionId = (questions) => {
   return firstUnanswerQuestion?.id;
 }
 
-export default withChallengeLayout(Challenge);
+export default withEmptyLayout(Challenge);

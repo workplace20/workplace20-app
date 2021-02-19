@@ -1,8 +1,8 @@
-import Redirect from 'components/Redirect';
+import Redirect from 'pages-lib/_components/Redirect';
 import { useSession } from 'next-auth/client';
 import LoadingPage from 'pages-lib/loading';
 
-const WithAuthSecure = (Component) => ({...props}) => {
+const withAuthSecure = (Component) => ({...props}) => {
   const [session, loading] = useSession();
 
   if (loading) return (<LoadingPage />);
@@ -11,4 +11,4 @@ const WithAuthSecure = (Component) => ({...props}) => {
   return <Component {...props}/>;
 }
 
-export default WithAuthSecure;
+export default withAuthSecure;

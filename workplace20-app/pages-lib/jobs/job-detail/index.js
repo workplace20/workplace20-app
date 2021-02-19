@@ -1,3 +1,5 @@
+import { withAppLayout } from 'pages-lib/_layouts';
+
 import { useRouter } from 'next/router';
 import NewJob from './new-job';
 import AppliedJob from './applied-job';
@@ -13,4 +15,4 @@ const JobDetail = () => {
   return <NewJob />
 }
 
-export default JobDetail;
+export default withAppLayout(JobDetail);

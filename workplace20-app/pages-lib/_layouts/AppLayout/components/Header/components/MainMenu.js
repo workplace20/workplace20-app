@@ -1,4 +1,4 @@
-import MainMenuState from 'layouts/AppLayout/states/mainMenu';
+import MainMenuState from 'pages-lib/_layouts/AppLayout/states/mainMenu';
 import { useRecoilValue } from 'recoil';
 import Link from "next/link";
 import { useRouter } from 'next/router'

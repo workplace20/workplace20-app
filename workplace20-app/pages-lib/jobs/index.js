@@ -1,3 +1,4 @@
+import { withAppLayout } from 'pages-lib/_layouts';
 import Link from 'next/link';
 
 const Jobs = () => (
@@ -245,4 +246,4 @@ const Jobs = () => (
 
 )
 
-export default Jobs;
+export default withAppLayout(Jobs);

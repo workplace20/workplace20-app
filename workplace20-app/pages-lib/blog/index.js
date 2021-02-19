@@ -1,3 +1,4 @@
+import { withMarketingLayout } from 'pages-lib/_layouts';
 import PostPreview from './components/post-preview'
 
 const Blog = ({ posts }) =>{
@@ -36,4 +37,4 @@ const Blog = ({ posts }) =>{
 	</>
 )}
 
-export default Blog;
+export default withMarketingLayout(Blog);

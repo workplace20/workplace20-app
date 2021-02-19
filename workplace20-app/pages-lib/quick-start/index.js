@@ -1,5 +1,6 @@
+import { withEmptyLayout } from 'pages-lib/_layouts';
 import { useState } from 'react';
-import Redirect from 'components/Redirect';
+import Redirect from 'pages-lib/_components/Redirect';
 import LoadingPage from 'pages-lib/loading';
 import { useRouter } from 'next/router';
 import { useQueryProfile, useMutateProfileKind } from 'pages-lib/_states/server';
@@ -8,11 +9,14 @@ const QuickStart = () => {
   const [profileKind, setProfileKind] = useState('');
 
   const router = useRouter();
-  const { data: profile } = useQueryProfile();
-
+  const { data: profile, isLoading: loadingQueryProfile } = useQueryProfile();
   const { mutate, isLoading, isError } = useMutateProfileKind(() => router.push('/challenges/general'));
 
-  if (profile.kind) {
+  if (loadingQueryProfile) {
+    return (<LoadingPage />)
+  }
+
+  if (profile?.kind) {
     return (<Redirect to="/challenges/general" />);
   }
 
@@ -22,7 +26,7 @@ const QuickStart = () => {
   }
 
   return (
-    <div className="bg-white h-screen w-screen flex justify-center lg:items-center">
+    <div className="h-screen w-full flex justify-center lg:items-center">
       <div className="max-w-4xl px-6 pt-12 sm:px-6 lg:px-8">
         <div className="sm:flex sm:flex-col sm:align-center">
           <h1 className="text-5xl font-extrabold orange-700 text-gray-900 sm:text-center">To start, who are you?</h1>
@@ -74,4 +78,4 @@ const QuickStart = () => {
   )
 }
 
-export default QuickStart;
+export default withEmptyLayout(QuickStart);

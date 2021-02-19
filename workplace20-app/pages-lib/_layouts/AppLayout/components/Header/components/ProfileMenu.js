@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Transition } from '@headlessui/react';
 import { useRecoilValue } from 'recoil';
 import Link from "next/link";
-import ProfileMenuState from 'layouts/AppLayout/states/profileMenu';
+import ProfileMenuState from 'pages-lib/_layouts/AppLayout/states/profileMenu';
 import { useSession } from 'next-auth/client';
 
 const ProfileMenu = () => {

@@ -1,9 +1,9 @@
 import { Transition } from '@headlessui/react';
-import { isMobileMenuOpened } from 'layouts/AppLayout/states/mobileMenu/getters';
-import { closeMobileMenu } from 'layouts/AppLayout/states/mobileMenu/actions';
+import { isMobileMenuOpened } from 'pages-lib/_layouts/AppLayout/states/mobileMenu/getters';
+import { closeMobileMenu } from 'pages-lib/_layouts/AppLayout/states/mobileMenu/actions';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
-import MainMenuState from 'layouts/AppLayout/states/mainMenu';
-import ProfileMenuState from 'layouts/AppLayout/states/profileMenu';
+import MainMenuState from 'pages-lib/_layouts/AppLayout/states/mainMenu';
+import ProfileMenuState from 'pages-lib/_layouts/AppLayout/states/profileMenu';
 import Link from "next/link";
 import { useSession } from 'next-auth/client';
 

@@ -1,11 +1,9 @@
-import withMarketingLayout from 'layouts/MarketingLayout/withMarketingLayout';
 import { getAllPosts } from 'lib/blog-helper'
 import BlogPage from 'pages-lib/blog'
 
-const Blog = ({ allPosts }) =>(<BlogPage posts={allPosts}/>)
+const Blog = ({ allPosts }) => (<BlogPage posts={allPosts}/>)
 
 export async function getStaticProps() {
-
 	const allPosts = getAllPosts([
 		'title',
 		'date',
@@ -19,4 +17,4 @@ export async function getStaticProps() {
 		props: { allPosts },
 	}
 }
-export default withMarketingLayout(Blog);
+export default Blog;
