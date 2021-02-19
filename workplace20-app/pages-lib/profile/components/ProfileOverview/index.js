@@ -1,4 +1,5 @@
 import { useSession } from 'next-auth/client';
+import Link from 'next/link';
 
 const ProfileOverview = () => {
   const [session] = useSession();
@@ -50,12 +51,14 @@ const ProfileOverview = () => {
             </li>
             <li className="relative md:flex-1 md:flex">
               {/* Current Step */}
-              <a href="#" className="px-6 py-4 flex items-center text-sm font-medium">
+              <Link href='/challenges/general'>
+              <a className="px-6 py-4 flex items-center text-sm font-medium">
                 <span className="flex-shrink-0 w-10 h-10 flex items-center justify-center border-2 border-orange-500 rounded-full" aria-current="step">
                   <span className="text-orange-500">02</span>
                 </span>
                 <span className="ml-4 text-sm font-medium text-orange-600">Tell us about yourself</span>
               </a>
+              </Link>
               <div className="hidden md:block absolute top-0 right-0 h-full w-5" aria-hidden="true">
                 <svg className="h-full w-full text-gray-300" viewBox="0 0 22 80" fill="none" preserveAspectRatio="none">
                   <path d="M0 -2L20 40L0 82" vectorEffect="non-scaling-stroke" stroke="currentcolor" strokeLinejoin="round" />

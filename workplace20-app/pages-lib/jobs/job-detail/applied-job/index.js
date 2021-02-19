@@ -100,50 +100,50 @@ const JobDetail = () => (
                 <div className="md:space-x-4 xl:border-b xl:pb-6">
                   <h2 id="applicant-information-title" className="text-lg leading-6 font-medium text-gray-900">
                     Mobile developer
-            </h2>
+                  </h2>
                 </div>
                 <div className="border-t border-gray-200 py-3 xl:pt-6 xl:pb-0">
                   <dl className="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
                     <div className="sm:col-span-1">
                       <dt className="text-sm font-medium text-gray-500">
                         Level
-            </dt>
+                      </dt>
                       <dd className="mt-1 text-sm text-gray-900">
                         Senior
-            </dd>
+                      </dd>
                     </div>
                     <div className="sm:col-span-1">
                       <dt className="text-sm font-medium text-gray-500">
                         English
-          </dt>
+                      </dt>
                       <dd className="mt-1 text-sm text-gray-900">
                         Basic
-            </dd>
+                      </dd>
                     </div>
                     <div className="sm:col-span-2">
                       <dt className="text-sm font-medium text-gray-500">
                         Introduction
-            </dt>
+                      </dt>
                       <dd className="mt-1 text-sm text-gray-900">
                         Fugiat ipsum ipsum deserunt culpa aute sint do nostrud anim incididunt cillum culpa consequat. Excepteur qui ipsum aliquip consequat sint. Sit id mollit nulla mollit nostrud in ea officia proident. Irure nostrud pariatur mollit ad adipisicing reprehenderit deserunt qui eu.
-            </dd>
+                      </dd>
                     </div>
                     <div className="sm:col-span-2">
                       <dt className="text-sm font-medium text-gray-500">
                         Job Responsibilities
-                </dt>
+                      </dt>
                       <dd className="mt-1 text-sm text-gray-900">
                         <div className="prose max-w-none">
                           <ul>
                             <li>
                               Tempor ultrices proin nunc fames nunc ut auctor vitae sed.
-    </li>
+                            </li>
                             <li>
                               Turpis ac nunc adipiscing adipiscing metus tincidunt senectus tellus.
-    </li>
+                            </li>
                             <li>
                               Semper interdum porta sit tincidunt. Dui suspendisse scelerisque amet metus eget sed.
-    </li>
+                            </li>
                           </ul>
                         </div>
 
@@ -153,19 +153,19 @@ const JobDetail = () => (
                     <div className="sm:col-span-2">
                       <dt className="text-sm font-medium text-gray-500">
                         Job Requirements
-                </dt>
+                      </dt>
                       <dd className="mt-1 text-sm text-gray-900">
                         <div className="prose max-w-none">
                           <ul>
                             <li>
                               Tempor ultrices proin nunc fames nunc ut auctor vitae sed.
-    </li>
+                            </li>
                             <li>
                               Turpis ac nunc adipiscing adipiscing metus tincidunt senectus tellus.
-    </li>
+                            </li>
                             <li>
                               Semper interdum porta sit tincidunt. Dui suspendisse scelerisque amet metus eget sed.
-    </li>
+                            </li>
                           </ul>
                         </div>
 
@@ -175,16 +175,16 @@ const JobDetail = () => (
                     <div className="sm:col-span-2">
                       <dt className="text-sm font-medium text-gray-500">
                         Additional Requirements
-                </dt>
+                      </dt>
                       <dd className="mt-1 text-sm text-gray-900">
                         <div className="prose max-w-none">
                           <ul>
                             <li>
                               Tempor ultrices proin nunc fames nunc ut auctor vitae sed.
-    </li>
+                            </li>
                             <li>
                               Turpis ac nunc adipiscing adipiscing metus tincidunt senectus tellus.
-    </li>
+                            </li>
                           </ul>
                         </div>
 
@@ -366,49 +366,12 @@ const JobDetail = () => (
                       </li>
                     </ul>
                   </div>
-
-                  {/* <div>
-                    <h2 className="text-sm font-medium text-gray-500">Assignees</h2>
-                    <ul className="mt-3 space-y-3">
-                      <li className="flex justify-start">
-                        <a href="#" className="flex items-center space-x-3">
-                          <div className="flex-shrink-0">
-                            <img className="h-5 w-5 rounded-full" src="https://images.unsplash.com/photo-1520785643438-5bf77931f493?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=256&h=256&q=80" alt />
-                          </div>
-                          <div className="text-sm font-medium text-gray-900">Eduardo Benz</div>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                  <div>
-                    <h2 className="text-sm font-medium text-gray-500">Tags</h2>
-                    <ul className="mt-2 leading-8">
-                      <li className="inline">
-                        <a href="#" className="relative inline-flex items-center rounded-full border border-gray-300 px-3 py-0.5">
-                          <div className="absolute flex-shrink-0 flex items-center justify-center">
-                            <span className="h-1.5 w-1.5 rounded-full bg-rose-500" aria-hidden="true" />
-                          </div>
-                          <div className="ml-3.5 text-sm font-medium text-gray-900">Bug</div>
-                        </a>
-                      </li>
-                      <li className="inline">
-                        <a href="#" className="relative inline-flex items-center rounded-full border border-gray-300 px-3 py-0.5">
-                          <div className="absolute flex-shrink-0 flex items-center justify-center">
-                            <span className="h-1.5 w-1.5 rounded-full bg-indigo-500" aria-hidden="true" />
-                          </div>
-                          <div className="ml-3.5 text-sm font-medium text-gray-900">Accessibility</div>
-                        </a>
-                      </li>
-                    </ul>
-                  </div> */}
                 </div>
               </aside>
             </div>
           </div>
         </div>
       </section>
-
-
     </div>
   </div>
 

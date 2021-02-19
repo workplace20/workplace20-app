@@ -25,7 +25,7 @@ const Layout = ({ children }) => {
 
   if (!profile.kind) return (<Redirect to="/quick-start" />);
 
-  if (['/challenge', '/', '/welcome'].includes(router.pathname)) {
+  if (['/challenges', '/'].includes(router.pathname)) {
     return <>{children}</>
   } 
 

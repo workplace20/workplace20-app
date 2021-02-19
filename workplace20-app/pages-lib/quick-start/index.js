@@ -10,10 +10,10 @@ const QuickStart = () => {
   const router = useRouter();
   const { data: profile } = useQueryProfile();
 
-  const { mutate, isLoading, isError } = useMutateProfileKind(() => router.push('/welcome'));
+  const { mutate, isLoading, isError } = useMutateProfileKind(() => router.push('/challenges/general'));
 
   if (profile.kind) {
-    return (<Redirect to="/welcome" />);
+    return (<Redirect to="/profile" />);
   }
 
   const handleUserKindSelect = (userKind) => () => {

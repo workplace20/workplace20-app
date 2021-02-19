@@ -43,7 +43,7 @@ async function handlePost(req, res) {
       },
       {
         id: 'q2',
-        kind: 'multi-options',
+        kind: 'multiOptions',
         question: '2 Fusce dignissim pretium nisl, in consequat tellus accumsan eget?',
         options: [
           {
@@ -112,7 +112,7 @@ async function handlePost(req, res) {
       },
       {
         id: 'q5',
-        kind: 'options',
+        kind: 'multiOptions',
         question: '5 Fusce dignissim pretium nisl, in consequat tellus accumsan eget?',
         options: [
           {

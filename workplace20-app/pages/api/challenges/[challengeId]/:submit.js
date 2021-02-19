@@ -12,5 +12,5 @@ export default async function handler(req, res) {
 }
 
 async function handlePut(req, res) {
-  res.status(200).send();
+  res.status(200).send({});
 }

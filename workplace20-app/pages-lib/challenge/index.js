@@ -1,69 +1,147 @@
-const Challenge = () => {
-  return (
-    <div className="m-16">
-      <nav aria-label="Progress">
-        <ol className="flex items-center justify-center">
-          <li className="relative pr-8 sm:pr-20">
-            {/* Completed Step */}
-            <div className="absolute inset-0 flex items-center" aria-hidden="true">
-              <div className="h-0.5 w-full bg-orange-500" />
-            </div>
-            <a href="#" className="relative w-8 h-8 flex items-center justify-center bg-orange-500 rounded-full hover:bg-orange-700">
-              {/* Heroicon name: check */}
-              <svg className="w-5 h-5 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-              </svg>
-              <span className="sr-only">Step 1</span>
-            </a>
-          </li>
-          <li className="relative pr-8 sm:pr-20">
-            {/* Completed Step */}
-            <div className="absolute inset-0 flex items-center" aria-hidden="true">
-              <div className="h-0.5 w-full bg-orange-500" />
-            </div>
-            <a href="#" className="relative w-8 h-8 flex items-center justify-center bg-orange-500 rounded-full hover:bg-orange-700">
-              {/* Heroicon name: check */}
-              <svg className="w-5 h-5 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-              </svg>
-              <span className="sr-only">Step 2</span>
-            </a>
-          </li>
-          <li className="relative pr-8 sm:pr-20">
-            {/* Current Step */}
-            <div className="absolute inset-0 flex items-center" aria-hidden="true">
-              <div className="h-0.5 w-full bg-gray-200" />
-            </div>
-            <a href="#" className="relative w-8 h-8 flex items-center justify-center bg-white border-2 border-orange-500 rounded-full" aria-current="step">
-              <span className="h-2.5 w-2.5 bg-orange-500 rounded-full" aria-hidden="true" />
-              <span className="sr-only">Step 3</span>
-            </a>
-          </li>
-          <li className="relative pr-8 sm:pr-20">
-            {/* Upcoming Step */}
-            <div className="absolute inset-0 flex items-center" aria-hidden="true">
-              <div className="h-0.5 w-full bg-gray-200" />
-            </div>
-            <a href="#" className="group relative w-8 h-8 flex items-center justify-center bg-white border-2 border-gray-300 rounded-full hover:border-gray-400">
-              <span className="h-2.5 w-2.5 bg-transparent rounded-full group-hover:bg-gray-300" aria-hidden="true" />
-              <span className="sr-only">Step 4</span>
-            </a>
-          </li>
-          <li className="relative">
-            {/* Upcoming Step */}
-            <div className="absolute inset-0 flex items-center" aria-hidden="true">
-              <div className="h-0.5 w-full bg-gray-200" />
-            </div>
-            <a href="#" className="group relative w-8 h-8 flex items-center justify-center bg-white border-2 border-gray-300 rounded-full hover:border-gray-400">
-              <span className="h-2.5 w-2.5 bg-transparent rounded-full group-hover:bg-gray-300" aria-hidden="true" />
-              <span className="sr-only">Step 5</span>
-            </a>
-          </li>
-        </ol>
-      </nav>
-    </div>
+import {
+  useQueryChallengeQuestions,
+  useQueryCurrentQuestionNumber,
+  useQueryTotalQuestions,
+  useQueryNextQuestionId,
+  useQueryPreviousNextQuestionId,
+  useQueryLastQuestionId,
+  useQueryQuestion,
+  useQueryAllQuestionsCompleted,
+  useMutateAnswerQuestion
+} from './states/server';
 
+import {
+  useQueryCurrencyQuestionId,
+  useQueryShowSubmitPage,
+  useMutateCurrentQuestion,
+  useMutateShowSubmitPageQuestion
+} from './states/client';
+
+import withChallengeLayout from './layouts/withChallengeLayout';
+import LoadingPage from 'pages-lib/loading';
+import Navigation from './components/Navigation';
+import Header from './components/Header';
+import Question from './components/Question';
+import Welcome from './components/Welcome';
+import Submission from './components/Submission';
+
+const Challenge = ({ challengeId }) => {
+  const { isLoading, isError, data: chalengeInfo, error } = useQueryChallengeQuestions(challengeId);
+  const currentQuestionId = useQueryCurrencyQuestionId();
+  const showSubmitPage = useQueryShowSubmitPage();
+  const currentQuestion = useQueryQuestion(challengeId, currentQuestionId);
+  const currentQuestionNumber = useQueryCurrentQuestionNumber(challengeId, currentQuestionId);
+  const totalQuestions = useQueryTotalQuestions(challengeId);
+  const nextQuestionId = useQueryNextQuestionId(challengeId, currentQuestionId);
+  const previousQuestionId = useQueryPreviousNextQuestionId(challengeId, currentQuestionId);
+  const lastQuestionId = useQueryLastQuestionId(challengeId);
+  const isAllQuestionsCompleted = useQueryAllQuestionsCompleted(challengeId);
+
+  const { mutate: answerQuestion } = useMutateAnswerQuestion(challengeId, currentQuestionId);
+  const setCurrentQuestion = useMutateCurrentQuestion();
+  const setShowSubmitPageQuestion = useMutateShowSubmitPageQuestion();
+
+  const isLastQuestion = currentQuestionId === lastQuestionId;
+  const canNavigateNext = !!nextQuestionId || (!showSubmitPage && isAllQuestionsCompleted);
+  const canNavigatePre = !!previousQuestionId || showSubmitPage;
+
+  if (isLoading) {
+    return (
+      <LoadingPage />
+    )
+  }
+
+  if (isError) {
+    if (error.response.status === 404) {
+      return (
+        <Welcome challengeId={challengeId} />
+      )
+    }
+
+    return (
+      <div>Something went wrong, please try again</div>
+    )
+  }
+
+  const { questions, expireTime } = chalengeInfo;
+
+  if (!currentQuestionId && !showSubmitPage) {
+    const currentQuestionId = getDefaultCurrentQuestionId(questions);
+    setCurrentQuestion(currentQuestionId);
+  }
+
+  const navigations = [
+    ...questions.map(question => ({
+      key: question.id,
+      isCurrent: currentQuestionId === question.id && !showSubmitPage,
+      isCompleted: question.answers && question.answers.length > 0,
+      onClick: () => setCurrentQuestion(question.id),
+      disabled: false
+    })), {
+      key: 'submit-page-navigator',
+      isCurrent: showSubmitPage,
+      isCompleted: false,
+      onClick: setShowSubmitPageQuestion,
+      disabled: !isAllQuestionsCompleted
+    }
+  ];
+
+
+  const handleNavigateNext = () => {
+    if (isLastQuestion) {
+      setShowSubmitPageQuestion()
+    } else {
+      setCurrentQuestion(nextQuestionId);
+    }
+  }
+
+  const handleNavigatePre = () => {
+    if (showSubmitPage) {
+      setCurrentQuestion(lastQuestionId)
+    } else {
+      setCurrentQuestion(previousQuestionId)
+    }
+  }
+
+  return (
+    <>
+      <nav className="hidden md:flex items-center justify-center mt-8" aria-label="Progress">
+        <Navigation
+          navigations={navigations}
+        />
+      </nav>
+      <div className="mt-4">
+        <Header
+          title={showSubmitPage ? 'Submit' : `Question ${currentQuestionNumber} of ${totalQuestions}`}
+          expireTime={expireTime}
+          onNext={handleNavigateNext}
+          canNext={canNavigateNext}
+          onPrev={handleNavigatePre}
+          canPrev={canNavigatePre}
+        />
+      </div>
+      <div className="py-4 space-y-6 lg:px-0">
+        {
+          showSubmitPage ? (
+            <Submission
+              challengeId={challengeId}
+            />
+          ) : (
+              <Question
+                currentQuestion={currentQuestion}
+                onAnswer={answerQuestion}
+              />
+            )
+        }
+
+      </div>
+    </>
   )
 }
 
-export default Challenge;
+const getDefaultCurrentQuestionId = (questions) => {
+  var firstUnanswerQuestion = questions.find(question => !question.answers);
+  return firstUnanswerQuestion?.id;
+}
+
+export default withChallengeLayout(Challenge);

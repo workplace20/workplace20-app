@@ -14,7 +14,7 @@ export default async function handler(req, res) {
 async function handleGet(req, res) {
   var currentDate = new Date();
   var expireTime = new Date(currentDate.getTime() + (30 * 60 * 1000));
-  res.status(200).send(null)
+  res.status(404).send('Not Found');
   // res.status(200).send({
   //   expireTime: expireTime,
   //   questions: [
@@ -44,7 +44,7 @@ async function handleGet(req, res) {
   //     },
   //     {
   //       id: 'q2',
-  //       kind: 'multi-options',
+  //       kind: 'multiOptions',
   //       question: '2 Fusce dignissim pretium nisl, in consequat tellus accumsan eget?',
   //       answers: ['o2', 'o3'],
   //       options: [
@@ -91,7 +91,7 @@ async function handleGet(req, res) {
   //     },
   //     {
   //       id: 'q4',
-  //       kind: 'options',
+  //       kind: 'multiOptions',
   //       question: '4 Fusce dignissim pretium nisl, in consequat tellus accumsan eget?',
   //       options: [
   //         {
