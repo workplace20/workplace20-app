@@ -2,7 +2,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Redirect from 'components/Redirect';
 import { useRouter } from 'next/router';
-import { useQueryProfile } from 'pages-lib/_api-request/profiles';
+import { useQueryProfile } from 'pages-lib/_states/server';
 import LoadingPage from 'pages-lib/loading';
 import Error from 'next/error';
 

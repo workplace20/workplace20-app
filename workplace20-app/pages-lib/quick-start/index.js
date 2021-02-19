@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Redirect from 'components/Redirect';
 import LoadingPage from 'pages-lib/loading';
 import { useRouter } from 'next/router';
-import { useQueryProfile, useMutateProfileKind } from 'pages-lib/_api-request/profiles';
+import { useQueryProfile, useMutateProfileKind } from 'pages-lib/_states/server';
 
 const QuickStart = () => {
   const [profileKind, setProfileKind] = useState('');
@@ -13,7 +13,7 @@ const QuickStart = () => {
   const { mutate, isLoading, isError } = useMutateProfileKind(() => router.push('/challenges/general'));
 
   if (profile.kind) {
-    return (<Redirect to="/profile" />);
+    return (<Redirect to="/challenges/general" />);
   }
 
   const handleUserKindSelect = (userKind) => () => {

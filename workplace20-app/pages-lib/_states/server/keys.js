@@ -1,0 +1,1 @@
+export const queryProfileKey = 'query_my_profile';

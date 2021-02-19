@@ -1,7 +1,7 @@
 
-import axiosWrapper from 'pages-lib/_api-request/axios-wrapper';
+import axiosWrapper from 'pages-lib/_states/server/axios-wrapper';
 import { queryChallengeQuestionsKey } from '../keys';
-import { queryProfileKey } from 'pages-lib/_api-request/profiles';
+import { queryProfileKey } from 'pages-lib/_states/server/keys';
 import { useMutation, useQueryClient } from 'react-query';
 
 const submitChallenge = (challengeId) => () => axiosWrapper.put(`/challenges/${challengeId}/:submit`);
