@@ -1,10 +1,11 @@
-import { isMobileMenuOpened } from 'pages-lib/_layouts/AppLayout/states/mobileMenu/getters';
-import { openMobileMenu } from 'pages-lib/_layouts/AppLayout/states/mobileMenu/actions';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { 
+  useQueryIsMobileMenuOpened,
+  useMutateOpenMobileMenu
+} from 'pages-lib/_layouts/AppLayout/states';
 
 const MobileMenuButton = () => {
-  const isOpened = useRecoilValue(isMobileMenuOpened);
-  const handleOpenMenuClick = useSetRecoilState(openMobileMenu);
+  const isOpened = useQueryIsMobileMenuOpened();
+  const handleOpenMenuClick = useMutateOpenMobileMenu();
 
   return (
     <>

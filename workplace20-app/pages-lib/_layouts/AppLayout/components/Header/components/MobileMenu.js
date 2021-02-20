@@ -1,17 +1,18 @@
+import { 
+  useQueryMainMenuItems, 
+  useQueryProfileMenuItems, 
+  useQueryIsMobileMenuOpened,
+  useMutateCloseMobileMenu
+} from 'pages-lib/_layouts/AppLayout/states';
 import { Transition } from '@headlessui/react';
-import { isMobileMenuOpened } from 'pages-lib/_layouts/AppLayout/states/mobileMenu/getters';
-import { closeMobileMenu } from 'pages-lib/_layouts/AppLayout/states/mobileMenu/actions';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
-import MainMenuState from 'pages-lib/_layouts/AppLayout/states/mainMenu';
-import ProfileMenuState from 'pages-lib/_layouts/AppLayout/states/profileMenu';
 import Link from "next/link";
 import { useSession } from 'next-auth/client';
 
 const MobileMenu = () => {
-  const menuItems = useRecoilValue(MainMenuState);
-  const profileMenuItems = useRecoilValue(ProfileMenuState);
-  const isOpened = useRecoilValue(isMobileMenuOpened);
-  const handleCloseMenuClick = useSetRecoilState(closeMobileMenu);
+  const menuItems = useQueryMainMenuItems();
+  const profileMenuItems = useQueryProfileMenuItems();
+  const isOpened = useQueryIsMobileMenuOpened();
+  const handleCloseMenuClick = useMutateCloseMobileMenu();
   const [session] = useSession();
 
   return (

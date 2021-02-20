@@ -24,8 +24,16 @@ async function handleGet(req, res) {
     const profileCollection = await dbhelper.collectionFor('profiles');
     const loggedProfile = await profileCollection.findOne({ email: session.user.email }, projectionIgnoreIdField)
 
+
     if (loggedProfile) {
-        res.status(200).send(loggedProfile)
+        // TODO: need to store in DB
+        res.status(200).send({
+            ...loggedProfile,
+            verified: false,
+            generalChallengeCompleted: false,
+            rate: null,
+            status: ''
+        })
     } else {
         res.status(401).send()
     }

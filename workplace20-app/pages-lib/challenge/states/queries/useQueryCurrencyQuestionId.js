@@ -1,4 +1,4 @@
-import challengeQuestionsState from '../states';
+import challengeQuestionsState from '../atoms';
 import { selector, useRecoilValue, atom } from 'recoil';
 
 const getCurrencyQuestionId = selector({
@@ -10,8 +10,6 @@ const getCurrencyQuestionId = selector({
   }
 });
 
-const useQueryCurrencyQuestionId = () => {
-  return useRecoilValue(getCurrencyQuestionId);
-}
+const useQueryCurrencyQuestionId = () => useRecoilValue(getCurrencyQuestionId);
 
 export default useQueryCurrencyQuestionId;

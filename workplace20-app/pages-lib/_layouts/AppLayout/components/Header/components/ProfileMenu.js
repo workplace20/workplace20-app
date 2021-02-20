@@ -1,14 +1,13 @@
+import { useQueryProfileMenuItems } from 'pages-lib/_layouts/AppLayout/states';
 import { useState } from 'react';
 import { Transition } from '@headlessui/react';
-import { useRecoilValue } from 'recoil';
 import Link from "next/link";
-import ProfileMenuState from 'pages-lib/_layouts/AppLayout/states/profileMenu';
 import { useSession } from 'next-auth/client';
 import Avatar from 'pages-lib/_components/Avatar';
 
 const ProfileMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const menuItems = useRecoilValue(ProfileMenuState);
+  const menuItems = useQueryProfileMenuItems();
   const [session] = useSession();
 
   return (

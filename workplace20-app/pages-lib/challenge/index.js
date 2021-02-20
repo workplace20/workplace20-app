@@ -1,6 +1,12 @@
 import { withEmptyLayout } from 'pages-lib/_layouts';
+import { useEffect } from 'react';
 
 import {
+  useQueryCurrencyQuestionId,
+  useQueryShowSubmitPage,
+  useMutateCurrentQuestion,
+  useMutateShowSubmitPageQuestion,
+  useMutateReset,
   useQueryChallengeQuestions,
   useQueryCurrentQuestionNumber,
   useQueryTotalQuestions,
@@ -10,14 +16,7 @@ import {
   useQueryQuestion,
   useQueryAllQuestionsCompleted,
   useMutateAnswerQuestion
-} from './states/server';
-
-import {
-  useQueryCurrencyQuestionId,
-  useQueryShowSubmitPage,
-  useMutateCurrentQuestion,
-  useMutateShowSubmitPageQuestion
-} from './states/client';
+} from './states';
 
 import LoadingPage from 'pages-lib/loading';
 import Navigation from './components/Navigation';
@@ -41,10 +40,16 @@ const Challenge = ({ challengeId }) => {
   const { mutate: answerQuestion } = useMutateAnswerQuestion(challengeId, currentQuestionId);
   const setCurrentQuestion = useMutateCurrentQuestion();
   const setShowSubmitPageQuestion = useMutateShowSubmitPageQuestion();
+  const resetChallengeState = useMutateReset();
 
   const isLastQuestion = currentQuestionId === lastQuestionId;
   const canNavigateNext = !!nextQuestionId || (!showSubmitPage && isAllQuestionsCompleted);
   const canNavigatePre = !!previousQuestionId || showSubmitPage;
+
+  useEffect(() => {
+    resetChallengeState();
+  }, []);
+
 
   if (isLoading) {
     return (
