@@ -26,7 +26,7 @@ const QuickStart = () => {
   }
 
   return (
-    <div className="h-screen w-full flex justify-center lg:items-center">
+    <div className="lg:h-screen w-full flex justify-center lg:items-center">
       <div className="max-w-4xl px-6 pt-12 sm:px-6 lg:px-8">
         <div className="sm:flex sm:flex-col sm:align-center">
           <h1 className="text-5xl font-extrabold orange-700 text-gray-900 sm:text-center">To start, who are you?</h1>
@@ -50,7 +50,7 @@ const QuickStart = () => {
             </div>
           )
         }
-        <div className="group mt-6 space-y-4 sm:mt-8 sm:space-y-0 sm:grid sm:grid-cols-1 sm:gap-6 lg:max-w-2xl lg:mx-auto xl:max-w-none xl:mx-0 xl:grid-cols-2">
+        <div className="group my-6 space-y-4 sm:my-8 sm:space-y-0 sm:grid sm:grid-cols-1 sm:gap-6 lg:max-w-2xl lg:mx-auto xl:max-w-none xl:mx-0 xl:grid-cols-2">
           {
             isLoading && (<LoadingPage />)
           }

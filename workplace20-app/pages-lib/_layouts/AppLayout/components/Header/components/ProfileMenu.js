@@ -4,6 +4,7 @@ import { useRecoilValue } from 'recoil';
 import Link from "next/link";
 import ProfileMenuState from 'pages-lib/_layouts/AppLayout/states/profileMenu';
 import { useSession } from 'next-auth/client';
+import Avatar from 'pages-lib/_components/Avatar';
 
 const ProfileMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,7 +20,10 @@ const ProfileMenu = () => {
           onClick={() => setIsOpen(!isOpen)}
         >
           <span className="sr-only">Open user menu</span>
-          <img className="h-8 w-8 rounded-full" src={session.user.image} alt="avatar" />
+          <Avatar 
+            image={session?.user?.image}
+            size={8}
+          />
         </button>
       </div>
       <Transition

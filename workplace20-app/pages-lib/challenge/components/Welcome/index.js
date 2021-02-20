@@ -25,7 +25,7 @@ const Welcome = ({ challengeId }) => {
   const { description, totalQuestion, totalTime } = chalengeOverview;
 
   return (
-    <div className="bg-white h-screen flex lg:items-center py-4 sm:py-6 lg:py-8">
+    <div className="bg-white h-screen flex md:items-center py-4 sm:py-6 lg:py-8">
       <div className="sm:flex sm:flex-col sm:align-center">
         <h3 className="text-4xl font-semibold text-gray-900 lg:leading-normal">{description}</h3>
         <p className="text-xl text-gray-700 lg:leading-normal mt-4">{`You need to answer ${totalQuestion} questions in ${totalTime} minutes`}</p>
