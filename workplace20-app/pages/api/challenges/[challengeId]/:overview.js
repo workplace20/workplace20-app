@@ -1,20 +1,57 @@
 import authCheck from 'lib/auth-checker';
+import dbhelper from 'lib/database';
+import debug from 'debug'
+import {
+    getSession
+} from 'next-auth/client';
+import skillList from '_data/skill.json'
+import challengeList from '_data/challenges.json'
+import {
+    Profile
+} from 'controllers/profile'
+const log = debug('challanges/:overview')
 
 export default async function handler(req, res) {
-  switch (req.method) {
-    case 'GET':
-      await authCheck(req, res, handleGet)
-      break
-    default:
-      res.status(405).send("Method not support")
-      break
-  }
+    switch (req.method) {
+        case 'GET':
+            await authCheck(req, res, handleGet)
+            break
+        default:
+            res.status(405).send("Method not support")
+            break
+    }
 }
 
 async function handleGet(req, res) {
-  res.status(200).send({
-    description: 'Please take a few minutes to share us about yourself and your working experience.',
-    totalQuestion: 10,
-    totalTime: 30 // minutes
-  })
+
+    const challengeId = req.query.challengeId;
+    const session = await getSession({
+        req
+    })
+
+    if (!challengeId) {
+        res.status(400).send('Invalid challenge code')
+        return
+    }
+
+    const profileCollection = await dbhelper.collectionFor('profiles')
+    const profile = new Profile(profileCollection,session.user.email)
+
+    const [
+
+        challenge,
+        error
+    ] = await profile.getNextLevelOf(challengeId)
+
+    if (error) {
+        res.status(400).send(error)
+        return
+    }
+
+    res.status(200).send({
+        description: challenge.description,
+        totalQuestion: challenge.questions.length,
+        totalTime: challenge.time
+    })
 }
+

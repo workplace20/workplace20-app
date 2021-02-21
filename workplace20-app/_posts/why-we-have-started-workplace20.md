@@ -1,10 +1,10 @@
 ---
-title: 'Preview Mode for Static Generation'
+title: 'Why we have started workplace20'
 excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent elementum facilisis leo vel fringilla est ullamcorper eget. At imperdiet dui accumsan sit amet nulla facilities morbi tempus.'
 coverImage: '/assets/blog/preview/cover.jpg'
-date: '2020-03-16T05:35:07.322Z'
+date: '2021-01-06'
 author:
-  name: Joe Haddad
+  name: Paul K
   picture: '/assets/pauldotk.png'
 ogImage:
   url: '/assets/blog/preview/cover.jpg'

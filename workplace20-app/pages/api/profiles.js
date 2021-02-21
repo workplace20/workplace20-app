@@ -2,8 +2,6 @@ import dbhelper from 'lib/database';
 import authCheck from 'lib/auth-checker'
 import { getSession } from 'next-auth/client';
 
-const secret = process.env.SECRET
-
 export default async function handler(req, res) {
     switch (req.method) {
         case 'GET':
@@ -27,7 +25,7 @@ async function handleGet(req, res) {
     if (loggedProfile) {
         res.status(200).send(loggedProfile)
     } else {
-        res.status(401).send()
+        res.status(401).send("Unauthorized")
     }
 }
 
@@ -59,6 +57,7 @@ async function handlePut(req, res) {
 
     res.status(200).send(profile);
 }
+
 // No need return _id of document to client in this api
 const projectionIgnoreIdField = { projection: { '_id': 0 } }
 
@@ -73,7 +72,7 @@ const profileModel = {
     domain: ['.net', 'java'],
     skills: {
         status: 'new', // new, review, verified
-        matrix: []
+        matrix: {}
     },
     requirement: {
         status: 'new', // new, review, verified

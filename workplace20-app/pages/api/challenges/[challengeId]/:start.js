@@ -1,138 +1,71 @@
 import authCheck from 'lib/auth-checker';
+import dbhelper from 'lib/database';
+import debug from 'debug'
+import {
+    getSession
+} from 'next-auth/client';
+import skillList from '_data/skill.json'
+import challengeList from '_data/challenges.json'
+import {
+    Profile
+} from 'controllers/profile'
+
+import {
+    Challenge
+} from 'controllers/challenge'
+
+const log = debug('challanges/:start')
 
 export default async function handler(req, res) {
-  switch (req.method) {
-    case 'POST':
-      await authCheck(req, res, handlePost)
-      break
-    default:
-      res.status(405).send("Method not support")
-      break
-  }
+    switch (req.method) {
+        case 'POST':
+            await authCheck(req, res, handlePost)
+            break
+        default:
+            res.status(405).send("Method not support")
+            break
+    }
 }
 
 async function handlePost(req, res) {
-  var currentDate = new Date();
-  var expireTime = new Date(currentDate.getTime() + (30 * 60 * 1000));
+    var currentDate = new Date();
+    var expireTime = new Date(currentDate.getTime() + (30 * 60 * 1000));
 
-  res.status(200).send({
-    expireTime: expireTime,
-    questions: [
-      {
-        id: 'q1',
-        kind: 'options',
-        question: '1 Fusce dignissim pretium nisl, in consequat tellus accumsan eget?',
-        options: [
-          {
-            id: 'o1',
-            value: 'id ornare arcu odio ut sem nulla pharetra diam sit amet nisl suscipit'
-          },
-          {
-            id: 'o2',
-            value: 'massa placerat duis ultricies lacus sed turpis tincidunt id aliquet risus feugiat in'
-          },
-          {
-            id: 'o3',
-            value: 'sit amet luctus venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non'
-          },
-          {
-            id: 'o4',
-            value: 'vulputate enim nulla aliquet porttitor lacus luctus accumsan tortor posuere ac ut consequat'
-          }
-        ]
-      },
-      {
-        id: 'q2',
-        kind: 'multiOptions',
-        question: '2 Fusce dignissim pretium nisl, in consequat tellus accumsan eget?',
-        options: [
-          {
-            id: 'o1',
-            value: 'id ornare arcu odio ut sem nulla pharetra diam sit amet nisl suscipit'
-          },
-          {
-            id: 'o2',
-            value: 'massa placerat duis ultricies lacus sed turpis tincidunt id aliquet risus feugiat in'
-          },
-          {
-            id: 'o3',
-            value: 'sit amet luctus venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non'
-          },
-          {
-            id: 'o4',
-            value: 'vulputate enim nulla aliquet porttitor lacus luctus accumsan tortor posuere ac ut consequat'
-          }
-        ]
-      },
-      {
-        id: 'q3',
-        kind: 'options',
-        question: '3 Fusce dignissim pretium nisl, in consequat tellus accumsan eget?',
-        options: [
-          {
-            id: 'o1',
-            value: 'id ornare arcu odio ut sem nulla pharetra diam sit amet nisl suscipit'
-          },
-          {
-            id: 'o2',
-            value: 'massa placerat duis ultricies lacus sed turpis tincidunt id aliquet risus feugiat in'
-          },
-          {
-            id: 'o3',
-            value: 'sit amet luctus venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non'
-          },
-          {
-            id: 'o4',
-            value: 'vulputate enim nulla aliquet porttitor lacus luctus accumsan tortor posuere ac ut consequat'
-          }
-        ]
-      },
-      {
-        id: 'q4',
-        kind: 'options',
-        question: '4 Fusce dignissim pretium nisl, in consequat tellus accumsan eget?',
-        options: [
-          {
-            id: 'o1',
-            value: 'id ornare arcu odio ut sem nulla pharetra diam sit amet nisl suscipit'
-          },
-          {
-            id: 'o2',
-            value: 'massa placerat duis ultricies lacus sed turpis tincidunt id aliquet risus feugiat in'
-          },
-          {
-            id: 'o3',
-            value: 'sit amet luctus venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non'
-          },
-          {
-            id: 'o4',
-            value: 'vulputate enim nulla aliquet porttitor lacus luctus accumsan tortor posuere ac ut consequat'
-          }
-        ]
-      },
-      {
-        id: 'q5',
-        kind: 'multiOptions',
-        question: '5 Fusce dignissim pretium nisl, in consequat tellus accumsan eget?',
-        options: [
-          {
-            id: 'o1',
-            value: 'id ornare arcu odio ut sem nulla pharetra diam sit amet nisl suscipit'
-          },
-          {
-            id: 'o2',
-            value: 'massa placerat duis ultricies lacus sed turpis tincidunt id aliquet risus feugiat in'
-          },
-          {
-            id: 'o3',
-            value: 'sit amet luctus venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non'
-          },
-          {
-            id: 'o4',
-            value: 'vulputate enim nulla aliquet porttitor lacus luctus accumsan tortor posuere ac ut consequat'
-          }
-        ]
-      }
-    ]
-  })
+    // if challenge has started, then return the current challenge, 
+    // if challenge has not started
+    // then do:
+    // generate questionsId, answers Id as clone this challenge
+    // store snapshot of challenge as clone from origin to database
+    // return the snapshot challenge version
+    //
+    const challengeId = req.query.challengeId;
+    const session = await getSession({
+        req
+    })
+
+    if (!challengeId) {
+        res.status(400).send('Invalid challenge code')
+        return
+    }
+
+    const profileCollection = await dbhelper.collectionFor('profiles')
+    const profileDomain = new Profile(profileCollection, session.user.email)
+
+    const [
+
+        challengeOrigin,
+        error
+    ] = await profileDomain.getNextLevelOf(challengeId)
+
+    if (error) {
+        res.status(400).send(error)
+        return
+    }
+
+    const challengeCollection = await dbhelper.collectionFor('challenges')
+    const challengeDomain = new Challenge(challengeCollection)
+
+    let challenged = await challengeDomain.start(session.user.email, challengeOrigin)
+    // clean answers for user
+    res.status(200).send(challenged)
 }

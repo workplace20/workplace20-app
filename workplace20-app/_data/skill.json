@@ -1,0 +1,25 @@
+[{
+        "code": "react",
+        "name": "React JS",
+        "levels": [
+            "Beginner",
+            "Average",
+            "Skilled",
+            "Specialist",
+            "Expert"
+        ]
+
+    },
+    {
+        "code": "csharp",
+        "name": "C# Language",
+        "levels": [
+            "Beginner",
+            "Average",
+            "Skilled",
+            "Specialist",
+            "Expert"
+        ]
+
+    }
+]

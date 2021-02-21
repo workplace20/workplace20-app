@@ -149,7 +149,7 @@ const options = {
           email: user.email,
           name: user.name,
           requirements: [],
-          skillMatrix: []
+          skillMatrix: {}
         });
 
         logger('created')

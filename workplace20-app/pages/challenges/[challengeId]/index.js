@@ -1,4 +1,3 @@
-
 import Challenge from 'pages-lib/challenge';
 import { useRouter } from 'next/router'
 
