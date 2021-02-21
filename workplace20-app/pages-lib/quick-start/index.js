@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Redirect from 'pages-lib/_components/Redirect';
 import LoadingPage from 'pages-lib/loading';
 import { useRouter } from 'next/router';
-import { useQueryProfile, useMutateProfileKind } from 'pages-lib/_states/server';
+import { useQueryProfile, useMutateProfileKind } from 'pages-lib/_states';
 
 const QuickStart = () => {
   const [profileKind, setProfileKind] = useState('');

@@ -1,13 +1,10 @@
 import { useRouter } from 'next/router';
-import { useMutateSubmitChallenge} from 'pages-lib/challenge/states/server';
-import { useMutateReset } from 'pages-lib/challenge/states/client';
+import { useMutateSubmitChallenge} from 'pages-lib/challenge/states';
 
 const Submission = ({ challengeId }) => {
   const router = useRouter();
-  const resetChallengeState = useMutateReset();
 
   const { mutate, isLoading, isError } = useMutateSubmitChallenge(challengeId, () => {
-    resetChallengeState();
     router.push('/profile');
   });
 

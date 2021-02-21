@@ -1,10 +1,9 @@
-import MainMenuState from 'pages-lib/_layouts/AppLayout/states/mainMenu';
-import { useRecoilValue } from 'recoil';
+import { useQueryMainMenuItems } from 'pages-lib/_layouts/AppLayout/states';
 import Link from "next/link";
 import { useRouter } from 'next/router'
 
 const MainMenu = () => {
-  const menuItems = useRecoilValue(MainMenuState);
+  const menuItems = useQueryMainMenuItems();
   const router = useRouter();
 
   const isActive = (pathname) => router.pathname.startsWith(pathname);

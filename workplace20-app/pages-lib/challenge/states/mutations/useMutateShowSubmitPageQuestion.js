@@ -1,4 +1,4 @@
-import challengeQuestionsState from '../states';
+import challengeQuestionsState from '../atoms';
 import { selector, useSetRecoilState } from 'recoil';
 
 const setShowSubmitPageQuestion = selector({

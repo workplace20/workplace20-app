@@ -2,7 +2,7 @@ import Link from "next/link";
 import { 
   useQueryChallengeOverview,
   useMutateStartChallenge,
-} from 'pages-lib/challenge/states/server';
+} from 'pages-lib/challenge/states';
 import LoadingPage from 'pages-lib/loading';
 
 

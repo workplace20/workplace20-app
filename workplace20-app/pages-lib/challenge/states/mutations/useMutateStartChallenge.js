@@ -1,4 +1,4 @@
-import axiosWrapper from 'pages-lib/_states/server/axios-wrapper';
+import axiosWrapper from 'pages-lib/_states/axios-wrapper';
 import { queryChallengeQuestionsKey } from '../keys';
 import { useMutation, useQueryClient } from 'react-query';
 

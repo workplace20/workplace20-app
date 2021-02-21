@@ -1,7 +1,7 @@
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Redirect from 'pages-lib/_components/Redirect';
-import { useQueryProfile } from 'pages-lib/_states/server';
+import { useQueryProfile } from 'pages-lib/_states';
 import LoadingPage from 'pages-lib/loading';
 import Error from 'next/error';
 
