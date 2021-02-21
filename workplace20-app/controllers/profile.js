@@ -29,7 +29,7 @@ export class Profile {
         return this.profile
     }
 
-    async Get(){
+    async Get() {
         return await this._getProfile()
     }
 
@@ -39,6 +39,18 @@ export class Profile {
         const profile = await this._getProfile()
         if (!profile) {
             return [null, 'Profile not found']
+        }
+
+
+        if(challengeId=='general'){
+            await this.collection.updateOne({
+                email: this.email
+            }, {
+                $set: {
+                    generalChallengeCompleted: true
+                }
+            })
+            return
         }
 
         let profileSkill = profile.skillMatrix[challengeId]
@@ -74,7 +86,7 @@ export class Profile {
             log(`Profile ${this.email} start with default level Basic`)
 
             levelOfChallenge = {
-                level: 'Basic'
+                level: 'Beginner'
             }
         }
 
@@ -84,7 +96,7 @@ export class Profile {
             return [null, 'Challenge is not supported']
         }
 
-        if (nextLevel == levelOfChallenge.level) {
+        if (nextLevel == levelOfChallenge.level && nextLevel != 'Beginner') {
             // User reached all level
             return [null, 'User is reached max level']
         }

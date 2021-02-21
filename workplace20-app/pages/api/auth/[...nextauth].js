@@ -144,12 +144,15 @@ const options = {
         logger(`profile for ${user.email} not found. creating...`)
         await profileCollection.insertOne({
           authKind: account.provider,
+          generalChallengeCompleted: false,
           status: 'new',
           kind: '',
           email: user.email,
           name: user.name,
           requirements: [],
-          skillMatrix: {}
+          skillMatrix: {},
+          verified: false,
+          rate: null,
         });
 
         logger('created')

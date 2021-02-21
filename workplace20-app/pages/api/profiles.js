@@ -26,11 +26,7 @@ async function handleGet(req, res) {
     if (loggedProfile) {
         // TODO: need to store in DB
         res.status(200).send({
-            ...loggedProfile,
-            verified: false,
-            generalChallengeCompleted: false,
-            rate: null,
-            status: ''
+            ...loggedProfile
         })
     } else {
         res.status(401).send("Unauthorized")
