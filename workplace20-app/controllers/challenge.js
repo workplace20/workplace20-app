@@ -35,7 +35,6 @@ export class Challenge {
     async start(email, challenge) {
 
         const currentDate = new Date();
-        const expireTime = new Date(currentDate.getTime() + (30 * 60 * 1000));
 
         const existedChallenge = await this.collection.findOne({
             email: email,
@@ -60,6 +59,7 @@ export class Challenge {
         // Snapshot challenge to avoid change origin data, also encrypt question and options identify
         //
 
+        const expireTime = new Date(currentDate.getTime() + (challenge.time * 60 * 1000));
         let snapshotChallenge = Object.assign({
             email: email,
             expireTime: expireTime

@@ -65,7 +65,13 @@ async function handlePost(req, res) {
     const challengeCollection = await dbhelper.collectionFor('challenges')
     const challengeDomain = new Challenge(challengeCollection)
 
-    let challenged = await challengeDomain.start(session.user.email, challengeOrigin)
+    const [challenged, startError]= await challengeDomain.start(session.user.email, challengeOrigin)
+    
+    if(startError){ 
+
+        res.status(400).send(startError)
+        return
+    }
     // clean answers for user
     res.status(200).send(challenged)
 }
