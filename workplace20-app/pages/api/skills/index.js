@@ -13,5 +13,9 @@ export default async function handler(req, res) {
 }
 
 async function handleGet(req,res){
-    res.status(200).send(skillList)
+	let skills = skillList.skills.filter(k=>k.code!=='general')
+    res.status(200).send({
+		skills: skills,
+		levels: skillList.levels
+	})
 }
