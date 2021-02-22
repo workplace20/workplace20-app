@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from 'react-query';
-import axiosWrapper from '../axios-wrapper';
+import axiosWrapper from '../../axios-wrapper';
 import { queryProfileKey } from '../keys';
 
 const updateProfileKind = (userKind) => axiosWrapper.put('/profiles', { kind: userKind });

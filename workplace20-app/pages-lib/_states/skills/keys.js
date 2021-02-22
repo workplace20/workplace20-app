@@ -1,0 +1,1 @@
+export const querySkillListKey = 'query_skill_list';

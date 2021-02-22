@@ -1,5 +1,5 @@
 import { useQuery } from 'react-query';
-import axiosWrapper from '../axios-wrapper';
+import axiosWrapper from '../../axios-wrapper';
 import { queryProfileKey } from '../keys';
 
 const getProfile = () => axiosWrapper.get('/profiles');

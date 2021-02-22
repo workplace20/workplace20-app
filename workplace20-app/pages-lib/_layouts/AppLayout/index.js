@@ -1,3 +1,4 @@
+import { usePrefetchSkillList } from 'pages-lib/_states';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Redirect from 'pages-lib/_components/Redirect';
@@ -6,6 +7,8 @@ import LoadingPage from 'pages-lib/loading';
 import Error from 'next/error';
 
 const AppLayout = ({ children }) => {
+  usePrefetchSkillList();
+
   const { isLoading, isError, data: profile, error } = useQueryProfile();
 
   if (isLoading) {

@@ -2,7 +2,7 @@ import { withAppLayout } from 'pages-lib/_layouts';
 import { useSession } from 'next-auth/client';
 import ProfileOverview from './components/ProfileOverview';
 import NetWork from './components/Network';
-import PotentialJobList from './components/PotentialJobList';
+import SkillList from './components/SkillList';
 import { useQueryProfile } from 'pages-lib/_states';
 
 const Profile = () => {
@@ -11,7 +11,7 @@ const Profile = () => {
   const { data: profile } = useQueryProfile();
 
   const { name, email, image } = user;
-  const { verified, generalChallengeCompleted, skills, rate, status } = profile;
+  const { verified, generalChallengeCompleted, skillMatrix, rate, status } = profile;
 
   return (
     <>
@@ -24,14 +24,16 @@ const Profile = () => {
             image={image}
             verified={verified}
             generalChallengeCompleted={generalChallengeCompleted}
-            firstSkillCompleted={skills?.length > 0}
+            firstSkillCompleted={Object.keys(skillMatrix).length > 0}
             rate={rate}
             status={status}
           />
           <NetWork />
         </div>
         <div className="grid grid-cols-1 gap-4">
-          <PotentialJobList />
+          <SkillList 
+            skillMatrix={skillMatrix}
+          />
         </div>
       </div>
     </>
