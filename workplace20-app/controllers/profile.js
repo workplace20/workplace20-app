@@ -17,6 +17,65 @@ export class Profile {
             return "Not found collection"
     }
 
+    async update(data) {
+
+        const updater = {};
+        const errors = [];
+
+        let profile = await this._getProfile()
+
+        if (!profile.kind) {
+            if (data.kind && ['business', 'creator'].indexOf(data.kind) >= 0) {
+                updater.$set = {
+                    kind: data.kind
+                }
+            } else {
+                errors.push({
+                    kind: "required in range [business,creator]"
+                })
+            }
+        }
+
+        if (!updater.$set) {
+            updater.$set = {}
+        }
+
+        if (data.name) {
+            updater.$set.name = data.name
+        }
+        if (data.birthday) {
+            updater.$set.birthday = data.birthdate
+        }
+
+        if (data.phone) {
+            updater.$set.phone = data.phone
+        }
+        if (data.yearOfExperience) {
+            updater.$set.yearOfExperience = data.yearOfExperience
+        }
+        if (data.location) {
+            updater.$set.location = data.location
+        }
+        if (data.about) {
+            updater.$set.about = data.about
+        }
+
+        if (errors.length > 0) {
+            [null, error]
+        }
+
+        await profileCollection.updateOne({
+                email: session.user.email
+            },
+            updater, {
+                upsert: false
+            })
+
+		profile = await this._getProfile()
+
+		return [profile,null]
+    }
+
     async _getProfile() {
         if (this.profile) {
             return this.profile
@@ -42,7 +101,7 @@ export class Profile {
         }
 
 
-        if(challengeId=='general'){
+        if (challengeId == 'general') {
             await this.collection.updateOne({
                 email: this.email
             }, {

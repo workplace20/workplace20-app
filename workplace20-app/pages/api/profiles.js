@@ -1,6 +1,7 @@
 import dbhelper from 'lib/database';
 import authCheck from 'lib/auth-checker'
 import { getSession } from 'next-auth/client';
+import {Profile} from 'controllers/profile'
 
 export default async function handler(req, res) {
     switch (req.method) {
@@ -24,7 +25,6 @@ async function handleGet(req, res) {
 
 
     if (loggedProfile) {
-        // TODO: need to store in DB
         res.status(200).send({
             ...loggedProfile
         })
@@ -38,26 +38,14 @@ async function handlePut(req, res) {
 
     const profileCollection = await dbhelper.collectionFor('profiles')
 
-    const updater = {};
-    const errors = [];
+	const profileCtr = new Profile(profileCollection,session.user.email)
 
-    if (req.body.kind && ['business', 'creator'].indexOf(req.body.kind) >= 0) {
-        updater.$set = { kind: req.body.kind }
-    } else {
-        errors.push({ kind: "required in range [business,creator]" })
-    }
+	const [profile ,error]=await profileCtr.update(req.body)
 
-    if (errors.length > 0) {
-        res.status(400).send({ errors: errors })
-        return
-    }
-
-    await profileCollection.updateOne(
-        { email: session.user.email },
-        updater,
-        { upsert: false })
-
-    const profile = await profileCollection.findOne({ email: session.user.email }, projectionIgnoreIdField)
+	if(error){
+		res.status(400).send(error)
+		return
+	}
 
     res.status(200).send(profile);
 }
