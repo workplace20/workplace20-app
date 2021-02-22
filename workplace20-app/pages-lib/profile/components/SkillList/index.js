@@ -69,9 +69,7 @@ const SkillList = ({
                                 <div className="ml-2 flex-shrink-0 flex">
                                   <div className="flex items-center text-sm text-gray-500 space-x-1">
                                     <div className="text-sm text-gray-500">Upgrade to</div>
-                                    <SkillLevelChip
-                                      skillLevelName={skill.nextLevel}
-                                    />
+                                    <div className="text-sm font-bold text-gray-900">{skill.nextLevel}</div>
                                   </div>
                                 </div>
                               )
@@ -80,9 +78,7 @@ const SkillList = ({
                           <div className="mt-2 sm:flex sm:justify-between">
                             <div className="sm:flex">
                               <p className="flex items-center text-sm font-medium text-gray-500">
-                                <SkillLevelChip
-                                  skillLevelName={skill.level}
-                                />
+                                {skill.level}
                               </p>
                             </div>
                             <div className="mt-2 flex items-center text-sm text-gray-500 sm:mt-0">
