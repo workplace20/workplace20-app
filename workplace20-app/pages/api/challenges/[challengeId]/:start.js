@@ -4,8 +4,6 @@ import debug from 'debug'
 import {
     getSession
 } from 'next-auth/client';
-import skillList from '_data/skill.json'
-import challengeList from '_data/challenges.json'
 import {
     Profile
 } from 'controllers/profile'

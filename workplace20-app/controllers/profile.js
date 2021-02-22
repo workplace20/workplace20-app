@@ -119,7 +119,7 @@ export class Profile {
 
 function nextLevelOfChallenge(challengeCode, currentLevel) {
 
-    const skill = skillList
+    const skill = skillList.skills
         .find(el => el.code == challengeCode);
 
     if (!skill) {

@@ -3,7 +3,6 @@ import skillList from '_data/skill.json'
 export default async function handler(req, res) {
     switch (req.method) {
         case 'GET':
-            //await authCheck(req, res, handleGet)
             await handleGet(res,res)
 
             break
@@ -14,6 +13,5 @@ export default async function handler(req, res) {
 }
 
 async function handleGet(req,res){
-    
     res.status(200).send(skillList)
 }

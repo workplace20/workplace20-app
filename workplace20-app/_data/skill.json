@@ -1,33 +1,51 @@
-[{
-        "code": "react",
-        "name": "React JS",
-        "levels": [
-            "Beginner",
-            "Average",
-            "Skilled",
-            "Specialist",
-            "Expert"
-        ]
+{
+    "skills": [{
+            "code": "react",
+            "name": "React JS",
+            "levels": [
+                "Beginner",
+                "Average",
+                "Skilled",
+                "Specialist",
+                "Expert"
+            ]
 
-    },
-    {
-        "code": "csharp",
-        "name": "C# Language",
-        "levels": [
-            "Beginner",
-            "Average",
-            "Skilled",
-            "Specialist",
-            "Expert"
-        ]
+        },
+        {
+            "code": "csharp",
+            "name": "C# Language",
+            "levels": [
+                "Beginner",
+                "Average",
+                "Skilled",
+                "Specialist",
+                "Expert"
+            ]
 
-    },
-    {
-        "code": "general",
-        "name": "General Information",
-        "levels": [
-            "Beginner"
-        ]
+        },
+        {
+            "code": "general",
+            "name": "General Information",
+            "levels": [
+                "Beginner"
+            ]
 
-    }
-]
+        }
+    ],
+    "levels": [{
+        "name": "Beginner",
+        "description": "Beginner description"
+    }, {
+        "name": "Average",
+        "description": "Averate description"
+    }, {
+        "name": "Skilled",
+        "description": "Skilled description"
+    }, {
+        "name": "Specialist",
+        "description": "Specialist description"
+    }, {
+        "name": "Expert",
+        "description": "Expert description"
+    }]
+}
