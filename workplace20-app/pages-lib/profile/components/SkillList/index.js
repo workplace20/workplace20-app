@@ -1,32 +1,30 @@
-import { useQuerySkillList } from 'pages-lib/_states';
+import { useQuerySkillList, useQuerySkillLevelList } from 'pages-lib/_states';
 import { useState } from 'react';
 import Link from "next/link";
 import AddNew from './components/AddNew';
+import SkillLevelChip from './components/SkillLevelChip';
 
 const SkillList = ({
   skillMatrix = {}
 }) => {
-  const { data: allSkills = [] } = useQuerySkillList();
+  const allSkills = useQuerySkillList() || [];
+  const allSkillLevels = useQuerySkillLevelList() || [];
   const [addingSkill, setAddingSkill] = useState(false);
 
   const profileSkills = Object.keys(skillMatrix).map(skillCode => {
     const globalSkill = allSkills.find(x => x.code === skillCode);
     const profileSkill = skillMatrix[skillCode];
-    const currentLevelIndex = globalSkill?.levels?.findIndex(x => x === profileSkill.level);
+    const currentLevelIndex = allSkillLevels?.findIndex(x => x.name === profileSkill.level);
 
     return {
       code: skillCode,
       name: globalSkill?.name,
       level: profileSkill?.level,
-      nextLevel: globalSkill?.levels[currentLevelIndex + 1]
+      nextLevel: currentLevelIndex < allSkillLevels.length - 1 && allSkillLevels[currentLevelIndex + 1]?.name
     }
   });
 
-  const availableNewSkills = allSkills.filter(x => !Object.keys(skillMatrix).includes(x.code))
-    .map(x => ({
-      label: x.name,
-      value: x.code
-    }));
+  const availableNewSkills = allSkills.filter(x => !Object.keys(skillMatrix).includes(x.code));
   const canAddNewSkill = availableNewSkills && availableNewSkills.length > 0;
 
   return (
@@ -71,7 +69,9 @@ const SkillList = ({
                                 <div className="ml-2 flex-shrink-0 flex">
                                   <div className="flex items-center text-sm text-gray-500 space-x-1">
                                     <div className="text-sm text-gray-500">Upgrade to</div>
-                                    <div className="text-sm font-bold text-gray-900">{skill.nextLevel}</div>
+                                    <SkillLevelChip
+                                      skillLevelName={skill.nextLevel}
+                                    />
                                   </div>
                                 </div>
                               )
@@ -80,7 +80,9 @@ const SkillList = ({
                           <div className="mt-2 sm:flex sm:justify-between">
                             <div className="sm:flex">
                               <p className="flex items-center text-sm font-medium text-gray-500">
-                                {skill.level}
+                                <SkillLevelChip
+                                  skillLevelName={skill.level}
+                                />
                               </p>
                             </div>
                             <div className="mt-2 flex items-center text-sm text-gray-500 sm:mt-0">
@@ -116,23 +118,14 @@ const SkillList = ({
 
           <div className="pt-5">
             <h2 className="text-sm font-medium text-gray-900" id="recent-hires-title">Skill Levels</h2>
-            <div className="mt-4">
-              <span className="inline-flex items-center px-2 py-0.5 rounded-md text-xs font-medium bg-gray-100 text-gray-800">
-                Beginner
-  </span>
-              <span className="ml-1 inline-flex items-center px-2 py-0.5 rounded-md text-xs font-medium bg-gray-200 text-gray-800">
-                Average
-  </span>
-              <span className="ml-1 inline-flex items-center px-2 py-0.5 rounded-md text-xs font-medium bg-gray-300 text-gray-800">
-                Skilled
-  </span>
-              <span className="ml-1 inline-flex items-center px-2 py-0.5 rounded-md text-xs font-medium bg-gray-500 text-white">
-                Specialist
-  </span>
-              <span className="ml-1 inline-flex items-center px-2 py-0.5 rounded-md text-xs font-medium bg-gray-600 text-white">
-                Expert
-  </span>
-
+            <div className="mt-2 space-x-1">
+              {
+                allSkillLevels.map(x => (
+                  <SkillLevelChip
+                    skillLevelName={x.name}
+                  />
+                ))
+              }
             </div>
           </div>
         </div>

@@ -1,8 +1,11 @@
-import axiosWrapper from 'pages-lib/_states/axios-wrapper';
 import { querySkillListKey } from '../keys';
-import { useQuery } from 'react-query';
+import { useQueryClient } from 'react-query';
 
-const getSkillList = () => axiosWrapper.get('/skills');
-const useQuerySkillList = () => useQuery(querySkillListKey, getSkillList);
+const useQuerySkillList = () => {
+  const queryClient = useQueryClient();
+
+  return queryClient.getQueryData(querySkillListKey)?.skills;
+}
+
 
 export default useQuerySkillList;

@@ -3,3 +3,4 @@ export { default as useMutateProfileKind } from './profile/mutations/useMutatePr
 
 export { default as usePrefetchSkillList } from './skills/queries/usePrefetchSkillList';
 export { default as useQuerySkillList } from './skills/queries/useQuerySkillList';
+export { default as useQuerySkillLevelList } from './skills/queries/useQuerySkillLevelList';
