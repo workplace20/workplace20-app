@@ -1,4 +1,5 @@
-import "tailwindcss/tailwind.css";
+import '../styles/globals.css';
+
 import { RecoilRoot } from 'recoil';
 import { Provider } from 'next-auth/client'
 import { QueryClient, QueryClientProvider } from 'react-query';

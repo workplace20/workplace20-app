@@ -1,11 +1,10 @@
 import { querySkillListKey } from '../keys';
-import { useQueryClient } from 'react-query';
+import { useQuery } from 'react-query';
+import getSkillList from './getSkillList';
 
-const useQuerySkillList = () => {
-  const queryClient = useQueryClient();
-
-  return queryClient.getQueryData(querySkillListKey)?.skills;
-}
+const useQuerySkillList = () => useQuery(querySkillListKey, getSkillList, {
+  select: data => data?.skills
+});
 
 
 export default useQuerySkillList;

@@ -1,39 +1,21 @@
 import { withAppLayout } from 'pages-lib/_layouts';
-import { useSession } from 'next-auth/client';
-import ProfileOverview from './components/ProfileOverview';
-import NetWork from './components/Network';
-import SkillList from './components/SkillList';
-import { useQueryProfile } from 'pages-lib/_states';
+import {
+  ProfileOverview,
+  PersonalInformation,
+  SkillMatrix
+} from './components';
 
 const Profile = () => {
-  const [session] = useSession();
-  const { user } = session;
-  const { data: profile } = useQueryProfile();
-
-  const { name, email, image } = user;
-  const { verified, generalChallengeCompleted, skillMatrix, rate, status } = profile;
-
   return (
     <>
       <h1 className="sr-only">Profile</h1>
       <div className="grid grid-cols-1 gap-4 items-start lg:grid-cols-3 lg:gap-8">
         <div className="grid grid-cols-1 gap-4 lg:col-span-2">
-          <ProfileOverview 
-            name={name}
-            email={email}
-            image={image}
-            verified={verified}
-            generalChallengeCompleted={generalChallengeCompleted}
-            firstSkillCompleted={Object.keys(skillMatrix).length > 0}
-            rate={rate}
-            status={status}
-          />
-          <NetWork />
+          <ProfileOverview />
+          <PersonalInformation />
         </div>
         <div className="grid grid-cols-1 gap-4">
-          <SkillList 
-            skillMatrix={skillMatrix}
-          />
+          <SkillMatrix />
         </div>
       </div>
     </>

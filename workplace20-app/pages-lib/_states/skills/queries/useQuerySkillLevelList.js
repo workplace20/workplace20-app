@@ -1,11 +1,9 @@
 import { querySkillListKey } from '../keys';
-import { useQueryClient } from 'react-query';
+import { useQuery } from 'react-query';
+import getSkillList from './getSkillList';
 
-const useQuerySkillLevelList = () => {
-  const queryClient = useQueryClient();
-
-  return queryClient.getQueryData(querySkillListKey)?.levels;
-}
-
+const useQuerySkillLevelList = () => useQuery(querySkillListKey, getSkillList, {
+  select: data => data?.levels
+});
 
 export default useQuerySkillLevelList;

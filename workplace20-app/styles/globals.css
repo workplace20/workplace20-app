@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.react-datepicker__day--selected {
+  background: #F97316 !important;
+}
+
+.react-datepicker-wrapper {
+  width: 100% !important;
+}
