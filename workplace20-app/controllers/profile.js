@@ -24,11 +24,12 @@ export class Profile {
 
         let profile = await this._getProfile()
 
+        updater = {}
+
         if (!profile.kind) {
-            if (data.kind && ['business', 'creator'].indexOf(data.kind) >= 0) {
-                updater.$set = {
-                    kind: data.kind
-                }
+			// we only change kind one time
+            if (kind && ['business', 'creator'].indexOf(kind) >= 0) {
+                updater.kind = kind
             } else {
                 errors.push({
                     kind: "required in range [business,creator]"
@@ -36,28 +37,25 @@ export class Profile {
             }
         }
 
-        if (!updater.$set) {
-            updater.$set = {}
+        if (name) {
+            updater.name = name
+        }
+        if (birthday) {
+            updater.birthday = birthdate
         }
 
-        if (data.name) {
-            updater.$set.name = data.name
+        if (phone) {
+            updater.phone = phone
         }
-        if (data.birthday) {
-            updater.$set.birthday = data.birthdate
+        if (yearOfExperience) {
+            updater.yearOfExperience = yearOfExperience
+        }
+        if (location) {
+            updater.location = location
         }
 
-        if (data.phone) {
-            updater.$set.phone = data.phone
-        }
-        if (data.yearOfExperience) {
-            updater.$set.yearOfExperience = data.yearOfExperience
-        }
-        if (data.location) {
-            updater.$set.location = data.location
-        }
-        if (data.about) {
-            updater.$set.about = data.about
+        if (about) {
+            updater.about = about
         }
 
         if (errors.length > 0) {
@@ -65,15 +63,16 @@ export class Profile {
         }
 
         await profileCollection.updateOne({
-                email: session.user.email
-            },
-            updater, {
-                upsert: false
-            })
+            email: this.email
+        }, {
+            $set: updater
+        }, {
+            upsert: false
+        })
 
-		profile = await this._getProfile()
+        profile = await this._getProfile()
 
-		return [profile,null]
+        return [profile, null]
     }
 
     async _getProfile() {
