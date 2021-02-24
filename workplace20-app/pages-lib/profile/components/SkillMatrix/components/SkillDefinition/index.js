@@ -1,3 +1,5 @@
+import classnames from 'classnames';
+
 const SkillDefinition = ({
   allSkillLevels
 }) => {
@@ -11,21 +13,24 @@ const SkillDefinition = ({
 
   return (
     <>
-      <h2 className="text-sm font-medium text-gray-900">Skill Levels</h2>
-      <div className="mt-2 space-x-1">
+      <dt className="text-sm font-medium text-gray-900">Skill Levels</dt>
+      <dd className="mt-2 space-x-1">
         {
           allSkillLevels.map(skillLevel => {
             const { name: skillLevelName } = skillLevel;
             const levelNumber = allSkillLevels?.findIndex(x => x.name === skillLevelName);
 
             return (
-              <span className={`inline-flex items-center px-2 py-0.5 rounded-md text-xs font-medium ${styles[levelNumber]}`}>
+              <span className={classnames(
+                'inline-flex items-center px-2 py-0.5 rounded-md text-xs font-medium',
+                styles[levelNumber]
+              )}>
                 {skillLevelName}
               </span>
             )
           })
         }
-      </div>
+      </dd>
     </>
   )
 }

@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { 
+import Button from 'pages-lib/_components/Button';
+import {
   useQueryChallengeOverview,
   useMutateStartChallenge,
 } from 'pages-lib/challenge/states';
@@ -30,14 +31,24 @@ const Welcome = ({ challengeId }) => {
         <h3 className="text-4xl font-semibold text-gray-900 lg:leading-normal">{description}</h3>
         <p className="text-xl text-gray-700 lg:leading-normal mt-4">{`You need to answer ${totalQuestion} questions in ${totalTime} minutes`}</p>
         <div className="mt-8">
+{/* 
+         */}
           <Link href='/profile'>
-            <a class="py-2 px-4 border border-gray-300 rounded-md shadow-sm text-lg font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 bg-white inline-flex justify-center">
+            <Button
+              color="white"
+              size="lg"
+            >
               I will do it later
-            </a>
+            </Button>
           </ Link>
-          <button onClick={startChallenge} class="py-2 px-4 border border-transparent rounded-md shadow-sm text-lg font-medium text-white hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-400 ml-3 inline-flex justify-center bg-orange-500">
+          <Button
+            color="primary"
+            size="lg"
+            onClick={startChallenge}
+            className="ml-2"
+          >
             Continue
-          </button>
+            </Button>
         </div>
       </div>
     </div>

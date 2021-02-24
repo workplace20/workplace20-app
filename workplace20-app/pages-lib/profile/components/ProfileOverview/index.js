@@ -8,6 +8,7 @@ import {
   Error
 } from './components';
 import { Transition } from '@headlessui/react';
+import { Card, CardContent } from 'pages-lib/_components/card';
 
 const ProfileOverview = () => {
   const { data: profile, isLoading, isError } = useQueryProfile();
@@ -27,73 +28,73 @@ const ProfileOverview = () => {
   const firstSkillCompleted = Object.keys(skillMatrix).length > 0;
 
   return (
-    <section aria-labelledby="profile-overview-title">
-      <div className="rounded-lg bg-white overflow-hidden shadow">
-        <Transition
-          show={isError}
-          enter="transition duration-150 ease-out"
-          enterFrom="opacity-0"
-          enterTo="opacity-100"
-          leave="transition duration-150 ease-in"
-          leaveFrom="opacity-100"
-          leaveTo="opacity-0"
-        >
-          {(ref) => (
-            <div ref={ref}>
-              <Error />
-            </div>
-          )}
-        </Transition>
-        <Transition
-          show={isLoading || loading}
-          enter="transition duration-150 ease-out"
-          enterFrom="opacity-0"
-          enterTo="opacity-100"
-          leave="transition duration-150 ease-in"
-          leaveFrom="opacity-100"
-          leaveTo="opacity-0"
-        >
-          {(ref) => (
-            <div ref={ref}>
-              <Loading />
-            </div>
-          )}
-        </Transition>
-        <Transition
-          show={!isLoading && !loading && !isError}
-          enter="transition duration-150 ease-out"
-          enterFrom="opacity-0"
-          enterTo="opacity-100"
-          leave="transition duration-150 ease-in"
-          leaveFrom="opacity-100"
-          leaveTo="opacity-0"
-        >
-          {(ref) => (
-            <div ref={ref}>
+    <Card>
+      <Transition
+        show={isError}
+        enter="transition duration-150 ease-out"
+        enterFrom="opacity-0"
+        enterTo="opacity-100"
+        leave="transition duration-150 ease-in"
+        leaveFrom="opacity-100"
+        leaveTo="opacity-0"
+      >
+        {(ref) => (
+          <div ref={ref}>
+            <Error />
+          </div>
+        )}
+      </Transition>
+      <Transition
+        show={isLoading || loading}
+        enter="transition duration-150 ease-out"
+        enterFrom="opacity-0"
+        enterTo="opacity-100"
+        leave="transition duration-150 ease-in"
+        leaveFrom="opacity-100"
+        leaveTo="opacity-0"
+      >
+        {(ref) => (
+          <div ref={ref}>
+            <Loading />
+          </div>
+        )}
+      </Transition>
+      <Transition
+        show={!isLoading && !loading && !isError}
+        enter="transition duration-150 ease-out"
+        enterFrom="opacity-0"
+        enterTo="opacity-100"
+        leave="transition duration-150 ease-in"
+        leaveFrom="opacity-100"
+        leaveTo="opacity-0"
+      >
+        {(ref) => (
+          <div ref={ref}>
+            <CardContent>
               <Welcome
                 name={name}
                 email={email}
                 image={image}
               />
-              {
-                verified ? (
-                  <WorkingInfo
-                    rate={rate}
-                    status={status}
+            </CardContent>
+            {
+              verified ? (
+                <WorkingInfo
+                  rate={rate}
+                  status={status}
+                />
+              ) : (
+                  <ProcessNav
+                    generalChallengeCompleted={generalChallengeCompleted}
+                    firstSkillCompleted={firstSkillCompleted}
+                    reviewed={verified}
                   />
-                ) : (
-                    <ProcessNav
-                      generalChallengeCompleted={generalChallengeCompleted}
-                      firstSkillCompleted={firstSkillCompleted}
-                      reviewed={verified}
-                    />
-                  )
-              }
-            </div>
-          )}
-        </Transition>
-      </div>
-    </section>
+                )
+            }
+          </div>
+        )}
+      </Transition>
+    </Card>
   )
 }
 

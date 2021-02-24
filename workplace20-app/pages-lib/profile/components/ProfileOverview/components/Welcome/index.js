@@ -5,11 +5,10 @@ const Welcome = ({
   name,
   email
 }) => (
-  <div className="bg-white p-6">
     <div className="sm:flex sm:items-center sm:justify-between">
       <div className="sm:flex sm:space-x-5">
         <div className="flex-shrink-0">
-          <Avatar 
+          <Avatar
             image={image}
             size={20}
           />
@@ -26,7 +25,6 @@ const Welcome = ({
         </a>
       </div>
     </div>
-  </div>
-)
+  )
 
 export default Welcome;

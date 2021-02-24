@@ -1,8 +1,13 @@
 import "react-datepicker/dist/react-datepicker.css";
 import { Formik, Form } from 'formik';
+import Button from 'pages-lib/_components/Button';
 import { Transition } from '@headlessui/react';
 import { FormTextInput, FormDatePicker, FormTextAreaInput } from 'pages-lib/_components/form';
 import { useMutateUpdateProfile } from 'pages-lib/_states';
+import {
+  CardContent,
+  CardFooter
+} from 'pages-lib/_components/card';
 import * as Yup from 'yup';
 
 const UpdateForm = ({
@@ -51,7 +56,7 @@ const UpdateForm = ({
       onSubmit={onSaveProfile}
     >
       <Form>
-        <div className="border-t border-gray-200 px-4 py-5 sm:px-6">
+        <CardContent>
           <div className="grid grid-cols-6 gap-6">
             <div className="col-span-6 sm:col-span-3">
               <FormTextInput
@@ -109,8 +114,8 @@ const UpdateForm = ({
               />
             </div>
           </div>
-        </div>
-        <div className="px-4 py-3 bg-gray-50 sm:px-6 text-right">
+        </CardContent>
+        <CardFooter className="text-right">
           <Transition
             show={isError}
             enter="transition duration-150 ease-out"
@@ -126,33 +131,24 @@ const UpdateForm = ({
           </Transition>
 
           <div>
-            <button onClick={onCancelUpdate} className="inline-flex justify-center py-2 px-4 border border-gray-300 text-gray-700 bg-white hover:bg-gray-50 shadow-sm text-sm font-medium rounded-md text-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500">
+            <Button
+              color="white"
+              size="base"
+              onClick={onCancelUpdate}
+            >
               Cancel
-          </button>
-            <button
+          </Button>
+            <Button
               type="submit"
-              className="ml-2 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-orange-500 hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500">
-              <Transition
-                show={isLoading}
-                enter="transition duration-150 ease-out"
-                enterFrom="opacity-0"
-                enterTo="opacity-100"
-                leave="transition duration-150 ease-in"
-                leaveFrom="opacity-100"
-                leaveTo="opacity-0"
-              >
-                {(ref) => (
-                  <svg ref={ref} className="animate-spin -ml-1 mr-3 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx={12} cy={12} r={10} stroke="currentColor" strokeWidth={4} />
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
-                  </svg>
-                )}
-              </Transition>
-            Save
-          </button>
+              color="primary"
+              size="base"
+              loading={isLoading}
+              className="ml-2"
+            >
+              Save
+            </Button>
           </div>
-
-        </div>
+        </CardFooter>
       </Form>
     </Formik>
   )

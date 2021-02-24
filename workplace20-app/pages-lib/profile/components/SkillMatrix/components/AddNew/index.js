@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
+import Button from 'pages-lib/_components/Button';
 import SelectBox from 'pages-lib/_components/SelectBox';
 
 const AddNew = ({
@@ -38,12 +39,23 @@ const AddNew = ({
         </div>
       </div>
       <div className="mt-4 flex items-center w-full">
-        <button onClick={onCancel} className="px-4 py-2 border border-gray-300 text-gray-700 bg-white hover:bg-gray-50 shadow-sm text-sm font-medium rounded-md focus:outline-none focus:ring-1 focus:ring-orange-500 focus:border-orange-500">
+        <Button
+          color="white"
+          size="base"
+          onClick={onCancel}
+        >
           Cancel
-      </button>
-        <button onClick={handleTakeChallenge} className="ml-2 px-4 py-2 border-transparent text-white bg-orange-500 disabled:bg-orange-500 disabled:opacity-50 disabled:cursor-not-allowed bg-orange-500 hover:bg-orange-600 shadow-sm text-sm font-medium rounded-md focus:outline-none focus:ring-1 focus:ring-orange-500 focus:border-orange-500" disabled={!skill}>
+            </Button>
+        <Button
+          type="submit"
+          color="primary"
+          size="base"
+          onClick={handleTakeChallenge}
+          disabled={!skill}
+          className="ml-2"
+        >
           Take Challenge
-        </button>
+        </Button>
       </div>
     </div>
 

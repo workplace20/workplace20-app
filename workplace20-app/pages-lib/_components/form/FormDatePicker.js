@@ -1,3 +1,4 @@
+import classnames from 'classnames';
 import DatePicker from "react-datepicker";
 import { useField } from 'formik';
 
@@ -23,7 +24,13 @@ const FormDatePicker = ({ label, ...props }) => {
         {...props}
         selected={field.value !== '' ? field.value : null}
         onChange={onChangeDate}
-        className={`mt-1 ${isError ? 'focus:outline-none focus:ring-red-500 focus:border-red-500 border-red-300' : 'focus:ring-orange-500 focus:border-orange-500 border-gray-300'} block w-full shadow-sm sm:text-sm  rounded-md`}
+        className={classnames(
+          'mt-1 block w-full shadow-sm sm:text-sm rounded-md',
+          {
+            'focus:outline-none focus:ring-red-500 focus:border-red-500 border-red-300': isError,
+            'focus:ring-orange-500 focus:border-orange-500 border-gray-300': !isError
+          }
+        )}
       />
       { helpText && <p class="mt-2 text-sm text-gray-500">{helpText}</p> }
       { isError && <p class="mt-2 text-sm text-red-600" id="email-error">{meta.error}</p> }

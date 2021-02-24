@@ -1,3 +1,4 @@
+import classnames from 'classnames';
 import { useField } from 'formik';
 
 const FormTextInput = ({ label, ...props }) => {
@@ -12,7 +13,14 @@ const FormTextInput = ({ label, ...props }) => {
         <textarea 
         {...field}
         {...props}
-        className={`shadow-sm ${isError ? 'focus:outline-none focus:ring-red-500 focus:border-red-500 border-red-300' : 'focus:ring-orange-500 focus:border-orange-500 border-gray-300'} block w-full sm:text-sm rounded-md`} />
+        className={classnames(
+          'shadow-sm block w-full sm:text-sm rounded-md',
+          {
+            'focus:outline-none focus:ring-red-500 focus:border-red-500 border-red-300': isError,
+            'focus:ring-orange-500 focus:border-orange-500 border-gray-300': !isError
+          }
+        )}
+      />
       </div>
       { helpText && <p class="mt-2 text-sm text-gray-500">{helpText}</p> }
       { isError &&  <p class="mt-2 text-sm text-red-600" id="email-error">{meta.error}</p> }
