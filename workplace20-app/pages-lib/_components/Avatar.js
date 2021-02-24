@@ -1,11 +1,18 @@
 import classnames from 'classnames';
 
+const sizeStyles = {
+  xs: 'h-8 w-8',
+  sm: 'h-12 w-12',
+  base: 'h-16 w-16',
+  lg: 'h-20 w-20',
+  xl: 'h-24 w-24'
+}
 const Avatar = ({
   image,
-  size
+  size = 'base'
 }) => {
   if (image) {
-    return (<img className={classnames('mx-auto rounded-full', `h-${size} w-${size}`)} src={image} alt="avatar" />)
+    return (<img className={classnames('mx-auto rounded-full', sizeStyles[size])} src={image} alt="avatar" />)
   } else {
     return (
       <span className={classnames('inline-block rounded-full overflow-hidden bg-gray-100', `h-${size} w-${size}`)}>

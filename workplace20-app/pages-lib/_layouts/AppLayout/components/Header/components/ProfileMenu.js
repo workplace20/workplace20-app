@@ -21,7 +21,7 @@ const ProfileMenu = () => {
           <span className="sr-only">Open user menu</span>
           <Avatar 
             image={session?.user?.image}
-            size={8}
+            size="xs"
           />
         </button>
       </div>
