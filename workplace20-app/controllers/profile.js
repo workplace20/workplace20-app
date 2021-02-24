@@ -26,6 +26,7 @@ export class Profile {
 
         const {
             name,
+			skype,
             dateOfBirth,
             phoneNumber,
             yearOfExperience,
@@ -44,6 +45,9 @@ export class Profile {
             }
         }
 
+        if (skype) {
+            updater.skype = skype
+        }
         if (name) {
             updater.name = name
         }
