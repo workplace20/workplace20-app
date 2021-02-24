@@ -7,18 +7,15 @@ import {
 
 const Profile = () => {
   return (
-    <>
-      <h1 className="sr-only">Profile</h1>
-      <div className="grid grid-cols-1 gap-4 items-start lg:grid-cols-3 lg:gap-8">
-        <div className="grid grid-cols-1 gap-4 lg:col-span-2">
-          <ProfileOverview />
-          <PersonalInformation />
-        </div>
-        <div className="grid grid-cols-1 gap-4">
-          <SkillMatrix />
-        </div>
+    <div className="grid grid-cols-1 gap-4 items-start lg:grid-cols-3 lg:gap-8">
+      <div className="grid grid-cols-1 gap-4 lg:col-span-2">
+        <ProfileOverview />
+        <PersonalInformation />
       </div>
-    </>
+      <div className="grid grid-cols-1 gap-4">
+        <SkillMatrix />
+      </div>
+    </div>
   )
 }
 

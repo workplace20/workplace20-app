@@ -1,3 +1,6 @@
+import classnames from 'classnames';
+import { H1 } from 'pages-lib/_components/typography';
+
 const answerOptionLetters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
 
 const Question = ({
@@ -20,10 +23,10 @@ const Question = ({
     <div className="mx-auto xl:grid xl:grid-cols-2">
       <div className="xl:col-span-1 xl:pr-8 xl:border-r xl:border-gray-200 py-4">
         <div>
-          <h2 className="text-2xl font-medium text-gray-900">
+          <H1>
             {question}
-          </h2>
-          <QuestionInstruction questionKind={kind}/>
+          </H1>
+          <QuestionInstruction questionKind={kind} />
         </div>
       </div>
       <div className="xl:pl-8 py-4">
@@ -32,13 +35,20 @@ const Question = ({
             {
               options.map((option, index) => {
                 const { id, value } = option || {};
+                const isAnswer = answers && answers.includes(id);
+
                 return (
                   <li key={`question-${questionId}-option-${id}`}>
-                    <button onClick={handleAnswer(id)} className={`${answers && answers.includes(id) ? 'bg-orange-100': 'hover:bg-orange-50'} block focus:outline-none`}>
+                    <button onClick={handleAnswer(id)} className={classnames(
+                      'block focus:outline-none',
+                      {
+                        'bg-orange-100': isAnswer,
+                        'hover:bg-orange-50': !isAnswer
+                      })}>
                       <div className="px-4 py-8 sm:px-6">
                         <div className="flex items-center justify-between">
                           <p className="text-xl font-medium text-gray-600 text-left">
-                           { value }
+                            {value}
                           </p>
                           <div className="ml-4 flex-shrink-0 flex">
                             <p className="px-2 inline-flex text-lg leading-5 font-semibold rounded-full bg-orange-300 text-white">
@@ -79,17 +89,17 @@ const getSignleOptionAnswer = (answers) => (answerId) => {
 const getMultipleOptionAnswer = (answers) => (answerId) => {
   if (!answers.includes(answerId)) {
     return [...answers, answerId];
-  } 
+  }
 
   return answers.filter(answer => answer !== answerId);
 }
 
-const QuestionInstruction = ({questionKind}) => {
+const QuestionInstruction = ({ questionKind }) => {
   const instructions = {
     options: "You can select only one option.",
     multiOptions: "You can select multiple options."
-  } ;
-  
+  };
+
   return (
     <p className="text-xl font-base text-gray-700 mt-2">{instructions[questionKind] || ''}</p>
   )

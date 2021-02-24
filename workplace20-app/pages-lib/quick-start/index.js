@@ -1,3 +1,4 @@
+import classnames from 'classnames';
 import { withEmptyLayout } from 'pages-lib/_layouts';
 import { useState } from 'react';
 import Redirect from 'pages-lib/_components/Redirect';
@@ -42,9 +43,9 @@ const QuickStart = () => {
                   </svg>
                 </div>
                 <div className="ml-3">
-                  <h3 className="text-sm text-red-700">
+                  <p className="text-sm text-red-700">
                     Something went wrong while saving your selection.
-              </h3>
+                  </p>
                 </div>
               </div>
             </div>
@@ -55,21 +56,33 @@ const QuickStart = () => {
             isLoading && (<LoadingPage />)
           }
           <div
-            className={`${profileKind === 'creator' ? 'bg-orange-200' : 'hover:bg-orange-100 hover:shadow-lg hover:border-transparent'} border border-gray-200 rounded-lg shadow-sm divide-y divide-gray-200 cursor-pointer`}
+            className={classnames(
+              'border border-gray-200 rounded-lg shadow-sm divide-y divide-gray-200 cursor-pointer',
+              {
+                'bg-orange-200': profileKind === 'creator',
+                'hover:bg-orange-100 hover:shadow-lg hover:border-transparent': profileKind !== 'creator',
+              }
+            )}
             onClick={handleUserKindSelect('creator')}
           >
             <div className="p-6">
-              <h2 className="text-3xl leading-6 font-bold text-gray-900">Creator</h2>
-              <p className="mt-4 text-sm text-gray-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elementum facilisis leo vel fringilla est ullamcorper. Amet cursus sit amet dictum sit amet justo donec.</p>
+              <dt className="text-3xl leading-6 font-bold text-gray-900">Creator</dt>
+              <dd className="mt-4 text-sm text-gray-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elementum facilisis leo vel fringilla est ullamcorper. Amet cursus sit amet dictum sit amet justo donec.</dd>
             </div>
           </div>
           <div
-            className={`${profileKind === 'business' ? 'bg-orange-200' : 'hover:bg-orange-100 hover:shadow-lg hover:border-transparent'} border border-gray-200 rounded-lg shadow-sm divide-y divide-gray-200 cursor-pointer`}
+            className={classnames(
+              'border border-gray-200 rounded-lg shadow-sm divide-y divide-gray-200 cursor-pointer',
+              {
+                'bg-orange-200': profileKind === 'business',
+                'hover:bg-orange-100 hover:shadow-lg hover:border-transparent': profileKind !== 'business',
+              }
+            )}
             onClick={handleUserKindSelect('business')}
           >
             <div className="p-6">
-              <h2 className="text-3xl leading-6 font-bold text-gray-900">Business</h2>
-              <p className="mt-4 text-sm text-gray-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Congue mauris rhoncus aenean vel elit. Sit amet mauris commodo quis imperdiet massa tincidunt nunc.</p>
+              <dt className="text-3xl leading-6 font-bold text-gray-900">Business</dt>
+              <dd className="mt-4 text-sm text-gray-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Congue mauris rhoncus aenean vel elit. Sit amet mauris commodo quis imperdiet massa tincidunt nunc.</dd>
             </div>
           </div>
         </div>

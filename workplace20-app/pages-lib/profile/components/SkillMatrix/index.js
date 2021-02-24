@@ -3,6 +3,14 @@ import {
   useQuerySkillLevelList,
   useQueryProfile
 } from 'pages-lib/_states';
+import { 
+  Card, 
+  CardHeader, 
+  CardContent, 
+  CardFooter 
+} from 'pages-lib/_components/card';
+import { H3 } from 'pages-lib/_components/typography';
+import Button from 'pages-lib/_components/Button';
 import { Transition } from '@headlessui/react';
 import { useState } from 'react';
 import {
@@ -41,8 +49,8 @@ const SkillMatrix = () => {
   const canAddNewSkill = availableNewSkills && availableNewSkills.length > 0;
 
   return (
-    <section aria-labelledby="recent-hires-title" >
-      <div className="rounded-lg bg-white overflow-hidden shadow">
+    <Card>
+      <CardHeader>
         <Transition
           show={addingSkill && canAddNewSkill}
           enter="transition duration-150 ease-out"
@@ -50,7 +58,7 @@ const SkillMatrix = () => {
           enterTo="opacity-100"
         >
           {(ref) => (
-            <div ref={ref} className="px-4 py-5 sm:px-6">
+            <div ref={ref}>
               <AddNew
                 availableSkills={availableNewSkills}
                 onCancel={() => setAddingSkill(false)}
@@ -66,74 +74,84 @@ const SkillMatrix = () => {
           enterTo="opacity-100"
         >
           {(ref) => (
-            <div ref={ref} className="px-4 py-5 sm:px-6 flex items-center justify-between flex-wrap sm:flex-nowrap">
-              <h2 className="text-lg leading-6 font-medium text-gray-900">Skills</h2>
+            <div ref={ref} className="w-full flex items-center justify-between">
+              <H3 >Skills</H3>
               {
                 canAddNewSkill && (
-                  <button onClick={() => setAddingSkill(true)} className="px-4 py-2 border border-gray-300 text-gray-700 bg-white hover:bg-gray-50 shadow-sm text-sm font-medium rounded-md focus:outline-none focus:ring-1 focus:ring-orange-500 focus:border-orange-500">
+                  <Button
+                    type="submit"
+                    color="secondary"
+                    size="base"
+                    onClick={() => setAddingSkill(true)}
+                  >
                     Add More
-                  </button>
+                  </Button>
                 )
               }
             </div>
           )}
         </Transition>
-        <Transition
-          show={isLoading}
-          enter="transition duration-150 ease-out"
-          enterFrom="opacity-0"
-          enterTo="opacity-100"
-        >
-          {(ref) => (
-            <div ref={ref}>
-              <Loading />
-            </div>
-          )}
-        </Transition>
-        <Transition
-          show={isLoadingError}
-          enter="transition duration-150 ease-out"
-          enterFrom="opacity-0"
-          enterTo="opacity-100"
-        >
-          {(ref) => (
-            <div ref={ref}>
-              <Error />
-            </div>
-          )}
-        </Transition>
-        <Transition
-          show={!isLoading && !isLoadingError}
-          enter="transition duration-150 ease-out"
-          enterFrom="opacity-0"
-          enterTo="opacity-100"
-        >
-          {(ref) => (
-            <div ref={ref}>
-              <div className="border-t border-gray-200 px-4 py-5 sm:px-6">
-                {
-                  isProfileSkillsEmpty ? (
-                    <p className="text-base text-gray-500">
-                      You can showcase more skills to employers and taking more of our challenges to upgrade your level
-                    </p>
+      </CardHeader>
 
-                  ) : (
-                      <SkillList
-                        profileSkills={profileSkills}
-                      />
-                    )
-                }
-              </div>
-              <div class="px-4 py-3 bg-gray-50 sm:px-6">
-                <SkillDefinition
-                  allSkillLevels={allSkillLevels}
-                />
-              </div>
-            </div>
-          )}
-        </Transition>
-      </div>
-    </section >
+      <Transition
+        show={isLoading}
+        enter="transition duration-150 ease-out"
+        enterFrom="opacity-0"
+        enterTo="opacity-100"
+      >
+        {(ref) => (
+          <div ref={ref}>
+            <CardContent>
+              <Loading />
+            </CardContent>
+          </div>
+        )}
+      </Transition>
+      <Transition
+        show={isLoadingError}
+        enter="transition duration-150 ease-out"
+        enterFrom="opacity-0"
+        enterTo="opacity-100"
+      >
+        {(ref) => (
+          <div ref={ref}>
+            <CardContent>
+              <Error />
+            </CardContent>
+          </div>
+        )}
+      </Transition>
+      <Transition
+        show={!isLoading && !isLoadingError}
+        enter="transition duration-150 ease-out"
+        enterFrom="opacity-0"
+        enterTo="opacity-100"
+      >
+        {(ref) => (
+          <div ref={ref}>
+            <CardContent>
+              {
+                isProfileSkillsEmpty ? (
+                  <p className="text-base text-gray-500">
+                    You can showcase more skills to employers and taking more of our challenges to upgrade your level
+                  </p>
+
+                ) : (
+                    <SkillList
+                      profileSkills={profileSkills}
+                    />
+                  )
+              }
+            </CardContent>
+            <CardFooter>
+              <SkillDefinition
+                allSkillLevels={allSkillLevels}
+              />
+            </CardFooter>
+          </div>
+        )}
+      </Transition>
+    </Card>
   )
 }
 

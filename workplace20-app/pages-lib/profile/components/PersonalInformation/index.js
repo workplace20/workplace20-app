@@ -1,9 +1,16 @@
 import { useQueryProfile } from 'pages-lib/_states';
-import { 
+import { H3 } from 'pages-lib/_components/typography';
+import {
   UpdateForm,
   PersonalInformationView,
   Loading,
 } from './components';
+import {
+  Card,
+  CardHeader,
+  CardContent
+} from 'pages-lib/_components/card';
+import Button from 'pages-lib/_components/Button';
 import { Transition } from '@headlessui/react';
 import { useState } from "react";
 
@@ -16,93 +23,103 @@ const PersonalInformation = () => {
   const handleCancelUpdate = () => setIsUpdating(false);
 
   return (
-    <section aria-labelledby="applicant-information-title">
-      <div className="rounded-lg bg-white overflow-hidden shadow">
-        <div className="px-4 py-5 sm:px-6 flex items-center justify-between flex-wrap sm:flex-nowrap">
-          <h3 className="py-2 text-lg leading-6 font-medium text-gray-900">
-            Personal Information
-          </h3>
-          <Transition
-            show={!isUpdating && !isLoading}
-            enter="transition duration-150 ease-out"
-            enterFrom="opacity-0"
-            enterTo="opacity-100"
-            leave="transition duration-150 ease-in"
-            leaveFrom="opacity-100"
-            leaveTo="opacity-0"
-          >
-            {(ref) => (
-              <button ref={ref} onClick={handleStartUpdate} type="button" className="px-4 py-2 border border-gray-300 text-gray-700 bg-white hover:bg-gray-50 shadow-sm text-sm font-medium rounded-md focus:outline-none focus:ring-1 focus:ring-orange-500 focus:border-orange-500">
+    <Card>
+      <CardHeader>
+        <H3 className="py-2">
+          Personal Information
+        </H3>
+        <Transition
+          show={!isUpdating && !isLoading}
+          enter="transition duration-150 ease-out"
+          enterFrom="opacity-0"
+          enterTo="opacity-100"
+          leave="transition duration-150 ease-in"
+          leaveFrom="opacity-100"
+          leaveTo="opacity-0"
+        >
+          {(ref) => (
+            <div ref={ref}>
+              <Button
+                color="secondary"
+                size="base"
+                onClick={handleStartUpdate}
+              >
                 Update
-              </button>
-            )}
-          </Transition>
-        </div>
+              </Button>
+            </div>
+          )}
+        </Transition>
+      </CardHeader>
 
-        <Transition
-          show={isError}
-          enter="transition duration-150 ease-out"
-          enterFrom="opacity-0"
-          enterTo="opacity-100"
-          leave="transition duration-150 ease-in"
-          leaveFrom="opacity-100"
-          leaveTo="opacity-0"
-        >
-          {(ref) => (
-            <div ref={ref} className="text-center border-t border-gray-200 px-4 py-5 sm:px-6">
+      <Transition
+        show={isError}
+        enter="transition duration-150 ease-out"
+        enterFrom="opacity-0"
+        enterTo="opacity-100"
+        leave="transition duration-150 ease-in"
+        leaveFrom="opacity-100"
+        leaveTo="opacity-0"
+      >
+        {(ref) => (
+          <div ref={ref} >
+            <CardContent className="text-center">
               <p class="text-sm text-red-600 my-2" id="email-error">Something went wrong on loading profile</p>
-            </div>
-          )}
-        </Transition>
+            </CardContent>
+          </div>
+        )}
+      </Transition>
 
-        <Transition
-          show={isLoading}
-          enter="transition duration-150 ease-out"
-          enterFrom="opacity-0"
-          enterTo="opacity-100"
-          leave="transition duration-150 ease-in"
-          leaveFrom="opacity-100"
-          leaveTo="opacity-0"
-        >
-          {(ref) => (
-            <div ref={ref}>
+      <Transition
+        show={isLoading}
+        enter="transition duration-150 ease-out"
+        enterFrom="opacity-0"
+        enterTo="opacity-100"
+        leave="transition duration-150 ease-in"
+        leaveFrom="opacity-100"
+        leaveTo="opacity-0"
+      >
+        {(ref) => (
+          <div ref={ref} >
+            <CardContent>
               <Loading />
-            </div>
-          )}
-        </Transition>
+            </CardContent>
+          </div>
+        )}
+      </Transition>
 
-        <Transition
-          show={!isUpdating && !isLoading && !isError}
-          enter="transition duration-150 ease-out"
-          enterFrom="opacity-0"
-          enterTo="opacity-100"
-        >
-          {(ref) => (
-            <div ref={ref}>
+      <Transition
+        show={!isUpdating && !isLoading && !isError}
+        enter="transition duration-150 ease-out"
+        enterFrom="opacity-0"
+        enterTo="opacity-100"
+      >
+        {(ref) => (
+          <div ref={ref}>
+            <CardContent >
               <PersonalInformationView
                 profile={profile}
               />
-            </div>
-          )}
-        </Transition>
+            </CardContent>
+          </div>
+        )}
+      </Transition>
 
-        <Transition
-          show={isUpdating && !isLoading && !isError}
-          enter="transition duration-150 ease-out"
-          enterFrom="opacity-0"
-          enterTo="opacity-100"
-        >
-          {(ref) => (
-            <div ref={ref}>
-              <UpdateForm
-                profile={profile}
-                onCancelUpdate={handleCancelUpdate}
-              />
-            </div>
-          )}
-        </Transition>
-      </div>
-    </section >
+      <Transition
+        show={isUpdating && !isLoading && !isError}
+        enter="transition duration-150 ease-out"
+        enterFrom="opacity-0"
+        enterTo="opacity-100"
+      >
+        {(ref) => (
+          <div ref={ref}>
+            <UpdateForm
+              profile={profile}
+              onCancelUpdate={handleCancelUpdate}
+            />
+          </div>
+        )}
+      </Transition>
+    </Card>
   )
 }
 

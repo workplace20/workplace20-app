@@ -1,4 +1,5 @@
-import { 
+import classnames from 'classnames';
+import {
   useQueryIsMobileMenuOpened,
   useMutateOpenMobileMenu
 } from 'pages-lib/_layouts/AppLayout/states';
@@ -15,22 +16,34 @@ const MobileMenuButton = () => {
         onClick={handleOpenMenuClick}
       >
         <span className="sr-only">Open main menu</span>
-          {/*
+        {/*
             Heroicon name: menu
 
             Menu open: "hidden", Menu closed: "block"
           */}
-          <svg className={`${isOpened ? 'block' : 'hidden'} h-6 w-6`} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-          </svg>
-          {/*
+        <svg className={classnames(
+          'h-6 w-6',
+          {
+            'block': isOpened,
+            'hidden': !isOpened
+          }
+        )} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+        </svg>
+        {/*
             Heroicon name: x
 
             Menu open: "block", Menu closed: "hidden"
           */}
-          <svg className={`${isOpened ? 'hidden' : 'block'} h-6 w-6`} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
+        <svg className={classnames(
+          'h-6 w-6',
+          {
+            'hidden': isOpened,
+            'block': !isOpened
+          }
+        )} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
       </button>
     </>
   )

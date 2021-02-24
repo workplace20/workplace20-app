@@ -15,7 +15,7 @@ const PersonalInformationView = ({
   } = profile;
 
   return (
-    <div className="border-t border-gray-200 px-4 py-5 sm:px-6">
+    <>
       <dl className="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
         <div className="sm:col-span-1">
           <Field
@@ -66,7 +66,7 @@ const PersonalInformationView = ({
           />
         </div>
       </dl>
-    </div>
+    </>
   )
 }
 
