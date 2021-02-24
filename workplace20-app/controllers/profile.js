@@ -87,10 +87,6 @@ export class Profile {
     }
 
     async _getProfile() {
-        if (this.profile) {
-            return this.profile
-        }
-
         this.profile = await this.collection.findOne({
             email: this.email
         })
