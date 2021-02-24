@@ -19,15 +19,22 @@ export class Profile {
 
     async update(data) {
 
-        const updater = {};
+        let updater = {};
         const errors = [];
 
         let profile = await this._getProfile()
 
-        updater = {}
+        const {
+            name,
+            dateOfBirth,
+            phoneNumber,
+            yearOfExperience,
+            address,
+            about
+        } = data;
 
         if (!profile.kind) {
-			// we only change kind one time
+            // we only change kind one time
             if (kind && ['business', 'creator'].indexOf(kind) >= 0) {
                 updater.kind = kind
             } else {
@@ -40,18 +47,18 @@ export class Profile {
         if (name) {
             updater.name = name
         }
-        if (birthday) {
-            updater.birthday = birthdate
+        if (dateOfBirth) {
+            updater.dateOfBirth = dateOfBirth
         }
 
-        if (phone) {
-            updater.phone = phone
+        if (phoneNumber) {
+            updater.phoneNumber = phoneNumber
         }
         if (yearOfExperience) {
             updater.yearOfExperience = yearOfExperience
         }
-        if (location) {
-            updater.location = location
+        if (address) {
+            updater.address = address
         }
 
         if (about) {
@@ -62,7 +69,7 @@ export class Profile {
             [null, error]
         }
 
-        await profileCollection.updateOne({
+        await this.collection.updateOne({
             email: this.email
         }, {
             $set: updater

@@ -1,7 +1,11 @@
 import dbhelper from 'lib/database';
 import authCheck from 'lib/auth-checker'
-import { getSession } from 'next-auth/client';
-import {Profile} from 'controllers/profile'
+import {
+    getSession
+} from 'next-auth/client';
+import {
+    Profile
+} from 'controllers/profile'
 
 export default async function handler(req, res) {
     switch (req.method) {
@@ -19,9 +23,13 @@ export default async function handler(req, res) {
 }
 
 async function handleGet(req, res) {
-    const session = await getSession({ req });
+    const session = await getSession({
+        req
+    });
     const profileCollection = await dbhelper.collectionFor('profiles');
-    const loggedProfile = await profileCollection.findOne({ email: session.user.email }, projectionIgnoreIdField)
+    const loggedProfile = await profileCollection.findOne({
+        email: session.user.email
+    }, projectionIgnoreIdField)
 
 
     if (loggedProfile) {
@@ -34,24 +42,30 @@ async function handleGet(req, res) {
 }
 
 async function handlePut(req, res) {
-    const session = await getSession({ req })
+    const session = await getSession({
+        req
+    })
 
     const profileCollection = await dbhelper.collectionFor('profiles')
 
-	const profileCtr = new Profile(profileCollection,session.user.email)
+    const profileCtr = new Profile(profileCollection, session.user.email)
 
-	const [profile ,error]=await profileCtr.update(req.body)
+    const [profile, error] = await profileCtr.update(req.body)
 
-	if(error){
-		res.status(400).send(error)
-		return
-	}
+    if (error) {
+        res.status(400).send(error)
+        return
+    }
 
     res.status(200).send(profile);
 }
 
 // No need return _id of document to client in this api
-const projectionIgnoreIdField = { projection: { '_id': 0 } }
+const projectionIgnoreIdField = {
+    projection: {
+        '_id': 0
+    }
+}
 
 /* BELOW IS PROFILE MODEL */
 const profileModel = {
