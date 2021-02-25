@@ -1,6 +1,10 @@
 import authCheck from 'lib/auth-checker';
 import dbhelper from 'lib/database';
 import {
+    ValidationError,
+    Create
+} from 'lib/error'
+import {
     getSession
 } from 'next-auth/client';
 import {
@@ -27,6 +31,7 @@ async function handleGet(req, res) {
         req
     })
 
+    let validatorError = Create(res)
 
     const challengeCollection = await dbhelper.collectionFor('challenges')
     const challengeDomain = new Challenge(challengeCollection)
@@ -37,14 +42,14 @@ async function handleGet(req, res) {
     const profile = await profileDomain.Get()
 
     if (!profile) {
-        res.status(400).send('Profile not found')
+        validatorError.endWith( 400, 'Profile not found')
         return
     }
 
-    const [nextChallenge,error] = await profileDomain.getNextLevelOf(challengeId)
+    const [nextChallenge, error] = await profileDomain.getNextLevelOf(challengeId)
 
-    if(error){ 
-        res.status(400).send(error)
+    if (error) {
+        validatorError.endWith( 400, error)
         return
     }
 
@@ -57,6 +62,6 @@ async function handleGet(req, res) {
         res.status(200).send(challenge)
         return
     }
-    res.status(404).send('Not found')
-}
 
+    validatorError.endWith( 404, 'Not found')
+}

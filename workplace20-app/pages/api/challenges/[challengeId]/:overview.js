@@ -7,6 +7,10 @@ import {
 import skillList from '_data/skill.json'
 import challengeList from '_data/challenges.json'
 import {
+    ValidationError,
+    Create
+} from 'lib/error'
+import {
     Profile
 } from 'controllers/profile'
 const log = debug('challanges/:overview')
@@ -29,8 +33,12 @@ async function handleGet(req, res) {
         req
     })
 
+
+    let validatorError = Create(res)
+
     if (!challengeId) {
-        res.status(400).send('Invalid challenge code')
+
+		validatorError.endWith(400,'Invalid challenge code')
         return
     }
 
@@ -44,7 +52,7 @@ async function handleGet(req, res) {
     ] = await profile.getNextLevelOf(challengeId)
 
     if (error) {
-        res.status(400).send(error)
+		validatorError.endWith(400,error)
         return
     }
 

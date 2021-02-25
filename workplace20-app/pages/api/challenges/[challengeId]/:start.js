@@ -12,6 +12,10 @@ import {
     Challenge
 } from 'controllers/challenge'
 
+import {
+    ValidationError,
+    Create
+} from 'lib/error'
 const log = debug('challanges/:start')
 
 export default async function handler(req, res) {
@@ -41,8 +45,10 @@ async function handlePost(req, res) {
         req
     })
 
+	let validatorError = Create(res)
+
     if (!challengeId) {
-        res.status(400).send('Invalid challenge code')
+		validatorError.endWith(400,'Invalid challenge code')
         return
     }
 
@@ -56,7 +62,7 @@ async function handlePost(req, res) {
     ] = await profileDomain.getNextLevelOf(challengeId)
 
     if (error) {
-        res.status(400).send(error)
+		validatorError.endWith(400,error)
         return
     }
 
@@ -66,8 +72,7 @@ async function handlePost(req, res) {
     const [challenged, startError]= await challengeDomain.start(session.user.email, challengeOrigin)
     
     if(startError){ 
-
-        res.status(400).send(startError)
+		validatorError.endWith(400,startError)
         return
     }
     // clean answers for user
