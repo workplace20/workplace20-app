@@ -6,7 +6,7 @@ import Logo from 'pages-lib/_components/Logo';
 import { Transition } from '@headlessui/react';
 
 const MarketingLayout = ({ children }) => {
-	const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div>
@@ -14,7 +14,7 @@ const MarketingLayout = ({ children }) => {
         <title>Workspace20 - Developers ready for remote jobs in Viet Nam</title>
         <link rel="icon" href="/favicon.ico" />
         <Fragment>
-      {/* Google Tag */}
+          {/* Google Tag */}
 
           <script dangerouslySetInnerHTML={{
             __html: `
@@ -26,7 +26,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             `,
           }}
           />
-      {/* Google Tag */}
+          {/* Google Tag */}
 
         </Fragment>
         <Fragment>
@@ -39,7 +39,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </Head>
       {/* Google Tag */}
       <noscript>
-        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PKB227P" height={0} width={0} style={{display: 'none', visibility: 'hidden'}}></iframe>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PKB227P" height={0} width={0} style={{ display: 'none', visibility: 'hidden' }}></iframe>
       </noscript>
       {/* End google tag */}
       <div class="relative bg-white overflow-hidden">
@@ -76,9 +76,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 </div>
                 <div class="hidden md:absolute md:flex md:items-center md:justify-end md:inset-y-0 md:right-0">
                   <span class="inline-flex rounded-md shadow">
-                    <Link href="/api/auth/signin" className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50">
-                      Log in
-								    </Link>
+                    <Link href="/api/auth/signin">
+                      <a className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-orange-500 bg-white hover:bg-gray-50">
+                        Log in
+                      </a>
+                    </Link>
                   </span>
                 </div>
               </nav>
@@ -126,9 +128,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
                     </div>
                     <div role="none">
-                      <a href="https://app.workplace20.com" class="block w-full px-5 py-3 text-center font-medium text-indigo-600 bg-gray-50 hover:bg-gray-100" role="menuitem">
-                        Log in
+                      <Link href="/api/auth/signin">
+                        <a className="block w-full px-5 py-3 text-center font-medium text-orange-500 bg-gray-50 hover:bg-gray-100" role="menuitem">
+                          Log in
 										</a>
+                      </Link>
                     </div>
                   </div>
                 </div>
