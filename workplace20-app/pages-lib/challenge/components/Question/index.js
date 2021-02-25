@@ -40,7 +40,7 @@ const Question = ({
                 return (
                   <li key={`question-${questionId}-option-${id}`}>
                     <button onClick={handleAnswer(id)} className={classnames(
-                      'block focus:outline-none',
+                      'block focus:outline-none w-full',
                       {
                         'bg-orange-100': isAnswer,
                         'hover:bg-orange-50': !isAnswer

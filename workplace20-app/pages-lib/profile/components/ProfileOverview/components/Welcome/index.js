@@ -10,7 +10,7 @@ const Welcome = ({
         <div className="flex-shrink-0">
           <Avatar
             image={image}
-            size={20}
+            size="lg"
           />
         </div>
         <div className="mt-4 text-center sm:mt-0 sm:pt-1 sm:text-left">
