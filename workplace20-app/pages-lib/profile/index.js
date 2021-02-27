@@ -1,22 +1,17 @@
-import { withAppLayout } from 'pages-lib/_layouts';
-import {
-  ProfileOverview,
-  PersonalInformation,
-  SkillMatrix
-} from './components';
+import { PROFILE_KIND } from 'pages-lib/_utils/constants';
+import { useQueryProfileKind } from 'pages-lib/_states';
+import CreatorProfilePage from './creator';
+import BusinessProfilePage from './business';
+
 
 const Profile = () => {
-  return (
-    <div className="grid grid-cols-1 gap-4 items-start lg:grid-cols-3 lg:gap-8">
-      <div className="grid grid-cols-1 gap-4 lg:col-span-2">
-        <ProfileOverview />
-        <PersonalInformation />
-      </div>
-      <div className="grid grid-cols-1 gap-4">
-        <SkillMatrix />
-      </div>
-    </div>
-  )
+  const { data: profileKind } = useQueryProfileKind();
+  const profilePages = {
+    [PROFILE_KIND.creator]: <CreatorProfilePage />,
+    [PROFILE_KIND.business]: <BusinessProfilePage />
+  }
+
+  return profilePages[profileKind] || null;
 }
 
-export default withAppLayout(Profile);
+export default Profile;

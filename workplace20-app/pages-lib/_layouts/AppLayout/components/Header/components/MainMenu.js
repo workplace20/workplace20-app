@@ -1,10 +1,12 @@
 import classnames from 'classnames';
+import { useQueryProfileKind } from 'pages-lib/_states'
 import { useQueryMainMenuItems } from 'pages-lib/_layouts/AppLayout/states';
 import Link from "next/link";
 import { useRouter } from 'next/router'
 
 const MainMenu = () => {
-  const menuItems = useQueryMainMenuItems();
+  const { data: profileKind } = useQueryProfileKind();
+  const menuItems = useQueryMainMenuItems(profileKind);
   const router = useRouter();
 
   const isActive = (pathname) => router.pathname.startsWith(pathname);

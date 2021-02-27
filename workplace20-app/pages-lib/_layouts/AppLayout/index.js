@@ -2,14 +2,14 @@ import { usePrefetchSkillList } from 'pages-lib/_states';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Redirect from 'pages-lib/_components/Redirect';
-import { useQueryProfile } from 'pages-lib/_states';
+import { useQueryProfileKind } from 'pages-lib/_states';
 import LoadingPage from 'pages-lib/loading';
 import Error from 'next/error';
 
 const AppLayout = ({ children }) => {
   usePrefetchSkillList();
 
-  const { isLoading, isError, data: profile, error } = useQueryProfile();
+  const { isLoading, isError, data: profileKind, error } = useQueryProfileKind();
 
   if (isLoading) {
     return (<LoadingPage />)
@@ -19,7 +19,7 @@ const AppLayout = ({ children }) => {
     return (<Error statusCode={error.statusCode} />)
   }
 
-  if (!profile.kind) return (<Redirect to="/quick-start" />);
+  if (!profileKind) return (<Redirect to="/quick-start" />);
 
   return (
     <div className="min-h-screen bg-gray-100">

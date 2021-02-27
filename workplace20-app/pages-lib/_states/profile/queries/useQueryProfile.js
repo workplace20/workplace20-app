@@ -1,8 +1,7 @@
 import { useQuery } from 'react-query';
-import axiosWrapper from '../../axios-wrapper';
 import { queryProfileKey } from '../keys';
+import getProfile from './getProfile';
 
-const getProfile = () => axiosWrapper.get('/profiles');
 const useQueryProfile = () => useQuery(queryProfileKey, getProfile);
 
 export default useQueryProfile;

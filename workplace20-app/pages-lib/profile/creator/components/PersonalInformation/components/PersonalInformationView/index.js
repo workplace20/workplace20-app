@@ -1,4 +1,5 @@
 import formatDate from 'pages-lib/_utils/formatDate';
+import TextField from 'pages-lib/_components/TextField';
 
 const PersonalInformationView = ({
   profile = {}
@@ -18,49 +19,49 @@ const PersonalInformationView = ({
     <>
       <dl className="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
         <div className="sm:col-span-1">
-          <Field
+          <TextField
             label="Name"
             value={name}
           />
         </div>
         <div className="sm:col-span-1">
-          <Field
+          <TextField
             label="Email address"
             value={email}
           />
         </div>
         <div className="sm:col-span-1">
-          <Field
+          <TextField
             label="Birthday"
-            value={dateOfBirth ? formatDate(new Date(dateOfBirth)) : 'N/A'}
+            value={dateOfBirth && formatDate(new Date(dateOfBirth))}
           />
         </div>
         <div className="sm:col-span-1">
-          <Field
+          <TextField
             label="Phone Number"
             value={phoneNumber}
           />
         </div>
         <div className="sm:col-span-1">
-          <Field
+          <TextField
             label="Experience"
             value={`${yearOfExperience} years`}
           />
         </div>
         <div className="sm:col-span-1">
-          <Field
+          <TextField
             label="Skype"
             value={skype}
           />
         </div>
         <div className="sm:col-span-2">
-          <Field
+          <TextField
             label="Address"
             value={address}
           />
         </div>
         <div className="sm:col-span-2">
-          <Field
+          <TextField
             label="About"
             value={about}
           />
@@ -69,16 +70,5 @@ const PersonalInformationView = ({
     </>
   )
 }
-
-const Field = ({ label, value = 'N/A' }) => (
-  <>
-    <dt className="text-sm font-medium text-gray-500">
-      {label}
-    </dt>
-    <dd className="mt-1 text-sm text-gray-900">
-      {value}
-    </dd>
-  </>
-)
 
 export default PersonalInformationView;

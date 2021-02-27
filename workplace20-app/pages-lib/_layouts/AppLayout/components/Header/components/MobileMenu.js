@@ -1,3 +1,4 @@
+import { useQueryProfileKind } from 'pages-lib/_states';
 import { 
   useQueryMainMenuItems, 
   useQueryProfileMenuItems, 
@@ -9,7 +10,8 @@ import Link from "next/link";
 import { useSession } from 'next-auth/client';
 
 const MobileMenu = () => {
-  const menuItems = useQueryMainMenuItems();
+  const { data: profileKind } = useQueryProfileKind();
+  const menuItems = useQueryMainMenuItems(profileKind);
   const profileMenuItems = useQueryProfileMenuItems();
   const isOpened = useQueryIsMobileMenuOpened();
   const handleCloseMenuClick = useMutateCloseMobileMenu();

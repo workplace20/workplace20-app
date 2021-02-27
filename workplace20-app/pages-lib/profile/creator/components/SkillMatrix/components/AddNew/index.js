@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import Button from 'pages-lib/_components/Button';
-import SelectBox from 'pages-lib/_components/SelectBox';
 
 const AddNew = ({
   availableSkills,

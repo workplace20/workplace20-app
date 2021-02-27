@@ -1,23 +1,24 @@
 import classnames from 'classnames';
+import { PROFILE_KIND } from 'pages-lib/_utils/constants';
 import { withEmptyLayout } from 'pages-lib/_layouts';
 import { useState } from 'react';
 import Redirect from 'pages-lib/_components/Redirect';
 import LoadingPage from 'pages-lib/loading';
 import { useRouter } from 'next/router';
-import { useQueryProfile, useMutateProfileKind } from 'pages-lib/_states';
+import { useQueryProfileKind, useMutateProfileKind } from 'pages-lib/_states';
 
 const QuickStart = () => {
   const [profileKind, setProfileKind] = useState('');
 
   const router = useRouter();
-  const { data: profile, isLoading: loadingQueryProfile } = useQueryProfile();
+  const { data: profileKind, isLoading: loadingQueryProfile } = useQueryProfileKind();
   const { mutate, isLoading, isError } = useMutateProfileKind(() => router.push('/challenges/general'));
 
   if (loadingQueryProfile) {
     return (<LoadingPage />)
   }
 
-  if (profile?.kind) {
+  if (profileKind) {
     return (<Redirect to="/challenges/general" />);
   }
 
@@ -59,11 +60,11 @@ const QuickStart = () => {
             className={classnames(
               'border border-gray-200 rounded-lg shadow-sm divide-y divide-gray-200 cursor-pointer',
               {
-                'bg-orange-200': profileKind === 'creator',
-                'hover:bg-orange-100 hover:shadow-lg hover:border-transparent': profileKind !== 'creator',
+                'bg-orange-200': profileKind === PROFILE_KIND.creator,
+                'hover:bg-orange-100 hover:shadow-lg hover:border-transparent': profileKind !== PROFILE_KIND.creator,
               }
             )}
-            onClick={handleUserKindSelect('creator')}
+            onClick={handleUserKindSelect(PROFILE_KIND.creator)}
           >
             <div className="p-6">
               <dt className="text-3xl leading-6 font-bold text-gray-900">Creator</dt>
@@ -74,11 +75,11 @@ const QuickStart = () => {
             className={classnames(
               'border border-gray-200 rounded-lg shadow-sm divide-y divide-gray-200 cursor-pointer',
               {
-                'bg-orange-200': profileKind === 'business',
-                'hover:bg-orange-100 hover:shadow-lg hover:border-transparent': profileKind !== 'business',
+                'bg-orange-200': profileKind === PROFILE_KIND.business,
+                'hover:bg-orange-100 hover:shadow-lg hover:border-transparent': profileKind !== PROFILE_KIND.business,
               }
             )}
-            onClick={handleUserKindSelect('business')}
+            onClick={handleUserKindSelect(PROFILE_KIND.business)}
           >
             <div className="p-6">
               <dt className="text-3xl leading-6 font-bold text-gray-900">Business</dt>

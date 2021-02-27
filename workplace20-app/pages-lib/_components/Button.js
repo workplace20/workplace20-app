@@ -1,9 +1,9 @@
 import classnames from 'classnames';
 
 const typeClasses = {
-  primary: "border-transparent shadow-sm text-white bg-orange-500 hover:bg-orange-600 focus:ring-orange-500",
-  secondary: "border-orange-300 text-orange-700 bg-orange-50 hover:bg-orange-100 focus:ring-orange-500",
-  white: "border-gray-300 shadow-sm text-gray-700 bg-white hover:bg-gray-50 focus:ring-orange-500",
+  primary: "border-transparent shadow-sm text-white bg-orange-500 hover:bg-orange-600 ",
+  secondary: "border-orange-300 text-orange-700 bg-orange-50 hover:bg-orange-100",
+  white: "border-gray-300 shadow-sm text-gray-700 bg-white hover:bg-gray-50",
 };
 
 const sizeClasses = {
@@ -33,7 +33,7 @@ const Button = ({
   ...props
 }) => {
   var btnClass = classnames(
-    'inline-flex items-center border rounded focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed',
+    'inline-flex items-center border rounded focus:outline-none focus:ring-orange-500 focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed',
     className,
     typeClasses[color],
     sizeClasses[size],
