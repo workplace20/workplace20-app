@@ -7,6 +7,11 @@ import {
     Profile
 } from 'controllers/profile'
 
+import {
+    ValidationError,
+    Create
+} from 'lib/error'
+
 export default async function handler(req, res) {
     switch (req.method) {
         case 'GET':
@@ -52,8 +57,9 @@ async function handlePut(req, res) {
 
     const [profile, error] = await profileCtr.update(req.body)
 
+	let validatorError = Create(res)
     if (error) {
-        res.status(400).send(error)
+		validatorError.endWith(400,error)
         return
     }
 

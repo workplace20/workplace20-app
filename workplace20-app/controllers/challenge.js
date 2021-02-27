@@ -15,6 +15,9 @@ export class Challenge {
             return "Not found collection"
     }
 
+	async getQuestion(questionId,email){
+
+	}
     async getChallenge(challengeId, level, email) {
         const currentDate = new Date();
 

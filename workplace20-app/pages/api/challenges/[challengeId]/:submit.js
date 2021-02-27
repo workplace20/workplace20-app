@@ -9,6 +9,11 @@ import challengeList from '_data/challenges.json'
 const log = debug('challanges/:submit')
 
 import {
+    ValidationError,
+    Create
+} from 'lib/error'
+
+import {
     Profile
 } from 'controllers/profile'
 
@@ -34,8 +39,9 @@ async function handlePut(req, res) {
         req
     })
 
+	let validatorError = Create(res)
     if (!challengeId) {
-        res.status(400).send('Invalid challenge code')
+		validatorError.endWith(400,'Invalid challenge code')
         return
     }
 
@@ -54,8 +60,7 @@ async function handlePut(req, res) {
     ] = await profileDomain.getNextLevelOf(challengeId)
 
     if (error) {
-
-        res.status(400).send(error)
+		validatorError.endWith(400,error)
         return
     }
 
@@ -65,7 +70,7 @@ async function handlePut(req, res) {
     const [passed, submitError] = await challengeDomain.submit(challenge, session.user.email)
 
     if (submitError) {
-        res.status(400).send(submitError)
+		validatorError.endWith(400,submitError)
         return
     }
 

@@ -87,11 +87,11 @@ export class Profile {
     }
 
     async _getProfile() {
-        this.profile = await this.collection.findOne({
+        const profile = await this.collection.findOne({
             email: this.email
         })
 
-        return this.profile
+        return profile
     }
 
     async Get() {
@@ -143,6 +143,9 @@ export class Profile {
             return [null, 'Profile not found']
         }
 
+		if(challengeId=='general' && profile.generalChallengeCompleted){
+			return [null,'You have completed this challenge']
+		}
 
         let levelOfChallenge = profile.skillMatrix[challengeId]
 
