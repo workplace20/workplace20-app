@@ -1,3 +1,4 @@
+import { withAppLayout } from 'pages-lib/_layouts';
 import { withBusinessProfileLayout } from '../layouts';
 import { JobForm } from 'pages-lib/profile/business/_components';
 import { useQuerySkillList } from 'pages-lib/_states';
@@ -43,4 +44,4 @@ const EditJob = ({
   )
 }
 
-export default withBusinessProfileLayout(EditJob);
+export default withAppLayout(withBusinessProfileLayout(EditJob));

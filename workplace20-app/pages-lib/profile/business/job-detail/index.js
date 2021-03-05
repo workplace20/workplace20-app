@@ -1,3 +1,4 @@
+import { withAppLayout } from 'pages-lib/_layouts';
 import ReactMarkdown from 'react-markdown';
 import { useQueryJobDetail } from '../_states';
 import { withBusinessProfileLayout } from '../layouts';
@@ -107,4 +108,4 @@ const JobDetail = ({
   )
 }
 
-export default withBusinessProfileLayout(JobDetail);
+export default withAppLayout(withBusinessProfileLayout(JobDetail));

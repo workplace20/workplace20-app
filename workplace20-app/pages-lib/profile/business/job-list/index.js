@@ -1,3 +1,4 @@
+import { withAppLayout } from 'pages-lib/_layouts';
 import {
   JobFilter,
   JobList
@@ -17,4 +18,4 @@ const Job = () => {
   )
 }
 
-export default withBusinessProfileLayout(Job);
+export default withAppLayout(withBusinessProfileLayout(Job));

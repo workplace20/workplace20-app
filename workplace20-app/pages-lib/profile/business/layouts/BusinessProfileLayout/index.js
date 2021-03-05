@@ -1,4 +1,3 @@
-import { withAppLayout } from 'pages-lib/_layouts';
 import {
   ProfileOverview,
   SideBar,
@@ -22,4 +21,4 @@ const BusinessProfileLayout = ({ children }) => {
   )
 }
 
-export default withAppLayout(BusinessProfileLayout);
+export default BusinessProfileLayout;
