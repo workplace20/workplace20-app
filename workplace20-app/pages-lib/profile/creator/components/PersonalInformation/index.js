@@ -10,7 +10,7 @@ import {
   CardHeader,
   CardContent
 } from 'pages-lib/_components/card';
-import Button from 'pages-lib/_components/Button';
+import { Button } from 'pages-lib/_components/controls';
 import { Transition } from '@headlessui/react';
 import { useState } from "react";
 

@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import Avatar from 'pages-lib/_components/Avatar';
-import Button from 'pages-lib/_components/Button';
+import { Avatar } from 'pages-lib/_components/controls';
+import { Button } from 'pages-lib/_components/controls';
 
 const Welcome = ({
   image,

@@ -8,9 +8,9 @@ import {
   CardContent,
   CardFooter
 } from 'pages-lib/_components/card';
-import Button from 'pages-lib/_components/Button';
+import { Button } from 'pages-lib/_components/controls';
 import useIntersectionObserver from 'pages-lib/_hooks/useIntersectionObserver';
-import TextField from 'pages-lib/_components/TextField';
+import { TextField } from 'pages-lib/_components/controls';
 import { useQueryJobs } from '../../../_states';
 
 const JobList = () => {

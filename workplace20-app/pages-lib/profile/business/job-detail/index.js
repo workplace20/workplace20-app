@@ -10,9 +10,9 @@ import {
   CardContent,
   CardFooter,
 } from 'pages-lib/_components/card';
-import Button from 'pages-lib/_components/Button';
+import { Button } from 'pages-lib/_components/controls';
 import { H3 } from 'pages-lib/_components/typography';
-import TextField from 'pages-lib/_components/TextField';
+import { TextField } from 'pages-lib/_components/controls';
 import {
   Loading,
   Error

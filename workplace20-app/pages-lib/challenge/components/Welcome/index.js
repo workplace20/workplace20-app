@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Button from 'pages-lib/_components/Button';
+import { Button } from 'pages-lib/_components/controls';
 import {
   useQueryChallengeOverview,
   useMutateStartChallenge,

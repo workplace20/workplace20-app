@@ -1,4 +1,4 @@
-import TextField from 'pages-lib/_components/TextField';
+import { TextField } from 'pages-lib/_components/controls';
 
 const BusinessInformationView = ({
   profile = {}

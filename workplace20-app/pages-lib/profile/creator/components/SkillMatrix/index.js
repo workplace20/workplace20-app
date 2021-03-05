@@ -10,7 +10,7 @@ import {
   CardFooter 
 } from 'pages-lib/_components/card';
 import { H3 } from 'pages-lib/_components/typography';
-import Button from 'pages-lib/_components/Button';
+import { Button } from 'pages-lib/_components/controls';
 import { Transition } from '@headlessui/react';
 import { useState } from 'react';
 import {

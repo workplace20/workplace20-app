@@ -1,5 +1,5 @@
 import { Formik, Form } from 'formik';
-import Button from 'pages-lib/_components/Button';
+import { Button } from 'pages-lib/_components/controls';
 import { Transition } from '@headlessui/react';
 import {
   FormTextInput,

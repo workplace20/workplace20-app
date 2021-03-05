@@ -1,5 +1,5 @@
 import formatDate from 'pages-lib/_utils/formatDate';
-import TextField from 'pages-lib/_components/TextField';
+import { TextField } from 'pages-lib/_components/controls';
 
 const PersonalInformationView = ({
   profile = {}

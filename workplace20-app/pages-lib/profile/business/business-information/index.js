@@ -1,7 +1,7 @@
 import { useQueryProfile } from 'pages-lib/_states';
 import { useState } from "react";
 import { H3 } from 'pages-lib/_components/typography';
-import Button from 'pages-lib/_components/Button';
+import { Button } from 'pages-lib/_components/controls';
 import { Transition } from '@headlessui/react';
 import { CardHeader, Card, CardContent } from 'pages-lib/_components/card';
 import {
