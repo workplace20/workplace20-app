@@ -11,14 +11,14 @@ const QuickStart = () => {
   const [profileKind, setProfileKind] = useState('');
 
   const router = useRouter();
-  const { data: profileKind, isLoading: loadingQueryProfile } = useQueryProfileKind();
+  const { data: userProfileKind, isLoading: loadingQueryProfile } = useQueryProfileKind();
   const { mutate, isLoading, isError } = useMutateProfileKind(() => router.push('/challenges/general'));
 
   if (loadingQueryProfile) {
     return (<LoadingPage />)
   }
 
-  if (profileKind) {
+  if (userProfileKind) {
     return (<Redirect to="/challenges/general" />);
   }
 

@@ -1,0 +1,1 @@
+export { default as withBusinessProfileLayout } from './BusinessProfileLayout/withBusinessProfileLayout';
