@@ -1,41 +1,64 @@
 import authCheck from 'lib/auth-checker';
+import debug from 'debug'
+import {
+    Challenge
+} from 'controllers/challenge'
+import dbHelper from 'lib/database'
+import {
+    ValidationError,
+    Create
+} from 'lib/error'
+const logger = debug('challenges/questions/answers')
 
 export default async function handler(req, res) {
-  switch (req.method) {
-    case 'PUT':
-      await authCheck(req, res, handlePut)
-      break
-    default:
-      res.status(405).send("Method not support")
-      break
-  }
+    switch (req.method) {
+        case 'PUT':
+            await authCheck(req, res, handlePut)
+            break
+        default:
+            res.status(405).send("Method not support")
+            break
+    }
 }
 
 async function handlePut(req, res) {
-  const { answers } = req.body;
+    const answers = req.body;
+    const {
+        questionId,
+        challengeId
+    } = req.query;
 
-  res.status(200).send({
-    id: 'q1',
-    kind: 'options',
-    question: '1 Fusce dignissim pretium nisl, in consequat tellus accumsan eget?',
-    answers: answers,
-    options: [
-      {
-        id: 'o1',
-        value: 'id ornare arcu odio ut sem nulla pharetra diam sit amet nisl suscipit'
-      },
-      {
-        id: 'o2',
-        value: 'massa placerat duis ultricies lacus sed turpis tincidunt id aliquet risus feugiat in'
-      },
-      {
-        id: 'o3',
-        value: 'sit amet luctus venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non'
-      },
-      {
-        id: 'o4',
-        value: 'vulputate enim nulla aliquet porttitor lacus luctus accumsan tortor posuere ac ut consequat'
-      }
-    ]
-  })
+    logger(req.query)
+    logger(answers)
+
+    const challengeCollection = await dbHelper.collectionFor('challenges')
+
+    const challengeCtl = new Challenge(challengeCollection)
+
+    const [challenge, error] = await challengeCtl.answer(questionId, answers)
+
+    const validatorError = Create(res)
+
+    logger('answer completed')
+    logger(challenge)
+
+    if (error) {
+        validatorError.endWith(400, error)
+        return
+    }
+
+    if (!challenge) {
+        validatorError.endWith(400, 'Invalid challenge code')
+        return
+    }
+
+    const question = challenge?.questions?.find(q => q.id == questionId)
+
+    logger(question)
+
+    if (!question) {
+        validatorError.endWith(400, 'Invalid question')
+        return
+    }
+    res.status(200).send(question)
 }
