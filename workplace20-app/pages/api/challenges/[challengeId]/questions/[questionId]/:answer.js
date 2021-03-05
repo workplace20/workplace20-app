@@ -35,6 +35,7 @@ async function handlePut(req, res) {
 
     const challengeCtl = new Challenge(challengeCollection)
 
+    logger('before call answer')
     const [challenge, error] = await challengeCtl.answer(questionId, answers)
 
     const validatorError = Create(res)

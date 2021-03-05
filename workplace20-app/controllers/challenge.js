@@ -17,30 +17,47 @@ export class Challenge {
 
     async answer(questionId, answers) {
 
+        log('calling answer')
         const firstAnswer = answers && answers.length > 0 && answers[0]
 
         const currentDate = new Date();
         const query = {
+            "questions.id": questionId,
             "questions.options.id": firstAnswer
         }
 
+        log('find by', query)
         const challenge = await this.collection.findOne(query)
 
-        if (challenge) {
-            return cleanAnswers(challenge)
-        }
         if (!challenge)
             return [null, 'invalid challenge']
 
-        const result = await this.collection.updateOne(query, {
+        log('challenge before answer', challenge)
+
+        let question = challenge.questions?.find(c => c.id == questionId)
+        if (!question) {
+            return [null, 'invalid question']
+        }
+
+        question.options = question.options.map(opt => {
+            if (answers?.find(a => a == opt.id) != null)
+                opt.answer = true
+            else
+                opt.answer = false
+            return opt
+        });
+
+        log('question after answer', question)
+
+        const commandResult = await this.collection.updateOne(query, {
             $set: {
-                "questions.options.$.answer": answers
+                "questions.$.options": question.options
             }
         })
-        log('update answers')
-        log(result)
+        log('updated answers')
+        log(commandResult.result)
 
-        return [clearAnswers(challenge), null]
+        return [cleanAnswers(challenge), null]
     }
 
     async getChallenge(challengeId, level, email) {
