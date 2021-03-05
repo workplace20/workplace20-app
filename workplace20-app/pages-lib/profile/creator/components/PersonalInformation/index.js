@@ -5,11 +5,7 @@ import {
   PersonalInformationView,
   Loading,
 } from './components';
-import {
-  Card,
-  CardHeader,
-  CardContent
-} from 'pages-lib/_components/card';
+import Card from 'pages-lib/_components/card';
 import { Button } from 'pages-lib/_components/controls';
 import { Transition } from '@headlessui/react';
 import { useState } from "react";
@@ -24,7 +20,7 @@ const PersonalInformation = () => {
 
   return (
     <Card>
-      <CardHeader>
+      <Card.Header>
         <H3 className="py-2">
           Personal Information
         </H3>
@@ -49,7 +45,7 @@ const PersonalInformation = () => {
             </div>
           )}
         </Transition>
-      </CardHeader>
+      </Card.Header>
 
       <Transition
         show={isError}
@@ -62,9 +58,9 @@ const PersonalInformation = () => {
       >
         {(ref) => (
           <div ref={ref} >
-            <CardContent className="text-center">
+            <Card.Content className="text-center">
               <p class="text-sm text-red-600 my-2" id="email-error">Something went wrong on loading profile</p>
-            </CardContent>
+            </Card.Content>
           </div>
         )}
       </Transition>
@@ -80,9 +76,9 @@ const PersonalInformation = () => {
       >
         {(ref) => (
           <div ref={ref} >
-            <CardContent>
+            <Card.Content>
               <Loading />
-            </CardContent>
+            </Card.Content>
           </div>
         )}
       </Transition>
@@ -95,11 +91,11 @@ const PersonalInformation = () => {
       >
         {(ref) => (
           <div ref={ref}>
-            <CardContent >
+            <Card.Content >
               <PersonalInformationView
                 profile={profile}
               />
-            </CardContent>
+            </Card.Content>
           </div>
         )}
       </Transition>

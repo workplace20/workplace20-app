@@ -1,14 +1,11 @@
-import {
-  Card,
-  CardContent,
-} from 'pages-lib/_components/card';
+import Card from 'pages-lib/_components/card';
 import { H3 } from 'pages-lib/_components/typography';
 
 const Error = () => (
   <Card>
-    <CardContent>
+    <Card.Content>
       <div class="text-sm text-red-600 h-80 text-center">Something went wrong</div>
-    </CardContent>
+    </Card.Content>
   </Card>
 )
 

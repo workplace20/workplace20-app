@@ -1,4 +1,10 @@
-export { default as Card } from './Card';
-export { default as CardHeader } from './CardHeader';
-export { default as CardContent } from './CardContent';
-export { default as CardFooter } from './CardFooter';
+import Card from './Card';
+import CardHeader from './CardHeader';
+import CardContent from './CardContent';
+import CardFooter  from './CardFooter';
+
+Card.Header = CardHeader;
+Card.Content = CardContent;
+Card.Footer = CardFooter;
+
+export default Card;

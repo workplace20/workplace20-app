@@ -3,7 +3,7 @@ import { useState } from "react";
 import { H3 } from 'pages-lib/_components/typography';
 import { Button } from 'pages-lib/_components/controls';
 import { Transition } from '@headlessui/react';
-import { CardHeader, Card, CardContent } from 'pages-lib/_components/card';
+import Card from 'pages-lib/_components/card';
 import {
   BusinessInformationView,
   UpdateForm,
@@ -21,7 +21,7 @@ const BusinessInformationPage = () => {
 
   return (
     <Card>
-      <CardHeader>
+      <Card.Header>
         <H3 className="py-2">
           Business Information
         </H3>
@@ -46,7 +46,7 @@ const BusinessInformationPage = () => {
             </div>
           )}
         </Transition>
-      </CardHeader>
+      </Card.Header>
 
       <Transition
         show={isError}
@@ -59,9 +59,9 @@ const BusinessInformationPage = () => {
       >
         {(ref) => (
           <div ref={ref} >
-            <CardContent className="text-center">
+            <Card.Content className="text-center">
               <p class="text-sm text-red-600 my-2" id="email-error">Something went wrong on loading profile</p>
-            </CardContent>
+            </Card.Content>
           </div>
         )}
       </Transition>
@@ -77,9 +77,9 @@ const BusinessInformationPage = () => {
       >
         {(ref) => (
           <div ref={ref} >
-            <CardContent>
+            <Card.Content>
               <Loading />
-            </CardContent>
+            </Card.Content>
           </div>
         )}
       </Transition>
@@ -92,11 +92,11 @@ const BusinessInformationPage = () => {
       >
         {(ref) => (
           <div ref={ref}>
-            <CardContent >
+            <Card.Content >
               <BusinessInformationView
                 profile={profile}
               />
-            </CardContent>
+            </Card.Content>
           </div>
         )}
       </Transition>

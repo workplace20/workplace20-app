@@ -1,24 +1,19 @@
-import {
-  Card,
-  CardHeader,
-  CardContent,
-  CardFooter,
-} from 'pages-lib/_components/card';
+import Card from 'pages-lib/_components/card';
 
 const Loading = () => (
   <Card>
-    <CardHeader>
+    <Card.Header>
       <div className="animate-pulse bg-gray-200 h-8 w-80">
       </div>
-    </CardHeader>
-    <CardContent>
+    </Card.Header>
+    <Card.Content>
       <div className="animate-pulse bg-gray-200 h-80 w-full">
       </div>
-    </CardContent>
-    <CardFooter>
+    </Card.Content>
+    <Card.Footer>
       <div className="animate-pulse bg-gray-200 h-8 w-full">
       </div>
-    </CardFooter>
+    </Card.Footer>
   </Card>
 )
 

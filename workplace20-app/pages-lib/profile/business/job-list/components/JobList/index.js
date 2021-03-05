@@ -2,12 +2,7 @@ import React from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import useGetSkillName from 'pages-lib/_hooks/useGetSkillName';
-import {
-  Card,
-  CardHeader,
-  CardContent,
-  CardFooter
-} from 'pages-lib/_components/card';
+import Card from 'pages-lib/_components/card';
 import { Button, Chip } from 'pages-lib/_components/controls';
 import useIntersectionObserver from 'pages-lib/_hooks/useIntersectionObserver';
 import { TextField } from 'pages-lib/_components/controls';
@@ -59,14 +54,14 @@ const JobList = () => {
 
               return (
                 <Card id={id}>
-                  <CardHeader>
+                  <Card.Header>
                     <Link href={`/profile/jobs/${id}`}>
                       <a className="text-lg leading-6 font-medium text-gray-900 hover:text-orange-500">
                         {title}
                       </a>
                     </Link>
-                  </CardHeader>
-                  <CardContent>
+                  </Card.Header>
+                  <Card.Content>
                     <dl className="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
                       <div className="sm:col-span-1">
                         <TextField
@@ -93,8 +88,8 @@ const JobList = () => {
                         </TextField>
                       </div>
                     </dl>
-                  </CardContent>
-                  <CardFooter className="space-x-1">
+                  </Card.Content>
+                  <Card.Footer className="space-x-1">
                     {
                       requiredSkills?.map(skill => (
                         <Chip
@@ -102,7 +97,7 @@ const JobList = () => {
                         />
                       ))
                     }
-                  </CardFooter>
+                  </Card.Footer>
                 </Card>
               )
             })}
@@ -113,18 +108,18 @@ const JobList = () => {
           .fill(0)
           .map((_) => (
             <Card>
-              <CardHeader>
+              <Card.Header>
                 <div className="animate-pulse bg-gray-200 h-8 w-full">
                 </div>
-              </CardHeader>
-              <CardContent>
+              </Card.Header>
+              <Card.Content>
                 <div className="animate-pulse bg-gray-200 h-20 w-full">
                 </div>
-              </CardContent>
-              <CardFooter>
+              </Card.Content>
+              <Card.Footer>
                 <div className="animate-pulse bg-gray-200 h-8 w-full">
                 </div>
-              </CardFooter>
+              </Card.Footer>
             </Card>
           ))
       }

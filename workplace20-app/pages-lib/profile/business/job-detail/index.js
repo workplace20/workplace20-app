@@ -4,12 +4,7 @@ import { useQueryJobDetail } from '../_states';
 import { withBusinessProfileLayout } from '../layouts';
 import Link from 'next/link';
 import useGetSkillName from 'pages-lib/_hooks/useGetSkillName';
-import {
-  Card,
-  CardHeader,
-  CardContent,
-  CardFooter,
-} from 'pages-lib/_components/card';
+import Card from 'pages-lib/_components/card';
 import { Button, Chip } from 'pages-lib/_components/controls';
 import { H3 } from 'pages-lib/_components/typography';
 import { TextField } from 'pages-lib/_components/controls';
@@ -38,7 +33,7 @@ const JobDetail = ({
 
   return (
     <Card>
-      <CardHeader>
+      <Card.Header>
         <div className="flex items-center">
           <Link href="/profile/jobs">
             <Button
@@ -65,8 +60,8 @@ const JobDetail = ({
           Edit
           </Button>
         </Link>
-      </CardHeader>
-      <CardContent>
+      </Card.Header>
+      <Card.Content>
         <dl className="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
           <div className="sm:col-span-1">
             <TextField
@@ -94,8 +89,8 @@ const JobDetail = ({
             </TextField>
           </div>
         </dl>
-      </CardContent>
-      <CardFooter className="space-x-1">
+      </Card.Content>
+      <Card.Footer className="space-x-1">
         {
           requiredSkills?.map(skill => (
             <Chip
@@ -103,7 +98,7 @@ const JobDetail = ({
             />
           ))
         }
-      </CardFooter>
+      </Card.Footer>
     </Card>
   )
 }

@@ -7,10 +7,7 @@ import {
   FormSelectInput
 } from 'pages-lib/_components/form';
 import { useMutateUpdateProfile } from 'pages-lib/_states';
-import {
-  CardContent,
-  CardFooter
-} from 'pages-lib/_components/card';
+import Card from 'pages-lib/_components/card';
 import * as Yup from 'yup';
 
 const UpdateForm = ({
@@ -64,7 +61,7 @@ const UpdateForm = ({
       onSubmit={onSaveProfile}
     >
       <Form>
-        <CardContent>
+        <Card.Content>
           <div className="grid grid-cols-6 gap-6">
             <div className="col-span-6 sm:col-span-3">
               <FormTextInput
@@ -201,8 +198,8 @@ const UpdateForm = ({
               />
             </div>
           </div>
-        </CardContent>
-        <CardFooter className="text-right">
+        </Card.Content>
+        <Card.Footer className="text-right">
           <Transition
             show={isError}
             enter="transition duration-150 ease-out"
@@ -235,7 +232,7 @@ const UpdateForm = ({
               Save
             </Button>
           </div>
-        </CardFooter>
+        </Card.Footer>
       </Form>
     </Formik>
   )
