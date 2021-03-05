@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Transition } from '@headlessui/react';
 import Link from "next/link";
 import { useSession } from 'next-auth/client';
-import Avatar from 'pages-lib/_components/Avatar';
+import { Avatar } from 'pages-lib/_components/controls';
 
 const ProfileMenu = () => {
   const [isOpen, setIsOpen] = useState(false);

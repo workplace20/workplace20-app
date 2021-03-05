@@ -8,7 +8,7 @@ import {
   Error
 } from './components';
 import { Transition } from '@headlessui/react';
-import { Card, CardContent } from 'pages-lib/_components/card';
+import Card from 'pages-lib/_components/card';
 
 const ProfileOverview = () => {
   const { data: profile, isLoading, isError } = useQueryProfile();
@@ -70,13 +70,13 @@ const ProfileOverview = () => {
       >
         {(ref) => (
           <div ref={ref}>
-            <CardContent>
+            <Card.Content>
               <Welcome
                 name={name}
                 email={email}
                 image={image}
               />
-            </CardContent>
+            </Card.Content>
             {
               verified ? (
                 <WorkingInfo

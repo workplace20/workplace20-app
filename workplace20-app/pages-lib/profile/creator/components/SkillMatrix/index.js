@@ -3,14 +3,9 @@ import {
   useQuerySkillLevelList,
   useQueryProfile
 } from 'pages-lib/_states';
-import { 
-  Card, 
-  CardHeader, 
-  CardContent, 
-  CardFooter 
-} from 'pages-lib/_components/card';
+import Card from 'pages-lib/_components/card';
 import { H3 } from 'pages-lib/_components/typography';
-import Button from 'pages-lib/_components/Button';
+import { Button } from 'pages-lib/_components/controls';
 import { Transition } from '@headlessui/react';
 import { useState } from 'react';
 import {
@@ -50,7 +45,7 @@ const SkillMatrix = () => {
 
   return (
     <Card>
-      <CardHeader>
+      <Card.Header>
         <Transition
           show={addingSkill && canAddNewSkill}
           enter="transition duration-150 ease-out"
@@ -91,7 +86,7 @@ const SkillMatrix = () => {
             </div>
           )}
         </Transition>
-      </CardHeader>
+      </Card.Header>
 
       <Transition
         show={isLoading}
@@ -101,9 +96,9 @@ const SkillMatrix = () => {
       >
         {(ref) => (
           <div ref={ref}>
-            <CardContent>
+            <Card.Content>
               <Loading />
-            </CardContent>
+            </Card.Content>
           </div>
         )}
       </Transition>
@@ -115,9 +110,9 @@ const SkillMatrix = () => {
       >
         {(ref) => (
           <div ref={ref}>
-            <CardContent>
+            <Card.Content>
               <Error />
-            </CardContent>
+            </Card.Content>
           </div>
         )}
       </Transition>
@@ -129,7 +124,7 @@ const SkillMatrix = () => {
       >
         {(ref) => (
           <div ref={ref}>
-            <CardContent>
+            <Card.Content>
               {
                 isProfileSkillsEmpty ? (
                   <p className="text-base text-gray-500">
@@ -142,12 +137,12 @@ const SkillMatrix = () => {
                     />
                   )
               }
-            </CardContent>
-            <CardFooter>
+            </Card.Content>
+            <Card.Footer>
               <SkillDefinition
                 allSkillLevels={allSkillLevels}
               />
-            </CardFooter>
+            </Card.Footer>
           </div>
         )}
       </Transition>

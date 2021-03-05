@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-import Button from 'pages-lib/_components/Button';
+import { Button } from 'pages-lib/_components/controls';
+import { SelectChip } from 'pages-lib/_components/controls';
 
 const AddNew = ({
   availableSkills,
@@ -13,28 +14,21 @@ const AddNew = ({
     router.push(`/challenges/${skill}`)
   }
 
-  const handleSelectSkill = (skill) => () => {
-    setSkill(skill);
-  }
-
   return (
     <div className="w-full">
       <div className="w-full">
         <label id="listbox-label" class="block text-sm font-medium text-gray-700">
           Select new skill
         </label>
-        <div className="space-x-1 mt-2">
-          {
-            availableSkills.map(x => {
-              const selected = x.code === skill;
-
-              return (
-                <span onClick={handleSelectSkill(x.code)} class={`inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium border ${selected ? 'bg-gray-100 text-gray-800 border-gray-300' : 'border-gray-300'} cursor-pointer`}>
-                  {x.name}
-                </span>
-              )
-            })
-          }
+        <div className="mt-2">
+          <SelectChip 
+            options={availableSkills.map(x => ({
+              label: x.name,
+              value: x.code
+            }))}
+            value={skill}
+            onChange={setSkill}
+          />
         </div>
       </div>
       <div className="mt-4 flex items-center w-full">

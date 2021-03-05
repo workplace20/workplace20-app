@@ -29,10 +29,12 @@ module.exports = {
 			opacity: ['disabled'],
 			cursor: ['hover', 'focus', 'disabled'],
 			backgroundColor: ['disabled'],
+			lineClamp: ['hover'],
     }
   },
   plugins: [
 		require('@tailwindcss/forms'),
 		require('@tailwindcss/typography'),
+		require('@tailwindcss/line-clamp'),
 	],
 }

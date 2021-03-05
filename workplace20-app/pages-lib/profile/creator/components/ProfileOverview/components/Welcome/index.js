@@ -1,4 +1,4 @@
-import Avatar from 'pages-lib/_components/Avatar';
+import { Avatar } from 'pages-lib/_components/controls';
 
 const Welcome = ({
   image,

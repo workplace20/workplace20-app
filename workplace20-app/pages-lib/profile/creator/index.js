@@ -1,4 +1,3 @@
-import { withAppLayout } from 'pages-lib/_layouts';
 import {
   ProfileOverview,
   PersonalInformation,
@@ -19,4 +18,4 @@ const CreatorProfile = () => {
   )
 }
 
-export default withAppLayout(CreatorProfile);
+export default CreatorProfile;

@@ -1,3 +1,4 @@
+import { withAppLayout } from 'pages-lib/_layouts';
 import { PROFILE_KIND } from 'pages-lib/_utils/constants';
 import { useQueryProfileKind } from 'pages-lib/_states';
 import CreatorProfilePage from './creator';
@@ -14,4 +15,4 @@ const Profile = () => {
   return profilePages[profileKind] || null;
 }
 
-export default Profile;
+export default withAppLayout(Profile);

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Head from 'next/head';
 import { Fragment } from 'react';
 import Link from 'next/link';
-import Logo from 'pages-lib/_components/Logo';
+import { Logo } from 'pages-lib/_components/controls';
 import { Transition } from '@headlessui/react';
 
 const MarketingLayout = ({ children }) => {
