@@ -8,7 +8,7 @@ import {
   CardContent,
   CardFooter
 } from 'pages-lib/_components/card';
-import { Button } from 'pages-lib/_components/controls';
+import { Button, Chip } from 'pages-lib/_components/controls';
 import useIntersectionObserver from 'pages-lib/_hooks/useIntersectionObserver';
 import { TextField } from 'pages-lib/_components/controls';
 import { useQueryJobs } from '../../../_states';
@@ -97,9 +97,9 @@ const JobList = () => {
                   <CardFooter className="space-x-1">
                     {
                       requiredSkills?.map(skill => (
-                        <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-orange-400 text-white">
-                          {getSkillName(skill)}
-                        </span>
+                        <Chip
+                          value={getSkillName(skill)}
+                        />
                       ))
                     }
                   </CardFooter>
