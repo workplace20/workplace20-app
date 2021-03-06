@@ -125,7 +125,8 @@ export class Challenge {
                     return {
                         id: hmac.copy().digest('hex'),
                         value: o.value,
-                        correct: o.correct
+                        correct: o.correct,
+                        answer: false
                     }
                 })
             }))
@@ -140,7 +141,7 @@ export class Challenge {
 
     // return [passed, error]
     // 
-    async submit(challenge, email) {
+    async submit(challengeData, email) {
 
         // 1. get challenge, if not, return error
         // 2. calculate score
@@ -148,23 +149,47 @@ export class Challenge {
 
         const currentDate = new Date();
 
-        const challengeSession = await this.collection.findOne({
-            challengeId: challenge.challengeId,
-            level: challenge.level,
+        const challenge = await this.collection.findOne({
+            challengeId: challengeData.challengeId,
+            level: challengeData.level,
             email: email,
             expireTime: {
                 $gt: currentDate
-            },
+            }
         })
 
-        if (!challengeSession) {
+        if (!challenge) {
             return [null, 'Challenge is not found']
         }
 
-        // TODO: calculate score. For the time being, just alway passed :v
+        const totalQuestion = challenge.questions.length;
+        if (totalQuestion == 0) {
+            return [null, 'Found 0 question in challenge.']
+        }
 
-        return [true, null]
+        let correct = 0;
+        for (const question of challenge.questions) {
+            let pass = false;
+            if (question.kind == 'options') {
+                pass = question.options?.find(o => o.answer == o.correct) != null
+            } else {
+                pass = question.options?.find(o => o.answer != o.correct) != null
+            }
+            log('question', question)
+            log('pass:', pass)
 
+            if (pass) {
+                correct = correct + 1;
+            }
+
+        }
+
+        log('correct ' + correct + ' total: ' + totalQuestion)
+
+        if ((correct / totalQuestion) > 0.9) {
+            return [true, null]
+        }
+        return [false, null]
     }
 }
 
