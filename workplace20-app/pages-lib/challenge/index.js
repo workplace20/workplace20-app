@@ -19,11 +19,14 @@ import {
 } from './states';
 
 import LoadingPage from 'pages-lib/loading';
-import Navigation from './components/Navigation';
-import Header from './components/Header';
-import Question from './components/Question';
-import Welcome from './components/Welcome';
-import Submission from './components/Submission';
+import {
+  Navigation,
+  Header,
+  Question,
+  Welcome,
+  Submission,
+  Error
+} from './components';
 
 const Challenge = ({ challengeId }) => {
   const { isLoading, isError, data: chalengeInfo, error } = useQueryChallengeQuestions(challengeId);
@@ -58,14 +61,27 @@ const Challenge = ({ challengeId }) => {
   }
 
   if (isError) {
-    if (error.response.status === 404) {
+    const status = error?.response?.status;
+
+    if (status === 404) {
       return (
         <Welcome challengeId={challengeId} />
       )
     }
 
+    if (status === 400) {
+      const errorMessage = error?.response?.data?.errors[0]?.message;
+      return (
+        <Error
+          errorMessage={errorMessage}
+        />
+      )
+    }
+    
     return (
-      <div>Something went wrong, please try again</div>
+      <Error
+        errorMessage="Something went wrong, please try again"
+      />
     )
   }
 

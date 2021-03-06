@@ -4,7 +4,15 @@ import { RecoilRoot } from 'recoil';
 import { Provider } from 'next-auth/client'
 import { QueryClient, QueryClientProvider } from 'react-query';
 
-const queryClient = new QueryClient()
+const noRetryStatus = [404, 400];
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: (failureCount, error) => !noRetryStatus.includes(error?.response?.status)
+    }
+  }
+})
 
 function MyApp({ Component, pageProps }) {
   return (
