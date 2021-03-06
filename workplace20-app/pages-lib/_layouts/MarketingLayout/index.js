@@ -11,7 +11,7 @@ const MarketingLayout = ({ children }) => {
   return (
     <div>
       <Head>
-        <title>Workspace20 - Developers ready for remote jobs in Viet Nam</title>
+        <title>Workspace20 - Build your remote software development team in Viet Nam</title>
         <link rel="icon" href="/favicon.ico" />
         <Fragment>
           {/* Google Tag */}
