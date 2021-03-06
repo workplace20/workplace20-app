@@ -1,5 +1,4 @@
 import { useRouter } from 'next/router';
-import Redirect from 'pages-lib/_components/Redirect';
 import { withEmptyLayout } from 'pages-lib/_layouts';
 import { useEffect } from 'react';
 
@@ -21,6 +20,7 @@ import {
 } from './states';
 
 import LoadingPage from 'pages-lib/loading';
+import Redirect from 'pages-lib/_components/Redirect';
 import {
   Navigation,
   Header,
