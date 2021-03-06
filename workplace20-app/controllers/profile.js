@@ -26,12 +26,13 @@ export class Profile {
 
         const {
             name,
-			skype,
+            skype,
             dateOfBirth,
             phoneNumber,
             yearOfExperience,
             address,
-            about
+            about,
+            kind
         } = data;
 
         if (!profile.kind) {
@@ -143,9 +144,9 @@ export class Profile {
             return [null, 'Profile not found']
         }
 
-		if(challengeId=='general' && profile.generalChallengeCompleted){
-			return [null,'You have completed this challenge']
-		}
+        if (challengeId == 'general' && profile.generalChallengeCompleted) {
+            return [null, 'You have completed this challenge']
+        }
 
         let levelOfChallenge = profile.skillMatrix[challengeId]
 

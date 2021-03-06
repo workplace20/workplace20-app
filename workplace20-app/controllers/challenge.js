@@ -1,7 +1,7 @@
 const crypto = require('crypto');
 import debug from 'debug'
 
-const log = debug('profile controller')
+const log = debug('challenge controller')
 
 export class Challenge {
     constructor(collection) {
@@ -15,13 +15,56 @@ export class Challenge {
             return "Not found collection"
     }
 
-	async getQuestion(questionId,email){
+    async answer(questionId, answers) {
 
-	}
+        log('calling answer')
+        const firstAnswer = answers && answers.length > 0 && answers[0]
+
+        const currentDate = new Date();
+        const query = {
+            "questions.id": questionId,
+            "questions.options.id": firstAnswer
+        }
+
+        log('find by', query)
+        const challenge = await this.collection.findOne(query)
+
+        if (!challenge)
+            return [null, 'invalid challenge']
+
+        log('challenge before answer', challenge)
+
+        let question = challenge.questions?.find(c => c.id == questionId)
+        if (!question) {
+            return [null, 'invalid question']
+        }
+
+        question.options = question.options.map(opt => {
+            if (answers?.find(a => a == opt.id) != null)
+                opt.answer = true
+            else
+                opt.answer = false
+            return opt
+        });
+
+        log('question after answer', question)
+
+        const commandResult = await this.collection.updateOne(query, {
+            $set: {
+                "questions.$.options": question.options
+            }
+        })
+        log('updated answers')
+        log(commandResult.result)
+
+        return [cleanAnswers(challenge), null]
+    }
+
     async getChallenge(challengeId, level, email) {
         const currentDate = new Date();
 
-        log(`find for ${currentDate.toUTCString()}, ${challengeId}, ${level}, ${email}`)
+        log(`find for ${currentDate.toUTCString()}, ${challengeId}, ${level},
+					${email}`)
 
         const challenge = await this.collection.findOne({
             email: email,
@@ -35,6 +78,7 @@ export class Challenge {
         log(`Found challenge level ${challenge?.level}`)
         return cleanAnswers(challenge);
     }
+
     async start(email, challenge) {
 
         const currentDate = new Date();
