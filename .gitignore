@@ -15,7 +15,7 @@ dist/
 
 # Log files
 *.log
-
+*.swp
 # Package files
 *.jar
 
