@@ -1,124 +1,223 @@
-import { withMarketingLayout } from 'pages-lib/_layouts';
+import { withMarketingLayout } from "pages-lib/_layouts";
 
 const Home = () => (
-  <>
-    <div>
-      <div class="mx-auto max-w-7xl px-4 ">
-        <div class="text-center">
-          <h1 class="text-2xl tracking-tight font-extrabold text-gray-600 sm:text-4xl md:text-4xl">
-            <span class="block xl:inline">Remote jobs for developers in Viet Nam</span>
-            <span class="md:hidden"></span>
-          </h1>
-          <p class="mt-3 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
-            2020 has changed our work place and working in
-            the office is an optional.
-            Workplace20 is a private community of developers and sofware development business which offer remote jobs in Viet Nam.
-				</p>
-        </div>
-      </div>
-    </div>
-    <div class="relative overflow-hidden">
-
-      <div class="relative bg-white">
-        <div class="relative pt-12 pb-16 px-4 ">
-          <div class="text-base max-w-4xl mx-auto ">
-            <h3 id="how-we-work" class="text-3xl pb-16 leading-8 font-extrabold tracking-tight text-orange-500 sm:text-4xl">How we work?</h3>
-
-            <div class="flex">
-              <svg class="flex-shrink-0 h-6 w-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-              </svg>
-              <div class="ml-3">
-                <dt class="text-lg leading-6 font-medium text-gray-900">
-                  For software engineers
+	<>
+		<div>
+			<div class="mx-auto max-w-7xl px-4 ">
+				<div class="text-center">
+					<h1 class="text-2xl tracking-tight font-extrabold text-gray-600 sm:text-4xl md:text-4xl">
+						<span class="block xl:inline">
+							Remote jobs for developers in Viet Nam
+						</span>
+						<span class="md:hidden"></span>
+					</h1>
+					<p class="mt-3 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
+						2020 has changed our work place and working in the
+						office is an optional. Workplace20 is a private
+						community of developers and sofware development business
+						which offer remote jobs in Viet Nam.
+					</p>
+				</div>
+			</div>
+		</div>
+		<div class="relative overflow-hidden">
+			<div class="relative bg-white">
+				<div class="relative pt-12 pb-16 px-4 ">
+					<div class="text-base max-w-4xl mx-auto ">
+						<h3
+							id="how-we-work"
+							class="text-3xl leading-8 font-extrabold tracking-tight text-orange-500 sm:text-4xl"
+						>
+							How we work?
+						</h3>
+						<div class="flex flex-col md:flex-row">
+							<div class="pt-12 flex-6 pb-12">
+								<div class="flex">
+									<svg
+										class="flex-shrink-0 h-6 w-6 text-green-500"
+										xmlns="http://www.w3.org/2000/svg"
+										fill="none"
+										viewBox="0 0 24 24"
+										stroke="currentColor"
+										aria-hidden="true"
+									>
+										<path
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											stroke-width="2"
+											d="M5 13l4 4L19 7"
+										/>
+									</svg>
+									<div class="ml-3">
+										<dt class="text-lg leading-6 font-medium text-gray-900">
+											For software engineers
 										</dt>
-                <dd class="mt-2 text-base text-gray-500">
-                  As remote work only “worked” in trusted environment.
-                  The software engineer on Workplace20 are invited only by trusted people who
-                  showing what they can working on and their skill set. By connect to only invited people,
-                  we make sure that our software engineers are selective and highly skill.
+										<dd class="mt-2 text-base text-gray-500">
+											Workplace20 will work with you to
+											understand yourself and your skill
+											sets which help to match to the
+											team. We offers the community
+											sharing the knowledge, best
+											practices and experiences to do your
+											best on remote job.
 										</dd>
-              </div>
-            </div>
-            <div class="flex pt-12">
-              <svg class="flex-shrink-0 h-6 w-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-              </svg>
-              <div class="ml-3">
-                <dt class="text-lg leading-6 font-medium text-gray-900">
-                  For the business
+									</div>
+								</div>
+								<div class="flex pt-12">
+									<svg
+										class="flex-shrink-0 h-6 w-6 text-green-500"
+										xmlns="http://www.w3.org/2000/svg"
+										fill="none"
+										viewBox="0 0 24 24"
+										stroke="currentColor"
+										aria-hidden="true"
+									>
+										<path
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											stroke-width="2"
+											d="M5 13l4 4L19 7"
+										/>
+									</svg>
+									<div class="ml-3">
+										<dt class="text-lg leading-6 font-medium text-gray-900">
+											For the business
 										</dt>
-                <dd class="mt-2 text-base text-gray-500">
-                  The business on workplace20 offer remote work and a culture to help software engineer to
-                  ship the software. Only pay based on hourly rate, service based or flexible contract.
+										<dd class="mt-2 text-base text-gray-500">
+											Workplace20 help to connect the
+											sofware engineers who matches the
+											culture, skill sets and interesting
+											in your product domain.
 										</dd>
-              </div>
-            </div>
-            <p class="mt-8 text-lg text-gray-500"></p>
-          </div>
-        </div>
-      </div>
+									</div>
+								</div>
+							</div>
 
-      <div class="relative bg-white">
-        <div class="relative px-4 ">
-          <div class="text-base max-w-4xl mx-auto ">
-            <h3 class="text-3xl leading-8 font-extrabold tracking-tight text-orange-500 sm:text-4xl">Why should you join us?</h3>
-          </div>
-        </div>
-        <div class="max-w-4xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
-          <h2 id="for-engineer" class="text-3xl font-extrabold text-gray">
-            For Developers
+							<div class="flex-6">
+								<div class="lg:m-0 lg:col-span-2 lg:pl-8">
+									<div class="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 lg:px-0 lg:py-10 lg:max-w-none">
+										<blockquote>
+											<div>
+												<svg
+													class="h-12 w-12 text-gray-600 opacity-25"
+													fill="currentColor"
+													viewBox="0 0 32 32"
+													aria-hidden="true"
+												>
+													<path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
+												</svg>
+												<p class="mt-6 text-2xl font-medium text-gray-600">
+													Culture fit is top
+													prerequisite when building
+													your remote development
+													team.
+												</p>
+											</div>
+											<footer class="mt-6">
+												<p class="text-base font-medium text-orange-600">
+													Paul K
+												</p>
+												<p class="text-base font-medium text-orange-300">
+													Creator of Workplace20
+												</p>
+											</footer>
+										</blockquote>
+									</div>
+								</div>
+							</div>
+						</div>
+						<p class="mt-8 text-lg text-gray-500"></p>
+					</div>
+				</div>
+			</div>
+
+			<div class="relative bg-white">
+				<div class="relative px-4 ">
+					<div class="text-base max-w-4xl mx-auto ">
+						<h3 class="text-3xl leading-8 font-extrabold tracking-tight text-orange-500 sm:text-4xl">
+							Why should you join us?
+						</h3>
+					</div>
+				</div>
+				<div class="max-w-4xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
+					<h2
+						id="for-engineer"
+						class="text-3xl font-extrabold text-gray-600"
+					>
+						For Sofware Engineers
 					</h2>
-          <div class="mt-2 border-t border-opacity-25 pt-10 text-gray-500">
-            <dl class="space-y-10 md:space-y-0 md:grid md:grid-cols-1 md:gap-x-4 md:gap-y-6">
-              <div>
-                <dt class="text-lg leading-6 font-medium text-gray">
-                  ✨ As you're working remotely, you can work anywhere. Balance your lifestyle and freedom.
+					<div class="mt-2 border-t border-opacity-25 pt-10 text-gray-500">
+						<dl class="space-y-10 md:space-y-0 md:grid md:grid-cols-1 md:gap-x-4 md:gap-y-6">
+							<div>
+								<dt class="text-lg leading-6 font-medium text-gray">
+									✨ As you're working remotely, you can work
+									anywhere. Balance your lifestyle and
+									freedom.
 								</dt>
-              </div>
-              <div>
-                <dt class="text-lg font-medium text-gray">
-                  ✨ A growth of business community which provides the remote work, flexible of culture and
-                  innovative products.
+							</div>
+							<div>
+								<dt class="text-lg font-medium text-gray">
+									✨ A growth of business community which
+									provides the remote work, flexible of
+									culture and innovative products.
 								</dt>
-              </div>
-              <div>
-                <dt class="text-lg font-medium text-grey">
-                  ✨ The community of likeminded people who can supportive and sharing experience on remote work, self-discipline and motivating.
+							</div>
+							<div>
+								<dt class="text-lg font-medium text-grey">
+									✨ The community of likeminded people who
+									can supportive and sharing experience on
+									remote work, self-discipline and motivating.
 								</dt>
-              </div>
-
-            </dl>
-          </div>
-          <div class="max-w-4xl mx-auto py-12">
-            <h2 id="for-business" class="text-3xl font-extrabold text-gray">
-              For Business
+							</div>
+							<div class="pt-12 mt-6 relative">
+								<a
+									href="#"
+									class="absolute bottom-0 right-0 inline-flex px-4 py-2 border-transparent text-base font-medium rounded-md shadow-sm text-white bg-gradient-to-r from-orange-600 to-orange-400 hover:from-orange-700 hover:to-orange-500"
+								>
+									A Day in the Life of a Remote Developer
+								</a>
+							</div>
+						</dl>
+					</div>
+					<div class="max-w-4xl mx-auto py-12">
+						<h2
+							id="for-business"
+							class="text-3xl font-extrabold text-gray-600"
+						>
+							For Business
 						</h2>
-            <div class="mt-2 border-t border-opacity-25 pt-10 text-gray-500">
-              <dl class="space-y-10 md:space-y-0 md:grid md:grid-cols-1 md:gap-x-4 md:gap-y-6">
-                <div>
-                  <dt class="text-lg font-medium text-gray">
-                    ✨ A selective of software engineers in community which built on trust. They can do what they say.
+						<div class="mt-2 border-t border-opacity-25 pt-10 text-gray-500">
+							<dl class="space-y-10 md:space-y-0 md:grid md:grid-cols-1 md:gap-x-4 md:gap-y-6">
+								<div>
+									<dt class="text-lg font-medium text-gray">
+										✨ A selective of software engineers in
+										community which built on trust. They can
+										do what they say.
 									</dt>
-                </div>
-                <div>
-                  <dt class="text-lg font-medium text-grey">
-                    ✨ The community of software engineers who are ambition and grit. They have experienced on remote work, self-discipline, highly skill and commitment.
+								</div>
+								<div>
+									<dt class="text-lg font-medium text-grey">
+										✨ The community of software engineers
+										who are ambition and grit. They have
+										experienced on remote work,
+										self-discipline, highly skill and
+										commitment.
 									</dt>
-                </div>
+								</div>
 
-                <div>
-                  <dt class="text-lg leading-6 font-medium text-gray">
-                    ✨ Transparent as you pay them directly.
+								<div>
+									<dt class="text-lg leading-6 font-medium text-gray">
+										✨ Transparent as you pay them directly.
 									</dt>
-                </div>
+								</div>
 
-                <div>
-                  <dt class="text-lg leading-6 font-medium text-gray">
-                    ✨ Reduce the cost of trust as no office.
+								<div>
+									<dt class="text-lg leading-6 font-medium text-gray">
+										✨ Reduce the cost of trust as no
+										office.
 									</dt>
-                </div>
-                {/*
+								</div>
+								{/*
 								<div class="bg-white">
 									<div class="max-w-7xl mx-auto sm:px-6 lg:py-8 lg:px-2">
 										<h2 class="inline text-3xl font-extrabold tracking-tight text-gray-700 sm:block sm:text-4xl">
@@ -137,12 +236,12 @@ const Home = () => (
 									</div>
 								</div>
 								*/}
-              </dl>
-            </div>
-          </div>
-        </div>
-      </div>
-      {/*<div class="bg-white">
+							</dl>
+						</div>
+					</div>
+				</div>
+			</div>
+			{/*<div class="bg-white">
 				<div class="max-w-7xl mx-auto px-4 m:px-6 lg:px-8">
 					<div class="px-4 py-6 bg-orange-500 rounded-lg md:py-12 md:px-12 lg:py-16 lg:px-16 xl:flex xl:items-center">
 						<div class="xl:w-0 xl:flex-1">
@@ -172,22 +271,27 @@ const Home = () => (
 				</div>
 			</div>
 			*/}
-      <div class="bg-white">
-        <div class="max-w-7xl mx-auto text-center py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
-          <h2 class="font-extrabold tracking-tight text-gray-700 ">
-            <span class="block text-3xl sm:text-4xl">Want to build a remote development team?</span>
-          </h2>
-          <div class="mt-8 flex justify-center">
-            <div class="inline-flex rounded-md shadow">
-              <a href="https://linkedin.com/company/workplace20" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700">
-                Connect with us on LinkedIn
-						</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </>
-)
+			<div class="bg-white">
+				<div class="max-w-7xl mx-auto text-center py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
+					<h2 class="font-extrabold tracking-tight text-gray-700 ">
+						<span class="block text-3xl sm:text-4xl">
+							Want to build a remote development team?
+						</span>
+					</h2>
+					<div class="mt-8 flex justify-center">
+						<div class="inline-flex rounded-md shadow">
+							<a
+								href="https://linkedin.com/company/workplace20"
+								class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700"
+							>
+								Connect with us on LinkedIn
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</>
+);
 
 export default withMarketingLayout(Home);

@@ -152,7 +152,8 @@
             "question": "1 Fusce dignissim pretium nisl, in consequat tellus accumsan eget?",
             "options": [{
                     "id": "o1",
-                    "value": "id ornare arcu odio ut sem nulla pharetra diam sit amet nisl suscipit"
+                    "value": "id ornare arcu odio ut sem nulla pharetra diam sit amet nisl suscipit",
+                    "correct": true
                 },
                 {
                     "id": "o2",
