@@ -6,9 +6,16 @@ const Header = ({
   onNext,
   canNext,
   onPrev,
+  onTimesUp,
   canPrev,
 }) => {
-  const { hours, minutes, seconds } = useTimer(expireTime);
+  const { hours = '00', minutes = '00', seconds = '00', isTimesUp } = useTimer(expireTime);
+
+  if (isTimesUp) {
+    onTimesUp();
+    
+    return null;
+  }
 
   return (
     <div className="flex items-center justify-center">

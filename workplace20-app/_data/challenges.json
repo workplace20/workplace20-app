@@ -113,7 +113,7 @@
             }
         ],
         "description": "Please take a few minutes to add React to your skill",
-        "time": "15"
+        "time": "1"
     },
     {
         "challengeId": "react",
@@ -141,7 +141,7 @@
             ]
         }],
         "description": "Please take a few minutes to upgrade your React to Average level",
-        "time": "5"
+        "time": "1"
     },
     {
         "challengeId": "general",
@@ -169,6 +169,6 @@
             ]
         }],
         "description": "Please take a few minutes to your information",
-        "time": "5"
+        "time": "1"
     }
 ]

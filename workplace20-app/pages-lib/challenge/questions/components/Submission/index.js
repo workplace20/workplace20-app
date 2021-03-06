@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import { H3 } from 'pages-lib/_components/typography';
 import { Button } from 'pages-lib/_components/controls';
-import { useMutateSubmitChallenge } from 'pages-lib/challenge/states';
+import { useMutateSubmitChallenge } from 'pages-lib/challenge/questions/states';
 
 const Submission = ({ challengeId }) => {
   const router = useRouter();

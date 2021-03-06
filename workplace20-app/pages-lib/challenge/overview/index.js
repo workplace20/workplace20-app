@@ -1,15 +1,20 @@
+import { useRouter } from 'next/router';
+import { withEmptyLayout } from 'pages-lib/_layouts';
 import Link from "next/link";
 import { Button } from 'pages-lib/_components/controls';
 import {
   useQueryChallengeOverview,
   useMutateStartChallenge,
-} from 'pages-lib/challenge/states';
+} from 'pages-lib/challenge/questions/states';
 import LoadingPage from 'pages-lib/loading';
 
 
-const Welcome = ({ challengeId }) => {
+const Overview = ({ challengeId }) => {
+	const router = useRouter();
   const { isLoading, isError, data: chalengeOverview } = useQueryChallengeOverview(challengeId);
-  const { mutate: startChallenge, isLoading: startingChallenge, isError: startChallengeError } = useMutateStartChallenge(challengeId);
+  const { mutate: startChallenge, isLoading: startingChallenge, isError: startChallengeError } = useMutateStartChallenge(challengeId, () => {
+    router.push(`/challenges/${challengeId}`);
+  });
 
   if (isLoading || startingChallenge) {
     return (
@@ -31,8 +36,6 @@ const Welcome = ({ challengeId }) => {
         <h3 className="text-4xl font-semibold text-gray-900 lg:leading-normal">{description}</h3>
         <p className="text-xl text-gray-700 lg:leading-normal mt-4">{`You need to answer ${totalQuestion} questions in ${totalTime} minutes`}</p>
         <div className="mt-8">
-{/* 
-         */}
           <Link href='/profile'>
             <Button
               color="white"
@@ -55,4 +58,4 @@ const Welcome = ({ challengeId }) => {
   )
 }
 
-export default Welcome;
+export default withEmptyLayout(Overview);

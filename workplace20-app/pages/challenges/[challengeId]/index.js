@@ -1,4 +1,4 @@
-import Challenge from 'pages-lib/challenge';
+import Challenge from 'pages-lib/challenge/questions';
 import { useRouter } from 'next/router'
 
 const ChallengePage = () => {

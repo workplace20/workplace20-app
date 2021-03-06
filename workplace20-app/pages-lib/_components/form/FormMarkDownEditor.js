@@ -27,10 +27,7 @@ const FormMarkDownEditor = ({
             }
           );
 
-  const handleEditorChange = ({ text }) => {
-    console.log(text);
-    setValue(text);
-  }
+  const handleEditorChange = ({ text }) => setValue(text);
 
   return (
     <>

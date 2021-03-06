@@ -3,8 +3,6 @@ import { useSession } from 'next-auth/client';
 import LoadingPage from 'pages-lib/loading';
 
 const withAuthSecure = (Component) => ({...props}) => {
-  console.log('xxxx')
-
   const [session, loading] = useSession();
 
   if (loading) return (<LoadingPage />);
