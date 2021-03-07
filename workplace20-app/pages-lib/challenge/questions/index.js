@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import { withEmptyLayout } from 'pages-lib/_layouts';
 import { useEffect } from 'react';
 
@@ -19,17 +20,20 @@ import {
 } from './states';
 
 import LoadingPage from 'pages-lib/loading';
+import Redirect from 'pages-lib/_components/Redirect';
 import {
   Navigation,
   Header,
   Question,
-  Welcome,
   Submission,
   Error
 } from './components';
 
 const Challenge = ({ challengeId }) => {
-  const { isLoading, isError, data: chalengeInfo, error } = useQueryChallengeQuestions(challengeId);
+	const router = useRouter();
+
+  const { isLoading, isError, data: chalengeInfo = {}, error } = useQueryChallengeQuestions(challengeId);
+  
   const currentQuestionId = useQueryCurrencyQuestionId();
   const showSubmitPage = useQueryShowSubmitPage();
   const currentQuestion = useQueryQuestion(challengeId, currentQuestionId);
@@ -65,7 +69,7 @@ const Challenge = ({ challengeId }) => {
 
     if (status === 404) {
       return (
-        <Welcome challengeId={challengeId} />
+        <Redirect to={`/challenges/${challengeId}/overview`}/>
       )
     }
 
@@ -77,7 +81,7 @@ const Challenge = ({ challengeId }) => {
         />
       )
     }
-    
+
     return (
       <Error
         errorMessage="Something went wrong, please try again"
@@ -125,6 +129,8 @@ const Challenge = ({ challengeId }) => {
     }
   }
 
+  const handleTimesUp = () => router.push(`/challenges/${challengeId}/times-up`);
+
   return (
     <>
       <nav className="hidden md:flex items-center justify-center mt-8" aria-label="Progress">
@@ -139,6 +145,7 @@ const Challenge = ({ challengeId }) => {
           onNext={handleNavigateNext}
           canNext={canNavigateNext}
           onPrev={handleNavigatePre}
+          onTimesUp={handleTimesUp}
           canPrev={canNavigatePre}
         />
       </div>

@@ -11,20 +11,27 @@ const useTimer = (deadline) => {
 }
 
 const calculateTimeLeft = (deadline) => {
-  let difference = +new Date(deadline) - +new Date();
-  let timeLeft = {};
-
-  if (difference > 0) {
-    timeLeft = {
-      hours: pad(Math.floor((difference / (1000 * 60 * 60)) % 24)),
-      minutes: pad(Math.floor((difference / 1000 / 60) % 60)),
-      seconds: pad(Math.floor((difference / 1000) % 60))
-    };
-
-
+  if (!deadline) {
+    return {}
   }
 
-  return timeLeft;
+  const difference = +new Date(deadline) - +new Date();
+
+  if (difference <= 0) {
+    return {
+      hours: pad(0),
+      minutes: pad(0),
+      seconds: pad(0),
+      isTimesUp: true
+    };
+  }
+
+  return {
+    hours: pad(Math.floor((difference / (1000 * 60 * 60)) % 24)),
+    minutes: pad(Math.floor((difference / 1000 / 60) % 60)),
+    seconds: pad(Math.floor((difference / 1000) % 60)),
+    isTimesUp: false
+  };
 }
 
 const pad = (d) => {

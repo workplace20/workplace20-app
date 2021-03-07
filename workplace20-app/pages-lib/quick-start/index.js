@@ -19,7 +19,7 @@ const QuickStart = () => {
   }
 
   if (userProfileKind) {
-    return (<Redirect to="/challenges/general" />);
+    return (<Redirect to="/challenges/general/overview" />);
   }
 
   const handleUserKindSelect = (userKind) => () => {
