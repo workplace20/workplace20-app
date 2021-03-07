@@ -162,7 +162,9 @@ const options = {
 
       return Promise.resolve(true);
     },
-    // redirect: async (url, baseUrl) => { return Promise.resolve(baseUrl) },
+    redirect: async (url, baseUrl) => { 
+      return Promise.resolve(`${baseUrl}/profile`) 
+    },
     // session: async (session, user) => { 
     //   return Promise.resolve(session) 
     // },
@@ -173,7 +175,10 @@ const options = {
 
   // Events are useful for logging
   // https://next-auth.js.org/configuration/events
-  events: {},
+  events: {
+    // async signIn(message) { /* on successful sign in */ },
+  },
+
 
   // Enable debug messages in the console if you are having problems
   debug: false,
