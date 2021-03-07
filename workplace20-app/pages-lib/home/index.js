@@ -12,10 +12,10 @@ const Home = () => (
 						<span class="md:hidden"></span>
 					</h1>
 					<p class="mt-3 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
-						2020 has changed our work place and working in the
-						office is an optional. Workplace20 is a private
-						community of developers and sofware development business
-						which offer remote jobs in Viet Nam.
+						2020 has changed our workplace and working in the office
+						is optional. Workplace20 is a private community of
+						developers and software development business which offer
+						remote jobs in Viet Nam.
 					</p>
 				</div>
 			</div>
@@ -28,7 +28,7 @@ const Home = () => (
 							id="how-we-work"
 							class="text-3xl leading-8 font-extrabold tracking-tight text-orange-500 sm:text-4xl"
 						>
-							How we work?
+							How do we work?
 						</h3>
 						<div class="flex flex-col md:flex-row">
 							<div class="pt-12 flex-6 pb-12">
@@ -55,11 +55,11 @@ const Home = () => (
 										<dd class="mt-2 text-base text-gray-500">
 											Workplace20 will work with you to
 											understand yourself and your skill
-											sets which help to match to the
-											team. We offers the community
-											sharing the knowledge, best
-											practices and experiences to do your
-											best on remote job.
+											sets which help to match the team.
+											We offer the community sharing the
+											knowledge, best practices, and
+											experiences to do your best on the
+											remote job.
 										</dd>
 									</div>
 								</div>
@@ -84,10 +84,10 @@ const Home = () => (
 											For the business
 										</dt>
 										<dd class="mt-2 text-base text-gray-500">
-											Workplace20 help to connect the
-											sofware engineers who matches the
-											culture, skill sets and interesting
-											in your product domain.
+											Workplace20 helps to connect the
+											software engineers who match the
+											culture, skill sets, and interest in
+											your product domain.
 										</dd>
 									</div>
 								</div>
@@ -107,7 +107,7 @@ const Home = () => (
 													<path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
 												</svg>
 												<p class="mt-6 text-2xl font-medium text-gray-600">
-													Culture fit is top
+													Culture fit is a top
 													prerequisite when building
 													your remote development
 													team.
@@ -164,9 +164,9 @@ const Home = () => (
 							</div>
 							<div>
 								<dt class="text-lg font-medium text-grey">
-									✨ The community of likeminded people who
-									can supportive and sharing experience on
-									remote work, self-discipline and motivating.
+									✨ The community of like-minded people who
+									can support and share experience on remote
+									work, self-discipline, and motivation.
 								</dt>
 							</div>
 							<div class="pt-12 mt-6 relative">
@@ -190,17 +190,22 @@ const Home = () => (
 							<dl class="space-y-10 md:space-y-0 md:grid md:grid-cols-1 md:gap-x-4 md:gap-y-6">
 								<div>
 									<dt class="text-lg font-medium text-gray">
-										✨ A selective of software engineers in
-										community which built on trust. They can
-										do what they say.
+										✨ The talented engineers from anyplace.
 									</dt>
 								</div>
 								<div>
 									<dt class="text-lg font-medium text-grey">
+										✨ A selection of software engineers
+										built on trust.
+									</dt>
+								</div>
+
+								<div>
+									<dt class="text-lg leading-6 font-medium text-gray">
 										✨ The community of software engineers
-										who are ambition and grit. They have
-										experienced on remote work,
-										self-discipline, highly skill and
+										who are ambitious and grit. They have
+										experienced in remote work,
+										self-discipline, high skill, and
 										commitment.
 									</dt>
 								</div>
@@ -210,7 +215,6 @@ const Home = () => (
 										✨ Transparent as you pay them directly.
 									</dt>
 								</div>
-
 								<div>
 									<dt class="text-lg leading-6 font-medium text-gray">
 										✨ Reduce the cost of trust as no
