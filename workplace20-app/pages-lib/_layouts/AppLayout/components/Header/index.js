@@ -1,8 +1,6 @@
-import Logo from './components/Logo';
 import Notification from './components/Notification';
 import ProfileMenu from './components/ProfileMenu';
 import MainMenu from './components/MainMenu';
-import SearchBox from './components/SearchBox';
 import MobileMenuButton from './components/MobileMenuButton';
 import MobileMenu from './components/MobileMenu';
 
