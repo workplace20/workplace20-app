@@ -1,16 +1,23 @@
+import classnames from 'classnames';
 import {
   Header,
   Footer
 } from './components';
 
-const MarketingLayout = ({ children }) => {
+const colorClasses = {
+  gray: 'bg-gray-100',
+  white: 'bg-white'
+}
+
+const MarketingLayout = ({ children, backgroundColor = "white" }) => {
   return (
-    <div>
+    <div className={classnames("min-h-screen", colorClasses[backgroundColor])}>
       <Header />
-      <main class="mx-auto max-w-7xl px-4">
-          {children}
+      <main class="mx-auto max-w-7xl px-4 my-8">
+        {children}
       </main>
       <Footer />
+
     </div>
   )
 }

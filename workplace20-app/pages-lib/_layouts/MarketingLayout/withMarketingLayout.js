@@ -1,8 +1,8 @@
 import MarketingLayout from './index';
 
-const withMarketingLayout = (Component) => ({ ...props }) => {
+const withMarketingLayout = (Component, backgroundColor = "white") => ({ ...props }) => {
   return (
-    <MarketingLayout>
+    <MarketingLayout backgroundColor={backgroundColor}>
       <Component {...props} />
     </MarketingLayout>
   );

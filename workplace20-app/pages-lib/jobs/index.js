@@ -1,93 +1,65 @@
-import { withAppLayout } from 'pages-lib/_layouts';
+import { withMarketingLayout } from 'pages-lib/_layouts';
 import Link from 'next/link';
+import { SelectChip } from 'pages-lib/_components/controls';
 
 const Jobs = () => (
   <div className="grid grid-cols-1 gap-4 items-start lg:gap-8 lg:grid lg:grid-cols-12">
     <aside className="lg:col-span-3">
-      <div className="rounded-lg bg-white overflow-hidden shadow py-4 px-2 py-6 px-2 sm:px-6">
-        <nav className="space-y-1">
-          {/* Current: "bg-gray-50 text-orange-600 hover:bg-white", Default: "text-gray-900 hover:text-gray-900 hover:bg-gray-50" */}
-          <a href="#" className="bg-gray-50 text-orange-600 hover:bg-white group rounded-md px-3 py-2 flex items-center text-sm font-medium" aria-current="page">
-            {/* Heroicon name: outline/bell */}
-            <svg className="text-gray-400 group-hover:text-gray-500 flex-shrink-0 -ml-1 mr-3 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+      <nav aria-label="Sidebar" className="sticky top-4">
+        {/* <div className="pb-12 space-y-1">
+          <a href="#" className="bg-gray-200 text-gray-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md" aria-current="page">
+            <svg className="text-gray-500 flex-shrink-0 -ml-1 mr-3 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
             </svg>
             <span className="truncate">
-              New
-            </span>
+              All
+             </span>
           </a>
-          <a href="#" className="text-gray-900 hover:text-gray-900 hover:bg-gray-50 group rounded-md px-3 py-2 flex items-center text-sm font-medium">
-            {/* Heroicon name: outline/user-circle */}
-            <svg className="text-gray-400 group-hover:text-gray-500 flex-shrink-0 -ml-1 mr-3 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+          <a href="#" className="text-gray-600 hover:bg-gray-50 group flex items-center px-3 py-2 text-sm font-medium rounded-md" aria-current="false">
+            <svg className="text-gray-400 group-hover:text-gray-500 flex-shrink-0 -ml-1 mr-3 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
             <span className="truncate">
               Matched
             </span>
           </a>
-          <a href="#" className="text-gray-900 hover:text-gray-900 hover:bg-gray-50 group rounded-md px-3 py-2 flex items-center text-sm font-medium">
-            {/* Heroicon name: outline/key */}
-            <svg className="text-gray-400 group-hover:text-gray-500 flex-shrink-0 -ml-1 mr-3 w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 3l-6 6m0 0V4m0 5h5M5 3a2 2 0 00-2 2v1c0 8.284 6.716 15 15 15h1a2 2 0 002-2v-3.28a1 1 0 00-.684-.948l-4.493-1.498a1 1 0 00-1.21.502l-1.13 2.257a11.042 11.042 0 01-5.516-5.517l2.257-1.128a1 1 0 00.502-1.21L9.228 3.683A1 1 0 008.279 3H5z" /></svg>
-            <span className="truncate">
-              Offered
-            </span>
-          </a>
-          <a href="#" className="text-gray-900 hover:text-gray-900 hover:bg-gray-50 group rounded-md px-3 py-2 flex items-center text-sm font-medium">
-            {/* Current: "text-orange-500", Default: "text-gray-400 group-hover:text-gray-500" */}
-            {/* Heroicon name: outline/credit-card */}
-            <svg class="text-gray-400 group-hover:text-gray-500 flex-shrink-0 -ml-1 mr-3 w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 3h5m0 0v5m0-5l-6 6M5 3a2 2 0 00-2 2v1c0 8.284 6.716 15 15 15h1a2 2 0 002-2v-3.28a1 1 0 00-.684-.948l-4.493-1.498a1 1 0 00-1.21.502l-1.13 2.257a11.042 11.042 0 01-5.516-5.517l2.257-1.128a1 1 0 00.502-1.21L9.228 3.683A1 1 0 008.279 3H5z"></path></svg>
-            <span className="truncate">
-              Applied
-            </span>
-          </a>
-        </nav>
-      </div>
-      <div>
-        <div className="mt-4">
-          <form>
-            <div className="rounded-lg bg-white overflow-hidden shadow">
-              <div className="px-4 py-5 bg-white sm:p-6">
-                <div className="grid gap-y-6 gap-x-4">
-                  <div className="sm:col-span-6">
-                    <label htmlFor="username" className="block text-sm font-medium text-gray-700">
-                      Search Text
-                    </label>
-                    <div className="mt-1 flex rounded-md shadow-sm">
-                      <input type="text" name="first_name" id="first_name" autoComplete="given-name" className="mt-1 focus:ring-orange-400 focus:border-orange-400 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
-                    </div>
-                  </div>
-                  <div className="sm:col-span-6">
-                    <label htmlFor="username" className="block text-sm font-medium text-gray-700">
-                      Level
-                    </label>
-                    <div className="mt-1 flex rounded-md shadow-sm">
-                      <select id="country" name="country" autoComplete="country" className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-orange-400 focus:border-orange-400 sm:text-sm">
-                        <option>Junior</option>
-                        <option>Senior</option>
-                        <option>Expert</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div className="sm:col-span-6">
-                    <label htmlFor="username" className="block text-sm font-medium text-gray-700">
-                      Skills
-                    </label>
-                    <div className="mt-1 flex rounded-md shadow-sm">
-                      <input type="text" name="first_name" id="first_name" autoComplete="given-name" className="mt-1 focus:ring-orange-400 focus:border-orange-400 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="px-4 py-3 bg-gray-50 text-center sm:px-6">
-                <button type="submit" className="inline-flex items-center px-3 py-2 border border-transparent shadow-sm text-sm leading-4 font-medium rounded-md text-white bg-orange-500 hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500">
-                  Search
-                    <svg class="ml-2 -mr-0.5 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                </button>
-              </div>
+          <div className="relative pt-8">
+            <div className="w-full border-t border-gray-300" />
+          </div>
+        </div> */}
+        <div>
+          <div className="relative">
+            <div className="pointer-events-none absolute inset-y-0 left-0 pl-3 flex items-center">
+              {/* Heroicon name: solid/search */}
+              <svg className="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd" />
+              </svg>
             </div>
-          </form>
+            <input id="search" name="search" className="block w-full bg-white border border-gray-300 rounded-md py-2 pl-10 pr-3 text-sm placeholder-gray-500 focus:outline-none focus:text-gray-900 focus:placeholder-gray-400 focus:ring-1 focus:ring-rose-500 focus:border-rose-500 sm:text-sm" placeholder="Search" type="search" />
+          </div>
+          <div className="mt-4">
+            <SelectChip
+              options={[
+                {
+                  label: 'C#',
+                  value: 'c#'
+                },
+                {
+                  label: 'ReactJs',
+                  value: 'reactjs'
+                },
+                {
+                  label: 'HTML',
+                  value: 'html'
+                }
+              ]}
+              value={[]}
+              multipleSelect={true}
+              onChange={() => { }}
+            />
+          </div>
         </div>
-      </div>
+      </nav>
 
     </aside>
 
@@ -246,4 +218,4 @@ const Jobs = () => (
 
 )
 
-export default withAppLayout(Jobs);
+export default withMarketingLayout(Jobs, "gray");

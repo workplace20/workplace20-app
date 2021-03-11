@@ -6,12 +6,10 @@ import { useRouter } from 'next/router'
 const MainMenu = () => {
   const menuItems = useQueryMainMenuItems();
   const router = useRouter();
-  const isActive = (pathname) => {
-    router.pathname.startsWith(pathname)
-  };
+  const isActive = (pathname) => router.pathname.startsWith(pathname);
 
   return (
-    <div class="hidden md:flex md:space-x-10" >
+    <div className="hidden md:flex md:space-x-10" >
       {
         menuItems.map(item => (
           <Link href={item.path}>

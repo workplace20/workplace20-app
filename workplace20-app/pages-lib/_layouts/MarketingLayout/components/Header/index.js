@@ -47,7 +47,7 @@ const Header = () => {
       {/* End google tag */}
       <div class="relative bg-white overflow-hidden">
         <div>
-          <div class="relative pt-6 pb-16 sm:pb-24">
+          <div class="relative py-6">
             <div class="max-w-7xl mx-auto px-4 sm:px-6">
               <nav class="relative flex items-center justify-between sm:h-10 md:justify-center" aria-label="Global">
                 <div class="flex items-center flex-1 md:absolute md:inset-y-0 md:left-0">

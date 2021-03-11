@@ -1,9 +1,9 @@
 import { withMarketingLayout } from "pages-lib/_layouts";
 
 const Home = () => (
-	<>
+	<div className="bg-white">
 		<div>
-			<div class="mx-auto max-w-7xl px-4 ">
+			<div class="mx-auto max-w-7xl px-4 pt-8 sm:pt-24">
 				<div class="text-center">
 					<h1 class="text-2xl tracking-tight font-extrabold text-gray-600 sm:text-4xl md:text-4xl">
 						<span class="block xl:inline">
@@ -21,7 +21,7 @@ const Home = () => (
 			</div>
 		</div>
 		<div class="relative overflow-hidden">
-			<div class="relative bg-white">
+			<div class="relative ">
 				<div class="relative pt-12 pb-16 px-4 ">
 					<div class="text-base max-w-4xl mx-auto ">
 						<h3
@@ -295,7 +295,8 @@ const Home = () => (
 				</div>
 			</div>
 		</div>
-	</>
+	</div>
+
 );
 
 export default withMarketingLayout(Home);
