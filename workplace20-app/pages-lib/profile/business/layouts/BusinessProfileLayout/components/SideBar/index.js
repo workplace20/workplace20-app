@@ -7,7 +7,7 @@ const SideBar = () => {
 
   return (
     <nav aria-label="Sidebar" className="sticky top-4 divide-y divide-gray-300">
-      <div className="pb-8 space-y-1">
+      <div className="space-y-1">
         {
           menuItems.map(item => {
             const isSelected = item.isSelected(pathname);

@@ -16,7 +16,7 @@ export default atom({
       },
       {
         name: 'Community',
-        path: '/blog',
+        path: '/community',
       }
     ],
     [PROFILE_KIND.business]: [
@@ -26,7 +26,7 @@ export default atom({
       },
       {
         name: 'Community',
-        path: '/blog',
+        path: '/community',
       }
     ]
   }

@@ -1,7 +1,7 @@
 import { atom } from 'recoil';
 
 export default atom({
-  key: "profile_menu_state",
+  key: "marketing_profile_menu_state",
   default: [
     {
       name: 'Profile',
