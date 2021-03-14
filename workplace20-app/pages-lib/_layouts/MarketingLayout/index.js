@@ -11,7 +11,7 @@ const colorClasses = {
 
 const MarketingLayout = ({ children, backgroundColor = "white" }) => {
   return (
-    <div className={classnames("min-h-screen", colorClasses[backgroundColor])}>
+    <div className={classnames("relative min-h-screen", colorClasses[backgroundColor])}>
       <Header />
       <main class="mx-auto max-w-7xl px-4 my-8">
         {children}

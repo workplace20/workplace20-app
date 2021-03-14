@@ -3,12 +3,12 @@ import Head from 'next/head';
 import { Fragment } from 'react';
 import Link from 'next/link';
 import { Logo } from 'pages-lib/_components/controls';
-import { 
+import {
   MainMenu,
   MobileMenuButton,
   MobileMenu,
   ProfileMenu
- } from './components';
+} from './components';
 
 const Header = () => {
   return (
@@ -44,29 +44,24 @@ const Header = () => {
       <noscript>
         <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PKB227P" height={0} width={0} style={{ display: 'none', visibility: 'hidden' }}></iframe>
       </noscript>
-      {/* End google tag */}
-      <div class="relative bg-white overflow-hidden">
-        <div>
-          <div class="relative py-6">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6">
-              <nav class="relative flex items-center justify-between sm:h-10 md:justify-center" aria-label="Global">
-                <div class="flex items-center flex-1 md:absolute md:inset-y-0 md:left-0">
-                  <div class="flex items-center justify-between w-full md:w-auto">
-                    <Link href="/">
-                      <a>
-                        <Logo />
-                      </a>
-                    </Link>
-                    <div class="mr-2 flex items-center md:hidden">
-                      <MobileMenuButton />
-                    </div>
-                  </div>
+      <div class="relative py-6 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+          <nav class="relative flex items-center justify-between sm:h-10 md:justify-center" aria-label="Global">
+            <div class="flex items-center flex-1 md:absolute md:inset-y-0 md:left-0">
+              <div class="flex items-center justify-between w-full md:w-auto">
+                <Link href="/">
+                  <a>
+                    <Logo />
+                  </a>
+                </Link>
+                <div class="mr-2 flex items-center md:hidden">
+                  <MobileMenuButton />
                 </div>
-                <MainMenu />
-                <ProfileMenu />
-              </nav>
+              </div>
             </div>
-          </div>
+            <MainMenu />
+            <ProfileMenu />
+          </nav>
         </div>
       </div>
       <MobileMenu />
