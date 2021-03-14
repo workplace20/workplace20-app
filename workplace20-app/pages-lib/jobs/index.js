@@ -6,7 +6,7 @@ const Jobs = () => (
   <div className="grid grid-cols-1 gap-4 items-start lg:gap-8 lg:grid lg:grid-cols-12">
     <aside className="lg:col-span-3">
       <nav aria-label="Sidebar" className="sticky top-4">
-        {/* <div className="pb-12 space-y-1">
+        <div className="pb-12 space-y-1">
           <a href="#" className="bg-gray-200 text-gray-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md" aria-current="page">
             <svg className="text-gray-500 flex-shrink-0 -ml-1 mr-3 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -26,7 +26,7 @@ const Jobs = () => (
           <div className="relative pt-8">
             <div className="w-full border-t border-gray-300" />
           </div>
-        </div> */}
+        </div>
         <div>
           <div className="relative">
             <div className="pointer-events-none absolute inset-y-0 left-0 pl-3 flex items-center">
