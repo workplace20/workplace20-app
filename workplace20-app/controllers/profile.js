@@ -1,210 +1,216 @@
-import skillList from '_data/skill.json'
-import challengeList from '_data/challenges.json'
-import debug from 'debug'
+import skillList from "_data/skill.json";
+import challengeList from "_data/challenges.json";
+import debug from "debug";
 
-const log = debug('profile controller')
+const log = debug("profile controller");
 
 export class Profile {
-    constructor(collection, email) {
-        this.collection = collection
-        this.email = email
-    }
+	constructor(collection, email) {
+		this.collection = collection;
+		this.email = email;
+	}
 
-    debugInfo() {
-        if (this.collection) {
-            return "Look good!"
-        } else
-            return "Not found collection"
-    }
+	debugInfo() {
+		if (this.collection) {
+			return "Look good!";
+		} else return "Not found collection";
+	}
 
-    async update(data) {
+	async update(data) {
+		let updater = {};
+		const errors = [];
 
-        let updater = {};
-        const errors = [];
+		let profile = await this._getProfile();
 
-        let profile = await this._getProfile()
+		const {
+			name,
+			skype,
+			dateOfBirth,
+			phoneNumber,
+			yearOfExperience,
+			address,
+			about,
+			kind,
+		} = data;
 
-        const {
-            name,
-            skype,
-            dateOfBirth,
-            phoneNumber,
-            yearOfExperience,
-            address,
-            about,
-            kind
-        } = data;
+		if (!profile.kind) {
+			// we only change kind one time
+			if (kind && ["business", "creator"].indexOf(kind) >= 0) {
+				updater.kind = kind;
+			} else {
+				errors.push({
+					kind: "required in range [business,creator]",
+				});
+			}
+		}
 
-        if (!profile.kind) {
-            // we only change kind one time
-            if (kind && ['business', 'creator'].indexOf(kind) >= 0) {
-                updater.kind = kind
-            } else {
-                errors.push({
-                    kind: "required in range [business,creator]"
-                })
-            }
-        }
+		if (skype) {
+			updater.skype = skype;
+		}
+		if (name) {
+			updater.name = name;
+		}
+		if (dateOfBirth) {
+			updater.dateOfBirth = dateOfBirth;
+		}
 
-        if (skype) {
-            updater.skype = skype
-        }
-        if (name) {
-            updater.name = name
-        }
-        if (dateOfBirth) {
-            updater.dateOfBirth = dateOfBirth
-        }
+		if (phoneNumber) {
+			updater.phoneNumber = phoneNumber;
+		}
+		if (yearOfExperience) {
+			updater.yearOfExperience = yearOfExperience;
+		}
+		if (address) {
+			updater.address = address;
+		}
 
-        if (phoneNumber) {
-            updater.phoneNumber = phoneNumber
-        }
-        if (yearOfExperience) {
-            updater.yearOfExperience = yearOfExperience
-        }
-        if (address) {
-            updater.address = address
-        }
+		if (about) {
+			updater.about = about;
+		}
 
-        if (about) {
-            updater.about = about
-        }
+		if (errors.length > 0) {
+			[null, error];
+		}
 
-        if (errors.length > 0) {
-            [null, error]
-        }
+		await this.collection.updateOne(
+			{
+				email: this.email,
+			},
+			{
+				$set: updater,
+			},
+			{
+				upsert: false,
+			}
+		);
 
-        await this.collection.updateOne({
-            email: this.email
-        }, {
-            $set: updater
-        }, {
-            upsert: false
-        })
+		profile = await this._getProfile();
 
-        profile = await this._getProfile()
+		return [profile, null];
+	}
 
-        return [profile, null]
-    }
+	async _getProfile() {
+		const profile = await this.collection.findOne({
+			email: this.email,
+		});
 
-    async _getProfile() {
-        const profile = await this.collection.findOne({
-            email: this.email
-        })
+		return profile;
+	}
 
-        return profile
-    }
+	async Get() {
+		return await this._getProfile();
+	}
 
-    async Get() {
-        return await this._getProfile()
-    }
+	async setSkill(challengeId, level, score) {
+		const profile = await this._getProfile();
+		if (!profile) {
+			return [null, "Profile not found"];
+		}
 
+		if (challengeId == "general") {
+			await this.collection.updateOne(
+				{
+					email: this.email,
+				},
+				{
+					$set: {
+						generalChallengeCompleted: true,
+					},
+				}
+			);
+			return;
+		}
 
-    async setSkill(challengeId, level) {
+		if (score < 90) {
+			[null, "You have to pass 90% of questions to get the skill"];
+		}
 
-        const profile = await this._getProfile()
-        if (!profile) {
-            return [null, 'Profile not found']
-        }
+		let profileSkill = profile.skillMatrix[challengeId];
 
+		let newSkill = {};
 
-        if (challengeId == 'general') {
-            await this.collection.updateOne({
-                email: this.email
-            }, {
-                $set: {
-                    generalChallengeCompleted: true
-                }
-            })
-            return
-        }
+		newSkill[challengeId] = {
+			level: level,
+		};
 
-        let profileSkill = profile.skillMatrix[challengeId]
+		await this.collection.updateOne(
+			{
+				email: this.email,
+			},
+			{
+				$set: {
+					skillMatrix: Object.assign(profile.skillMatrix, newSkill),
+				},
+			}
+		);
+	}
 
-        let newSkill = {}
+	async getNextLevelOf(challengeId) {
+		const profile = await this._getProfile();
+		if (!profile) {
+			return [null, "Profile not found"];
+		}
 
-        newSkill[challengeId] = {
-            level: level
-        }
+		if (challengeId == "general" && profile.generalChallengeCompleted) {
+			return [null, "You have completed this challenge"];
+		}
 
-        await this.collection.updateOne({
-            email: this.email
-        }, {
-            $set: {
-                skillMatrix: Object.assign(profile.skillMatrix, newSkill)
-            }
-        })
+		let levelOfChallenge = profile.skillMatrix[challengeId];
 
-    }
+		if (!levelOfChallenge || !levelOfChallenge.level) {
+			log(`Profile ${this.email} start with default level Basic`);
 
-    async getNextLevelOf(challengeId) {
+			levelOfChallenge = {
+				level: "Beginner",
+			};
+		}
 
-        const profile = await this._getProfile()
-        if (!profile) {
-            return [null, 'Profile not found']
-        }
+		const nextLevel = nextLevelOfChallenge(
+			challengeId,
+			levelOfChallenge.level
+		);
 
-        if (challengeId == 'general' && profile.generalChallengeCompleted) {
-            return [null, 'You have completed this challenge']
-        }
+		if (!nextLevel) {
+			return [null, "Challenge is not supported"];
+		}
 
-        let levelOfChallenge = profile.skillMatrix[challengeId]
+		if (nextLevel == levelOfChallenge.level && nextLevel != "Beginner") {
+			// User reached all level
+			return [null, "User is reached max level"];
+		}
 
-        if (!levelOfChallenge || !levelOfChallenge.level) {
+		log(
+			`Current level of profile for skill ${challengeId} is ${levelOfChallenge.level}`
+		);
+		log(`next level for skill ${challengeId} is ${nextLevel}`);
 
-            log(`Profile ${this.email} start with default level Basic`)
+		const challenge = challengeList.find(
+			(el) => el.challengeId == challengeId && el.level == nextLevel
+		);
 
-            levelOfChallenge = {
-                level: 'Beginner'
-            }
-        }
-
-        const nextLevel = nextLevelOfChallenge(challengeId, levelOfChallenge.level);
-
-        if (!nextLevel) {
-            return [null, 'Challenge is not supported']
-        }
-
-        if (nextLevel == levelOfChallenge.level && nextLevel != 'Beginner') {
-            // User reached all level
-            return [null, 'User is reached max level']
-        }
-
-        log(`Current level of profile for skill ${challengeId} is ${levelOfChallenge.level}`)
-        log(`next level for skill ${challengeId} is ${nextLevel}`)
-
-        const challenge = challengeList
-            .find(el =>
-                el.challengeId == challengeId &&
-                el.level == nextLevel)
-
-        if (!challenge) {
-            return [null, 'Challenge is not support']
-        }
-        return [challenge, null]
-    }
-
+		if (!challenge) {
+			return [null, "Challenge is not support"];
+		}
+		return [challenge, null];
+	}
 }
 
 function nextLevelOfChallenge(challengeCode, currentLevel) {
+	const skill = skillList.skills.find((el) => el.code == challengeCode);
 
-    const skill = skillList.skills
-        .find(el => el.code == challengeCode);
+	if (!skill) {
+		return "";
+	}
 
-    if (!skill) {
-        return "";
-    }
+	const indexCurrentLevel = skill.levels.indexOf(currentLevel);
 
-    const indexCurrentLevel = skill.levels.indexOf(currentLevel)
+	if (indexCurrentLevel < 0) {
+		return skill.levels[0];
+	}
 
-    if (indexCurrentLevel < 0) {
-        return skill.levels[0]
-    }
+	if (indexCurrentLevel == skill.levels.length - 1) {
+		return currentLevel;
+	}
 
-    if (indexCurrentLevel == skill.levels.length - 1) {
-        return currentLevel;
-    }
-
-    return skill.levels[indexCurrentLevel + 1]
-
+	return skill.levels[indexCurrentLevel + 1];
 }
