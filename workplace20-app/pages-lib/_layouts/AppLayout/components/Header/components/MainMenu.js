@@ -9,8 +9,6 @@ const MainMenu = () => {
   const menuItems = useQueryMainMenuItems(profileKind);
   const router = useRouter();
 
-  const isActive = (pathname) => router.pathname.startsWith(pathname);
-
   return (
     <div className="hidden lg:block">
       <nav className="flex space-x-4">
@@ -20,8 +18,8 @@ const MainMenu = () => {
               <a className={classnames(
                 'text-sm font-medium rounded-md bg-white bg-opacity-0 px-3 py-2 hover:bg-opacity-10',
                 {
-                  'text-white font-extrabold': isActive(item.path),
-                  'text-orange-200': !isActive(item.path)
+                  'text-white font-extrabold': item.isSelected(router.pathname),
+                  'text-orange-200': !item.isSelected(router.pathname)
                 }
               )}>{item.name}</a>
             </Link>
