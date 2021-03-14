@@ -165,7 +165,10 @@ export class Profile {
 			};
 		}
 
+		log(`Profile kind ${profile.kind}`);
+
 		const nextLevel = nextLevelOfChallenge(
+			profile.kind,
 			challengeId,
 			levelOfChallenge.level
 		);
@@ -182,10 +185,18 @@ export class Profile {
 		log(
 			`Current level of profile for skill ${challengeId} is ${levelOfChallenge.level}`
 		);
+
 		log(`next level for skill ${challengeId} is ${nextLevel}`);
 
 		const challenge = challengeList.find(
-			(el) => el.challengeId == challengeId && el.level == nextLevel
+			(el) =>
+				el.challengeId == challengeId &&
+				el.level == nextLevel &&
+				(!el.kind || el.kind == profile.kind)
+		);
+
+		log(
+			`Challenge kind ${challenge?.kind} vs Profile kind ${profile.kind}`
 		);
 
 		if (!challenge) {
@@ -195,8 +206,10 @@ export class Profile {
 	}
 }
 
-function nextLevelOfChallenge(challengeCode, currentLevel) {
-	const skill = skillList.skills.find((el) => el.code == challengeCode);
+function nextLevelOfChallenge(profileKind, challengeCode, currentLevel) {
+	const skill = skillList.skills.find(
+		(el) => el.code == challengeCode && (!el.kind || el.kind == profileKind)
+	);
 
 	if (!skill) {
 		return "";
