@@ -16,22 +16,19 @@ const ProfileMenu = () => {
   if (loading) return null;
 
   if (!session) return (
-    <div class="hidden md:absolute md:flex md:items-center md:justify-end md:inset-y-0 md:right-0">
-      <span class="inline-flex rounded-md shadow">
-        <Link href="/api/auth/signin">
-          <Button
-            color="primary"
-            size="lg"
-          >
-            Log in
+    <span class="inline-flex rounded-md shadow">
+      <Link href="/api/auth/signin">
+        <Button
+          color="primary"
+          size="lg"
+        >
+          Log in
           </Button>
-        </Link>
-      </span>
-    </div>
+      </Link>
+    </span>
   )
 
   return (
-    <div class="hidden md:absolute md:flex md:items-center md:justify-end md:inset-y-0 md:right-0">
 
       <div className="ml-4 relative flex-shrink-0">
         <div>
@@ -69,7 +66,6 @@ const ProfileMenu = () => {
           )}
         </Transition>
       </div>
-    </div>
   )
 }
 

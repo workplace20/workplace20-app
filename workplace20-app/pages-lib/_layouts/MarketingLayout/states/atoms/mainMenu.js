@@ -11,13 +11,13 @@ export default atom({
       name: 'For Business',
       path: '/#for-business',
     },
-    {
-      name: 'Jobs',
-      path: '/jobs',
-    },
-    {
-      name: 'Community',
-      path: '/community',
-    }
+    // {
+    //   name: 'Jobs',
+    //   path: '/jobs',
+    // },
+    // {
+    //   name: 'Community',
+    //   path: '/community',
+    // }
   ]
 });

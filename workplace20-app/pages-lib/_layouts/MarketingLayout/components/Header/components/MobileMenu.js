@@ -17,7 +17,7 @@ const MobileMenu = () => {
   const isOpened = useQueryIsMobileMenuOpened();
   const handleCloseMenuClick = useMutateCloseMobileMenu();
   const [session] = useSession();
-  console.log('isOpened', isOpened)
+
   return (
     <>
       <Transition
@@ -58,6 +58,14 @@ const MobileMenu = () => {
                       </Link>
                     ))
                   }
+                </div>
+                <div class="px-2 pt-2 pb-3 border-t-2 border-gray-200" role="none">
+                  <Link href="/jobs">
+                    <a className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Jobs</a>
+                  </Link>
+                  <Link href="/community">
+                    <a className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Community</a>
+                  </Link>
                 </div>
                 {
                   session ? (
