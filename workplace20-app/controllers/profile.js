@@ -1,6 +1,11 @@
 import skillList from "_data/skill.json";
 import challengeList from "_data/challenges.json";
 import debug from "debug";
+import Ajv from "ajv";
+import addFormats from "ajv-formats";
+
+const ajv = new Ajv({ removeAdditional: true });
+addFormats(ajv);
 
 const log = debug("profile controller");
 
@@ -17,59 +22,43 @@ export class Profile {
 	}
 
 	async update(data) {
-		let updater = {};
 		const errors = [];
 
+		const { kind } = data;
+		let updater = data;
 		let profile = await this._getProfile();
 
-		const {
-			name,
-			skype,
-			dateOfBirth,
-			phoneNumber,
-			yearOfExperience,
-			address,
-			about,
-			kind,
-		} = data;
-
+		let shouldUpdateProfileKindOnly = false;
 		if (!profile.kind) {
 			// we only change kind one time
 			if (kind && ["business", "creator"].indexOf(kind) >= 0) {
 				updater.kind = kind;
+				shouldUpdateProfileKindOnly = true;
 			} else {
 				errors.push({
-					kind: "required in range [business,creator]",
+					message:
+						"Property 'kind' required in range [business,creator]",
 				});
 			}
+		} else {
+			data.kind = profile.kind;
 		}
 
-		if (skype) {
-			updater.skype = skype;
-		}
-		if (name) {
-			updater.name = name;
-		}
-		if (dateOfBirth) {
-			updater.dateOfBirth = dateOfBirth;
-		}
+		let validate;
 
-		if (phoneNumber) {
-			updater.phoneNumber = phoneNumber;
-		}
-		if (yearOfExperience) {
-			updater.yearOfExperience = yearOfExperience;
-		}
-		if (address) {
-			updater.address = address;
-		}
+		if (shouldUpdateProfileKindOnly == false) {
+			if (kind == "creator") {
+				validate = ajv.compile(updateCreatorProfileSchema);
+			} else {
+				validate = ajv.compile(updateBusinessProfileSchema);
+			}
 
-		if (about) {
-			updater.about = about;
-		}
-
-		if (errors.length > 0) {
-			[null, error];
+			if (!validate(data)) {
+				return [null, validate.errors];
+			}
+			if (errors.length > 0) {
+				[null, error];
+			}
 		}
 
 		await this.collection.updateOne(
@@ -77,7 +66,7 @@ export class Profile {
 				email: this.email,
 			},
 			{
-				$set: updater,
+				$set: data,
 			},
 			{
 				upsert: false,
@@ -227,3 +216,47 @@ function nextLevelOfChallenge(profileKind, challengeCode, currentLevel) {
 
 	return skill.levels[indexCurrentLevel + 1];
 }
+
+const updateCreatorProfileSchema = {
+	type: "object",
+	properties: {
+		kind: { enum: ["creator"] },
+		email: { type: "string" },
+		jobAvailable: { type: "boolean" },
+		name: { type: "string" },
+		skype: { type: "string" },
+		dateOfBirth: { type: "string", format: "date" },
+		phoneNumber: { type: "string" },
+		address: { type: "string" },
+		about: { type: "string" },
+		contactEmail: { type: "string", format: "email" },
+		country: { type: "string" },
+		website: { type: "string" },
+	},
+	required: ["kind", "name", "email"],
+	additionalProperties: false,
+};
+
+const updateBusinessProfileSchema = {
+	type: "object",
+	properties: {
+		kind: { enum: ["business"] },
+		email: { type: "string" },
+		jobAvailable: { type: "boolean" },
+		name: { type: "string" },
+		skype: { type: "string" },
+		dateOfBirth: { type: "string", format: "date" },
+		phoneNumber: { type: "string" },
+		address: { type: "string" },
+		about: { type: "string" },
+		businessName: { type: "string" },
+		contactEmail: { type: "string", format: "email" },
+		country: { type: "string" },
+		yearFounded: { type: "number" },
+		companySize: { type: "string" },
+		companyType: { type: "string" },
+		website: { type: "string" },
+	},
+	required: ["kind", "businessName", "website", "companySize", "companyType"],
+	additionalProperties: false,
+};
