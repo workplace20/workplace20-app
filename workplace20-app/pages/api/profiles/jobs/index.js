@@ -1,64 +1,77 @@
+import dbhelper from "lib/database";
+import debug from "debug";
+import authCheck from "lib/auth-checker";
+import { getSession } from "next-auth/client";
+import { Profile } from "controllers/profile";
+import { Job } from "controllers/job";
+import { ValidationError, Create } from "lib/error";
+
 export default async function handler(req, res) {
-  switch (req.method) {
-    case 'GET':
-      await handleGet(req, res)
-      break
-    case 'POST':
-      await handlePost(req, res)
-      break
-    default:
-      res.status(405).send("Method not support")
-      break
-  }
+	switch (req.method) {
+		case "GET":
+			await authCheck(req, res, handleGet);
+			break;
+		case "POST":
+			await authCheck(req, res, handlePost);
+			break;
+		default:
+			res.status(405).send("Method not support");
+			break;
+	}
 }
 
 async function handleGet(req, res) {
-  const cursor = parseInt(req.query.cursor) || 0;
+	const { cursor, type } = req.query;
 
-  const pageSize = 5;
+	const session = await getSession({
+		req,
+	});
 
-  const data = Array(pageSize)
-    .fill(0)
-    .map((_, i) => {
-      return {
-        id: i + cursor,
-        title: 'Full-stack developer ' + (i + cursor) + ` (type: ${req.query.type})` + ` (server time: ${Date.now()})`,
-        level: 'Expert',
-        english: 'Advance',
-        introduction: 'Fugiat ipsum ipsum deserunt culpa aute sint do nostrud anim incididunt cillum culpa consequat. Excepteur qui ipsum aliquip consequat sint. Sit id mollit nulla mollit nostrud in ea officia proident. Irure nostrud pariatur mollit ad adipisicing reprehenderit deserunt qui eu. Excepteur qui ipsum aliquip consequat sint. Sit id mollit nulla mollit nostrud in ea officia proident. Irure nostrud pariatur mollit ad adipisicing reprehenderit deserunt qui eu.',
-        requiredSkills: ['react', 'csharp']
-      }
-    })
+	const jobCollection = await dbhelper.collectionFor("jobs");
+	const jobCtr = new Job(jobCollection);
 
-  const nextCursor = cursor < 10 ? data[data.length - 1].id + 1 : null;
+	const [jobResult, error] = await jobCtr.getList(
+		session.user.email,
+		type,
+		cursor,
+		100 // Page Size is 100
+	);
+	if (error) {
+		res.status(400).send(error);
+		return;
+	}
 
-  res.status(200).send({ data, nextCursor });
+	if (jobResult?.data?.length == 0) {
+		res.status(200).send({ data: [], nextCursor: null });
+		return;
+	}
 
-  // no data
-  // res.status(200).send({ data: [], nextCursor: null });
-
-  // error
-  // res.status(500).send('internal server error');
+	res.status(200).send(jobResult);
 }
 
-
 async function handlePost(req, res) {
-  const {
-    title,
-    skills,
-    level,
-    english,
-    introduction,
-    description,
-  } = req.body;
+	const session = await getSession({
+		req,
+	});
 
-  res.status(200).send({ 
-    id: 'added-job',
-    title,
-    skills,
-    level,
-    english,
-    introduction,
-    description,
-  });
+	let validateError = Create(res);
+
+	const profileCollection = await dbhelper.collectionFor("profiles");
+	const jobCollection = await dbhelper.collectionFor("jobs");
+	const jobCtr = new Job(jobCollection);
+
+	const profileCtr = new Profile(profileCollection, session.user.email);
+	const profile = await profileCtr.Get();
+
+	if (!profile) {
+		validateError.endWith(400, "Invalid account");
+		return;
+	}
+
+	const [job, error] = await jobCtr.create(profile, req.body);
+	if (error) {
+		validateError.endWith(400, error);
+		return;
+	}
+	res.status(200).send(job);
 }
