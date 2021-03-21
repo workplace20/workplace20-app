@@ -87,7 +87,6 @@ export class Job {
 			return [null, null];
 		}
 		const job = await this.collection.findOne({ _id: ObjectId(id) });
-		Logger(job);
 		return [Object.assign({ id: job._id }, job, { _id: undefined }), null];
 	}
 
@@ -118,8 +117,6 @@ export class Job {
 				];
 			}
 		}
-
-		Logger(query);
 
 		const result = await this.collection
 			.find(query)
