@@ -51,6 +51,7 @@ export class Profile {
 			}
 		} else {
 			data.kind = profile.kind;
+			kind = profile.kind;
 		}
 
 		let validate;
@@ -242,7 +243,7 @@ const updateCreatorProfileSchema = {
 		country: { type: "string" },
 		website: { type: "string" },
 	},
-	required: ["kind", "name", "email"],
+	required: ["kind", "name"],
 	additionalProperties: false,
 };
 
