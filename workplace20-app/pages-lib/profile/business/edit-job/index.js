@@ -29,6 +29,7 @@ const EditJob = ({
     <JobForm
       title='Edit Job'
       initialValues={{
+        id,
         title,
         requiredSkills,
         level,
