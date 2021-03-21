@@ -41,7 +41,7 @@ async function handleGet(req, res) {
 		return;
 	}
 
-	if (jobResult?.data?.length == 0) {
+	if (!jobResult?.data || jobResult?.data?.length == 0) {
 		res.status(200).send({ data: [], nextCursor: null });
 		return;
 	}

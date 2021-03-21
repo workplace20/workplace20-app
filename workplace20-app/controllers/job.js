@@ -35,6 +35,30 @@ export class Job {
 		this.collection = collection;
 	}
 
+	async update(id, profile, jobData) {
+		const { email } = profile;
+
+		if (!ObjectId.isValid(id)) {
+			return [null, "Invalid id"];
+		}
+
+		let validate = ajv.compile(createJobScheme);
+
+		if (!validate(jobData)) {
+			return [null, validate.errors];
+		}
+
+		const result = await this.collection.updateOne(
+			{ _id: ObjectId(id), email: email },
+			jobData
+		);
+
+		Logger(result);
+
+		if (result.updatedCount == 1) {
+			return [result.ops[0], null];
+		return [null, "Unknow error when persistent data"];
+	}
 	async create(profile, jobData) {
 		const { email } = profile;
 
@@ -48,14 +72,26 @@ export class Job {
 			{ email: email, type: "active" },
 			jobData
 		);
+
 		const result = await this.collection.insertOne(jobForInsert);
 		if (result.insertedCount == 1) {
 			return [result.ops[0], null];
 		}
 		return [null, "Unknow error when persistent data"];
 	}
+
+	async getById(id) {
+		if (!ObjectId.isValid(id)) {
+			return [null, null];
+		}
+		const job = await this.collection.findOne({ _id: ObjectId(id) });
+		Logger(job);
+		return [Object.assign({ id: job._id }, job, { _id: undefined }), null];
+	}
+
 	async getList(email, type, currentCursor, pageSize) {
 		/*
+		 * RETURN
 		 * {
 		 *   data:[],
 		 *   nextCursor: lastId
@@ -92,9 +128,12 @@ export class Job {
 		Logger(result);
 
 		let listObj = {
-			data: result,
+			data: result?.map((e) =>
+				Object.assign({ id: e._id }, e, { _id: undefined })
+			),
 		};
 
+		Logger(listObj);
 		if (result?.length > 0) {
 			listObj.nextCursor = result[result.length - 1]._id;
 		}
