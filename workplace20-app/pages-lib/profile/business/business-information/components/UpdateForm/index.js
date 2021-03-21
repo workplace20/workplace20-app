@@ -3,6 +3,7 @@ import { Button } from 'pages-lib/_components/controls';
 import { Transition } from '@headlessui/react';
 import {
   FormTextInput,
+  FormNumberInput,
   FormTextAreaInput,
   FormSelectInput
 } from 'pages-lib/_components/form';
@@ -88,7 +89,7 @@ const UpdateForm = ({
               />
             </div>
             <div className="col-span-6 sm:col-span-2">
-              <FormTextInput
+              <FormNumberInput
                 label="Year Founded"
                 name="yearFounded"
                 required

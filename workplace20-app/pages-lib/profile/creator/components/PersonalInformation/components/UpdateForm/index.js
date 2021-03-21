@@ -2,7 +2,12 @@ import "react-datepicker/dist/react-datepicker.css";
 import { Formik, Form } from 'formik';
 import { Button } from 'pages-lib/_components/controls';
 import { Transition } from '@headlessui/react';
-import { FormTextInput, FormDatePicker, FormTextAreaInput } from 'pages-lib/_components/form';
+import { 
+  FormTextInput, 
+  FormNumberInput,
+  FormDatePicker, 
+  FormTextAreaInput 
+} from 'pages-lib/_components/form';
 import { useMutateUpdateProfile } from 'pages-lib/_states';
 import Card from 'pages-lib/_components/card';
 import * as Yup from 'yup';
@@ -86,7 +91,7 @@ const UpdateForm = ({
               />
             </div>
             <div className="col-span-6 sm:col-span-2">
-              <FormTextInput
+              <FormNumberInput
                 label="Year of experience"
                 name="yearOfExperience"
                 required
