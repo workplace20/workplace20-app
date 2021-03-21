@@ -20,6 +20,15 @@ export class Profile {
 			return "Look good!";
 		} else return "Not found collection";
 	}
+	async setJobCreated() {
+		await this.collection.updateOne(
+			{ email: this.email },
+			{
+				$set: { jobCreated: true },
+			},
+			{ upsert: false }
+		);
+	}
 
 	async update(data) {
 		const errors = [];

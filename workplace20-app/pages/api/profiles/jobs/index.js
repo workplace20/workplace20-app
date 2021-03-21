@@ -73,5 +73,10 @@ async function handlePost(req, res) {
 		validateError.endWith(400, error);
 		return;
 	}
+
+	if (!profile.jobCreated) {
+		await profileCtr.setJobCreated();
+	}
+
 	res.status(200).send(job);
 }
