@@ -51,13 +51,12 @@ export class Profile {
 			}
 		} else {
 			data.kind = profile.kind;
-			kind = profile.kind;
 		}
 
 		let validate;
 
 		if (shouldUpdateProfileKindOnly == false) {
-			if (kind == "creator") {
+			if (data.kind == "creator") {
 				validate = ajv.compile(updateCreatorProfileSchema);
 			} else {
 				validate = ajv.compile(updateBusinessProfileSchema);
