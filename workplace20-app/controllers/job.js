@@ -57,8 +57,10 @@ export class Job {
 
 		if (result.updatedCount == 1) {
 			return [result.ops[0], null];
+		}
 		return [null, "Unknow error when persistent data"];
 	}
+
 	async create(profile, jobData) {
 		const { email } = profile;
 
