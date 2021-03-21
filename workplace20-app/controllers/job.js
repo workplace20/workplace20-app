@@ -48,16 +48,16 @@ export class Job {
 			return [null, validate.errors];
 		}
 
-		const result = await this.collection.updateOne(
+		const commandResult = await this.collection.updateOne(
 			{ _id: ObjectId(id), email: email },
-			jobData
+			{ $set: jobData }
 		);
 
-		Logger(result);
-
-		if (result.updatedCount == 1) {
-			return [result.ops[0], null];
+		if (commandResult.result.ok == 1) {
+			const job = await this.getById(id);
+			return [job, null];
 		}
+
 		return [null, "Unknow error when persistent data"];
 	}
 
@@ -124,15 +124,12 @@ export class Job {
 			.limit(pageSize)
 			.toArray();
 
-		Logger(result);
-
 		let listObj = {
 			data: result?.map((e) =>
 				Object.assign({ id: e._id }, e, { _id: undefined })
 			),
 		};
 
-		Logger(listObj);
 		if (result?.length > 0) {
 			listObj.nextCursor = result[result.length - 1]._id;
 		}

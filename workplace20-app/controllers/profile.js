@@ -56,7 +56,7 @@ export class Profile {
 		let validate;
 
 		if (shouldUpdateProfileKindOnly == false) {
-			if (kind == "creator") {
+			if (data.kind == "creator") {
 				validate = ajv.compile(updateCreatorProfileSchema);
 			} else {
 				validate = ajv.compile(updateBusinessProfileSchema);
@@ -234,7 +234,8 @@ const updateCreatorProfileSchema = {
 		jobAvailable: { type: "boolean" },
 		name: { type: "string" },
 		skype: { type: "string" },
-		dateOfBirth: { type: "string", format: "date" },
+		yearOfExperience: { type: "number" },
+		dateOfBirth: { type: "string", format: "date-time" },
 		phoneNumber: { type: "string" },
 		address: { type: "string" },
 		about: { type: "string" },
@@ -242,7 +243,7 @@ const updateCreatorProfileSchema = {
 		country: { type: "string" },
 		website: { type: "string" },
 	},
-	required: ["kind", "name", "email"],
+	required: ["kind", "name"],
 	additionalProperties: false,
 };
 
@@ -254,7 +255,7 @@ const updateBusinessProfileSchema = {
 		jobAvailable: { type: "boolean" },
 		name: { type: "string" },
 		skype: { type: "string" },
-		dateOfBirth: { type: "string", format: "date" },
+		dateOfBirth: { type: "string", format: "date-time" },
 		phoneNumber: { type: "string" },
 		address: { type: "string" },
 		about: { type: "string" },

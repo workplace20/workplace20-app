@@ -34,7 +34,7 @@ async function handleGet(req, res) {
 		session.user.email,
 		type,
 		cursor,
-		100 // Page Size is 100
+		5 // Page Size
 	);
 	if (error) {
 		res.status(400).send(error);
