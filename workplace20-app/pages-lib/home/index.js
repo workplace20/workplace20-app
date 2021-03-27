@@ -89,7 +89,7 @@ const Home = () => (
 				<div class="relative px-4 ">
 					<div class="text-base max-w-4xl mx-auto ">
 						<h3 class="text-3xl leading-8 font-extrabold tracking-tight text-orange-500 sm:text-4xl">
-							Why should you join us?
+							Build by developers, for developers
 						</h3>
 					</div>
 				</div>
