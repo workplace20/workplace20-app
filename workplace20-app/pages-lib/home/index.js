@@ -6,12 +6,10 @@ const Home = () => (
 			<div class="flex mx-auto max-w-7xl px-4 pt-8 sm:pt-8 pb-16">
 				<div class="flex-initial text-center leading-16 w-1/2">
 					<h1 class="font-black text-orange-600 text-6xl pt-24">
-						<span class="block xl:inline">
-							Hire .NET & React.js
-						</span>
+						<span class="block xl:inline">.NET & React.js</span>
 					</h1>
 					<p class="bg-clip-text text-transparent bg-gradient-to-l from-orange-600 to-orange-400 sm:text-6xl">
-						remote developers in Viet Nam
+						developer community in Viet Nam
 					</p>
 				</div>
 				<div class="flex-initial ml-24">

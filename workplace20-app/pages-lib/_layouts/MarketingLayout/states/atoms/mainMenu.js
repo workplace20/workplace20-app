@@ -1,23 +1,19 @@
-import { atom } from 'recoil';
+import { atom } from "recoil";
 
 export default atom({
-  key: "marketing_menu_state",
-  default: [
-    {
-      name: 'For Developers',
-      path: '/#for-engineer',
-    },
-    {
-      name: 'For Business',
-      path: '/#for-business',
-    },
-    // {
-    //   name: 'Jobs',
-    //   path: '/jobs',
-    // },
-    // {
-    //   name: 'Community',
-    //   path: '/community',
-    // }
-  ]
+	key: "marketing_menu_state",
+	default: [
+		{
+			name: "Hire developers?",
+			path: "/hiring",
+		},
+		// {
+		//   name: 'Jobs',
+		//   path: '/jobs',
+		// },
+		// {
+		//   name: 'Community',
+		//   path: '/community',
+		// }
+	],
 });
