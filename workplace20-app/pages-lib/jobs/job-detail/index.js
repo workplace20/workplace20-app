@@ -3,7 +3,7 @@ import { JobDetail } from '../_components';
 
 const JobDetailPage = () => {
   return (
-    <div className="px-6 border-gray-200 border-t">
+    <div className="lg:px-6 border-gray-200 border-t">
       <JobDetail />
     </div>
      
