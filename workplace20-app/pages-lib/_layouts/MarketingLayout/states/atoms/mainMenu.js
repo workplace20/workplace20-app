@@ -4,16 +4,14 @@ export default atom({
 	key: "marketing_menu_state",
 	default: [
 		{
-			name: "Hire developers?",
-			path: "/hiring",
+		  name: 'Jobs',
+			path: '/jobs',
+			authenticatedPath: '/jobs/me'
 		},
-		// {
-		//   name: 'Jobs',
-		//   path: '/jobs',
-		// },
-		// {
-		//   name: 'Community',
-		//   path: '/community',
-		// }
+		{
+		  name: 'Community',
+			path: '/community',
+			authenticatedPath: '/community/me'
+		}
 	],
 });

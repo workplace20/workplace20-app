@@ -3,6 +3,7 @@ import Head from "next/head";
 import { Fragment } from "react";
 import Link from "next/link";
 import { Logo } from "pages-lib/_components/controls";
+import { useRouter } from "next/router";
 import {
 	MainMenu,
 	MobileMenuButton,
@@ -11,6 +12,13 @@ import {
 } from "./components";
 
 const Header = () => {
+	const router = useRouter();
+
+	const isBusinessPage = router.pathname === '/hiring';
+
+	const landingPageLink = isBusinessPage ? '/' : '/hiring';
+	const landingPageTitle = isBusinessPage ? 'Apply as a developer?' : 'Hire developers?';
+
 	return (
 		<>
 			<Head>
@@ -72,7 +80,13 @@ const Header = () => {
 											</Link>
 										</div>
 										<div className="hidden md:block">
-											<MainMenu />
+											<Link href={landingPageLink}>
+												<a
+													className="font-medium text-gray-500 hover:text-gray-900"
+												>
+													{landingPageTitle}
+												</a>
+											</Link>
 										</div>
 									</div>
 								</div>
@@ -82,16 +96,7 @@ const Header = () => {
 							</div>
 						</div>
 						<div class="hidden md:absolute md:flex md:items-center md:justify-end md:inset-y-0 md:right-0 md:space-x-10">
-							<Link href="/jobs">
-								<a className="font-medium text-gray-500 hover:text-gray-900">
-									Jobs
-								</a>
-							</Link>
-							<Link href="/community">
-								<a className="font-medium text-gray-500 hover:text-gray-900">
-									Community
-								</a>
-							</Link>
+							<MainMenu />
 							<ProfileMenu />
 						</div>
 					</nav>
