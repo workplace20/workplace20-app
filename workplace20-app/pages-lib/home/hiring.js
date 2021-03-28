@@ -1,17 +1,20 @@
 import { withMarketingLayout } from "pages-lib/_layouts";
 
 const Home = () => (
-	<div className="bg-white">
+	<div className="bg-white md:mt-16">
 		<div>
-			<div class="flex mx-auto max-w-7xl px-4 pt-8 sm:pt-8 pb-16">
+			<div class="flex flex-col md:flex-row mx-auto max-w-7xl">
 				<div class="flex-initial text-center leading-16 w-1/2">
-					<h1 class="bg-clip-text text-transparent bg-gradient-to-l from-orange-600 to-orange-400 sm:text-6xl font-black text-orange-600 text-6xl pt-24">
-						<span class="block xl:inline">
-							Hiring your next .NET & React.js
+					<h1 class="">
+						<span class="bg-clip-text text-transparent bg-gradient-to-l from-orange-600 to-orange-400 md:text-4xl md:pb-8 font-black text-orange-400 text-2xl block xl:inline">
+							Hiring your next
+						</span>
+						<span class="bg-clip-text text-transparent bg-gradient-to-l from-orange-600 to-orange-400 sm:text-6xl font-black text-orange-600 text-6xl">
+							.NET & React.js
 						</span>
 					</h1>
 				</div>
-				<div class="flex-initial ml-24">
+				<div class="flex-initial ml-24 mt-16 mb-24 md:mt-0">
 					<img class="text-center" src="./assets/bg/hiring.png" />
 				</div>
 			</div>
@@ -24,10 +27,10 @@ const Home = () => (
 				<div class="mt-12">
 					<div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
 						<div class="pt-6">
-							<div class="h-44 flow-root rounded-lg px-6 pb-8 bg-gradient-to-r from-orange-600 via-orange-600 to-orange-500 ">
+							<div class="h-44 flow-root rounded-lg px-6 pb-8 bg-gradient-to-r from-gray-600 via-gray-600 to-gray-500 ">
 								<div class="-mt-6">
 									<h3 class="uppercase mt-8 text-lg font-bold text-white tracking-tight">
-										Match the next developer.
+										Match your next developer.
 									</h3>
 									<p class="mt-5 text-base text-white">
 										We learn about your tech and connect you
@@ -39,7 +42,7 @@ const Home = () => (
 						</div>
 
 						<div class="pt-6 ">
-							<div class="h-44 flow-root rounded-lg px-6 pb-8 bg-gradient-to-r from-orange-600 via-orange-600 to-orange-500 ">
+							<div class="h-44 flow-root rounded-lg px-6 pb-8 bg-gradient-to-r from-gray-600 via-gray-600 to-gray-500 ">
 								<div class="-mt-6">
 									<h3 class="uppercase mt-8 text-lg font-bold text-white tracking-tight">
 										Legal Representatives on your behalf.
@@ -53,15 +56,15 @@ const Home = () => (
 							</div>
 						</div>
 						<div class="pt-6">
-							<div class="h-44 flow-root rounded-lg px-6 pb-8 bg-gradient-to-r from-orange-600 via-orange-600 to-orange-500 ">
+							<div class="h-44 flow-root rounded-lg px-6 pb-8 bg-gradient-to-r from-gray-600 via-gray-600 to-gray-500 ">
 								<div class="-mt-6">
 									<h3 class="uppercase mt-8 text-lg font-bold text-white tracking-tight">
 										Build your development team.
 									</h3>
 									<p class="mt-5 text-base text-white">
 										We build the development team to deliver
-										the software, you focus on product
-										development.
+										the software, you focus on your
+										customers and market.
 									</p>
 								</div>
 							</div>

@@ -16,7 +16,7 @@ const MainMenu = () => {
 					<Link href={item.path}>
 						<a
 							className={classnames(
-								"text-lg font-medium rounded-md bg-white bg-opacity-0 px-3 py-2 hover:bg-opacity-10",
+								"font-medium rounded-md bg-white bg-opacity-0 px-3 py-2 hover:bg-opacity-10",
 								{
 									"text-white font-extrabold": item.isSelected(
 										router.pathname

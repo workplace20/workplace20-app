@@ -14,10 +14,8 @@ const MainMenu = () => {
 				<Link href={item.path}>
 					<a
 						className={classnames({
-							"text-xl text-orange-600 font-medium": isActive(
-								item.path
-							),
-							"text-xl font-medium text-gray-500 hover:text-gray-900": !isActive(
+							"text-orange-600 font-medium": isActive(item.path),
+							"font-medium text-gray-500 hover:text-gray-900": !isActive(
 								item.path
 							),
 						})}
