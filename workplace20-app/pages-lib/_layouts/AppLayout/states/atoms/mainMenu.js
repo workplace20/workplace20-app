@@ -17,7 +17,7 @@ export default atom({
       },
       {
         name: 'Jobs',
-        path: '/jobs',
+        path: '/jobs/me',
         isSelected: (pathName) => pathName.startsWith('/jobs')
       },
       {

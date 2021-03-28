@@ -2,7 +2,7 @@ import classnames from 'classnames';
 
 const colorClasses = {
   primary: "bg-orange-400 text-white border-none",
-  secondary: "bg-orange-50 text-orange-700 border-none",
+  secondary: "bg-orange-50 text-orange-700 border-orange-500",
   white: "border-gray-300 text-gray-800 bg-white",
   gray: "bg-gray-100 text-gray-800 border-gray-300"
 };

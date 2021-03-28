@@ -1,18 +1,13 @@
-import { withAppLayout } from 'pages-lib/_layouts';
+import { withMarketingLayout } from 'pages-lib/_layouts';
+import { JobDetail } from '../_components';
 
-import { useRouter } from 'next/router';
-import NewJob from './new-job';
-import AppliedJob from './applied-job';
-
-const JobDetail = () => {
-  const router = useRouter()
-  const { id } = router.query;
-
-  if (id === 'applied-job') {
-    return <AppliedJob />
-  }
-
-  return <NewJob />
+const JobDetailPage = () => {
+  return (
+    <div className="px-6 border-gray-200 border-t">
+      <JobDetail />
+    </div>
+     
+  )
 }
 
-export default withAppLayout(JobDetail);
+export default withMarketingLayout(JobDetailPage, "gray");
