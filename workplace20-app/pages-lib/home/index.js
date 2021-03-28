@@ -3,12 +3,12 @@ import { withMarketingLayout } from "pages-lib/_layouts";
 const Home = () => (
 	<div className="bg-white">
 		<div>
-			<div class="flex mx-auto max-w-7xl px-4 pt-8 sm:pt-8 pb-16">
+			<div class="flex flex-col mx-auto max-w-7xl px-4 md:pt-8 pb-16 md:flex-row">
 				<div class="flex-initial text-center leading-16 w-1/2">
-					<h1 class="font-black text-orange-600 text-6xl pt-24">
+					<h1 class="font-black text-orange-600 text-6xl">
 						<span class="block xl:inline">.NET & React.js</span>
 					</h1>
-					<p class="bg-clip-text text-transparent bg-gradient-to-l from-orange-600 to-orange-400 sm:text-6xl">
+					<p class="bg-clip-text text-transparent bg-gradient-to-l from-orange-600 to-orange-400 text-2xl md:text-6xl pt-8">
 						developer community in Viet Nam
 					</p>
 				</div>
@@ -19,7 +19,7 @@ const Home = () => (
 		</div>
 		<div class="relative overflow-hidden">
 			<div class="relative ">
-				<div class="relative pt-12 pb-16 px-4 ">
+				<div class="relative pt-12 md:pb-16 px-4 ">
 					<div class="text-base max-w-6xl mx-auto ">
 						<h2
 							id="how-we-work"
@@ -56,12 +56,13 @@ const Home = () => (
 									Only hire the developers from our network
 									who match our culture instead of asking the
 									headhunting. We have adopted the agile
-									manifesto, continues to ship our feature to
-									production. We don't do daily meeting but we
-									always have an online call every day. We
-									don't have a retrospective meeting end of
-									the sprint, but we have a lesson-learn for
-									every problem we have.
+									manifesto, mob programming (remotely),
+									continues to ship our feature to production.
+									We don't do daily meeting but we always have
+									an online call every day. We don't have a
+									retrospective meeting end of the sprint, but
+									we have a lesson-learn for every problem we
+									have.
 								</p>
 								<p class="pt-5">
 									By now, remote work helps us the freedom to
@@ -72,10 +73,10 @@ const Home = () => (
 								</p>
 							</div>
 
-							<div class="flex-1">
-								<div class="hidden md:inline-flex">
+							<div class="hidden lg:inline-flex flex-1">
+								<div class="">
 									<img
-										class=" md:w-full md:h-1/2 md:h-1/2 md:object-cover"
+										class="md:w-full md:object-cover"
 										src="https://images.unsplash.com/photo-1578768124932-e0cc82f7a37e?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=666&q=80"
 									/>
 								</div>
@@ -87,18 +88,18 @@ const Home = () => (
 			</div>
 			<div class="relative bg-white">
 				<div class="relative px-4 ">
-					<div class="ax-w-4xl mx-auto ">
-						<h2 class="font-black sm:text-8xl bg-clip-text text-transparent bg-gradient-to-l from-orange-400 to-orange-600">
+					<div class="ax-w-4xl mx-auto">
+						<h2 class="font-black text-4xl md:text-8xl bg-clip-text text-transparent bg-gradient-to-l from-orange-400 to-orange-600">
 							Build by developers, for developers
 						</h2>
-						<p class="py-6 font-black sm:text-4xl bg-clip-text text-transparent bg-gradient-to-l from-orange-300 to-orange-600 sm:text-4xl">
+						<p class="py-6 font-black bg-clip-text text-transparent bg-gradient-to-l from-orange-300 to-orange-600 text-xl md:text-4xl">
 							The challenges when looking for a remote job
 						</p>
 					</div>
 				</div>
 				<div class="mt-16">
 					<div class="mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-8 lg:max-w-7xl">
-						<div class="flex">
+						<div class="flex flex-col">
 							<div class="flex-initial max-w-6xl">
 								<h2 class="text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">
 									No Trust.
@@ -118,7 +119,7 @@ const Home = () => (
 						</div>
 					</div>
 					<div class="mt-16 mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-8 lg:max-w-7xl">
-						<div class="flex">
+						<div class="flex flex-col">
 							<div class="flex-initial">
 								<h2 class="text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">
 									Culture fit.
@@ -148,10 +149,10 @@ const Home = () => (
 			<div class="relative pt-32 bg-white">
 				<div class="relative px-4 ">
 					<div class="ax-w-4xl mx-auto ">
-						<h2 class="font-black sm:text-8xl bg-clip-text text-transparent bg-gradient-to-l from-orange-400 to-orange-600">
+						<h2 class="font-black text-6xl md:text-8xl bg-clip-text text-transparent bg-gradient-to-l from-orange-400 to-orange-600">
 							Join Us,
 						</h2>
-						<p class="py-6 font-black sm:text-4xl bg-clip-text text-transparent bg-gradient-to-l from-orange-600 to-orange-300 sm:text-4xl">
+						<p class="py-6 font-black bg-clip-text text-transparent bg-gradient-to-l from-orange-300 to-orange-600 text-xl md:text-4xl">
 							Be the part of .NET and React.js Developer in Viet
 							Nam
 						</p>
@@ -159,9 +160,9 @@ const Home = () => (
 				</div>
 				<div class="mt-16">
 					<div class="mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-8 lg:max-w-7xl">
-						<div class="flex">
-							<div class="flex-initial max-w-6xl pr-20">
-								<h2 class="text-3xl font-extrabold text-gray-700 tracking-tight sm:text-4xl">
+						<div class="flex flex-col">
+							<div class="flex-initial max-w-6xl pb-12 lg:pr-20">
+								<h2 class="font-extrabold text-gray-700 tracking-tight text-4xl">
 									1. Register an account and take our
 									challenges
 								</h2>
@@ -175,7 +176,7 @@ const Home = () => (
 								</p>
 							</div>
 							<div class="flex-initial">
-								<h2 class="text-3xl font-extrabold text-gray-700 tracking-tight sm:text-4xl">
+								<h2 class="font-extrabold text-gray-700 tracking-tight text-4xl">
 									2. Learn, share and ready for your next
 									remote job.
 								</h2>
