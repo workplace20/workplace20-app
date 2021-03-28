@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 import { withEmptyLayout } from 'pages-lib/_layouts';
 import { useEffect } from 'react';
+import { isNotFound, isBadRequest, getErrorMessege} from 'pages-lib/_utils/httpResponse';
 
 import {
   useQueryCurrencyQuestionId,
@@ -65,16 +66,14 @@ const Challenge = ({ challengeId }) => {
   }
 
   if (isError) {
-    const status = error?.response?.status;
-
-    if (status === 404) {
+    if (isNotFound(error)) {
       return (
         <Redirect to={`/challenges/${challengeId}/overview`}/>
       )
     }
 
-    if (status === 400) {
-      const errorMessage = error?.response?.data?.errors[0]?.message;
+    if (isBadRequest(error)) {
+      const errorMessage = getErrorMessege(error);
       return (
         <Error
           errorMessage={errorMessage}
