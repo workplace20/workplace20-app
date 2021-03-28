@@ -76,7 +76,7 @@ const Home = () => (
 							<div class="hidden lg:inline-flex flex-1">
 								<div class="">
 									<img
-										class=" md:w-full md:h-1/2 md:h-1/2 md:object-cover"
+										class="md:w-full md:object-cover"
 										src="https://images.unsplash.com/photo-1578768124932-e0cc82f7a37e?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=666&q=80"
 									/>
 								</div>
