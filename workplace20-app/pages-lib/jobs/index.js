@@ -1,6 +1,8 @@
 import { withMarketingLayout } from 'pages-lib/_layouts';
 import { JobList } from './_components';
 
+// static UI
+// TODO: implement logic
 const JobListPage = () => {
   const jobs = Array(9)
   .fill(0)

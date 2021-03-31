@@ -4,6 +4,8 @@ import Link from 'next/link';
 import useGetSkillName from 'pages-lib/_hooks/useGetSkillName';
 import { TextField, Chip } from 'pages-lib/_components/controls';
 
+// static UI
+// TODO: implement logic + separate to child compenents
 const JobList = ({
   cardType,
   jobs
