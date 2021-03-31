@@ -2,6 +2,9 @@ import { withAppLayout } from 'pages-lib/_layouts';
 import { JobList } from '../_components';
 import Card from 'pages-lib/_components/card';
 
+// static UI
+// TODO: implement logic
+
 const JobListPage = () => {
   const jobs = Array(9)
     .fill(0)

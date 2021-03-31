@@ -2,6 +2,8 @@ import { Button, TextField, Chip } from 'pages-lib/_components/controls';
 import ReactMarkdown from 'react-markdown';
 import useGetSkillName from 'pages-lib/_hooks/useGetSkillName';
 
+// static UI
+// TODO: implement logic + separate to child compenents
 const JobDetail = () => {
   const { getSkillName, isLoading: isLoadingSkillList, isError: isLoadingSkillListError } = useGetSkillName();
 
