@@ -1,2 +1,2 @@
-export const queryJobListKey = 'query_jobs';
-export const queryJobDetailKey = 'query_job_detail';
+export const queryJobListKey = 'query_profile_jobs';
+export const queryJobDetailKey = 'query_profile_job_detail';

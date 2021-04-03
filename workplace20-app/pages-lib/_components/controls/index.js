@@ -5,3 +5,5 @@ export { default as Button } from './Button';
 export { default as Logo } from './Logo';
 export { default as TextField } from './TextField';
 export { default as Chip } from './Chip';
+export { default as Image } from './Image';
+export { default as Tabs } from './Tabs';

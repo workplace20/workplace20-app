@@ -1,7 +1,7 @@
 import classnames from 'classnames';
 import { useRouter } from 'next/router';
 import Link from "next/link";
-import { SelectBox } from 'pages-lib/_components/controls'
+import { SelectBox } from 'pages-lib/_components/controls';
 
 const JobFilter = () => {
   const router = useRouter();

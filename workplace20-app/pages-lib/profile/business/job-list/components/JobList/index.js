@@ -35,7 +35,7 @@ const JobList = () => {
   return (
     <>
       {
-        data?.pages?.every(page => page.data.length === 0) && (
+        data?.pages?.every(page => page?.data?.length === 0) && (
           <div className="text-center text-gray-800">No data return</div>
         )
       }
