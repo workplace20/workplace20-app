@@ -16,7 +16,8 @@ const JobInfo = ({
   english,
   introduction,
   developmentCulture,
-  company
+  company,
+  onApplyJob
 }) => {
   const [tabIndex, setTabIndex] = useState(1);
   const { logoUrl } = company;
@@ -32,6 +33,7 @@ const JobInfo = ({
           logoUrl={logoUrl}
           title={title}
           skills={skills}
+          onApplyJob={onApplyJob}
         />
       </div>
       <div className="mt-6 sm:mt-2 2xl:mt-5">

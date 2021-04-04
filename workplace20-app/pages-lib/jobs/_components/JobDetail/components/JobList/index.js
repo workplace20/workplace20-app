@@ -44,10 +44,10 @@ const JobItem = ({
   companyName,
   selectedJobRef
 }) => (
-    <li key={id} ref={selected ? selectedJobRef : null}>
+    <li key={id} ref={selected ? selectedJobRef : null} className="z-0">
       <Link href={url}>
         <div className={classnames(
-          'relative px-6 py-5 flex items-center space-x-3 focus-within:ring-2 focus-within:ring-inset focus-within:ring-orange-500',
+          'z-0 relative px-6 py-5 flex items-center space-x-3 focus-within:ring-2 focus-within:ring-inset focus-within:ring-orange-500 cursor-pointer',
           {
             'bg-orange-100': selected,
             'hover:bg-orange-50': !selected
@@ -59,7 +59,7 @@ const JobItem = ({
             />
           </div>
           <div className="flex-1 min-w-0">
-            <a href="#" className="focus:outline-none">
+            <a className="focus:outline-none">
               <span className="absolute inset-0" aria-hidden="true" />
               <p className={classnames(
                 'text-sm font-medium',
