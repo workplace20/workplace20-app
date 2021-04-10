@@ -31,7 +31,7 @@ const Home = () => (
 						<div class="flex flex-col md:flex-row">
 							<div class="flex-1 pr-6 pt-12 flex-6 pb-12 leading-8 text-xl">
 								<p>
-									At the end of 2019, I have joined a FinTech
+									At the end of 2019, We have joined a FinTech
 									startup that has no office in Viet Nam. We
 									had the plan to build the office in Viet Nam
 									without know that the pandemic was coming.
