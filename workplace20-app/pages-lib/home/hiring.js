@@ -9,7 +9,7 @@ const Home = () => (
 						<span class="bg-clip-text text-transparent bg-gradient-to-l from-orange-600 to-orange-400 md:text-4xl md:pb-8 font-black text-orange-400 text-2xl block xl:inline">
 							Hiring your next
 						</span>
-						<span class="bg-clip-text text-transparent bg-gradient-to-l from-orange-600 to-orange-400 sm:text-6xl font-black text-orange-600 text-6xl">
+						<span class="block bg-clip-text text-transparent bg-gradient-to-l from-orange-600 to-orange-400 sm:text-6xl font-black text-orange-600 text-6xl">
 							.NET & React.js
 						</span>
 					</h1>
