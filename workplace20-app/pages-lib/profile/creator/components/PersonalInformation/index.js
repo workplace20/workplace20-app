@@ -29,9 +29,6 @@ const PersonalInformation = () => {
           enter="transition duration-150 ease-out"
           enterFrom="opacity-0"
           enterTo="opacity-100"
-          leave="transition duration-150 ease-in"
-          leaveFrom="opacity-100"
-          leaveTo="opacity-0"
         >
           {(ref) => (
             <div ref={ref}>
@@ -52,9 +49,6 @@ const PersonalInformation = () => {
         enter="transition duration-150 ease-out"
         enterFrom="opacity-0"
         enterTo="opacity-100"
-        leave="transition duration-150 ease-in"
-        leaveFrom="opacity-100"
-        leaveTo="opacity-0"
       >
         {(ref) => (
           <div ref={ref} >
@@ -70,9 +64,6 @@ const PersonalInformation = () => {
         enter="transition duration-150 ease-out"
         enterFrom="opacity-0"
         enterTo="opacity-100"
-        leave="transition duration-150 ease-in"
-        leaveFrom="opacity-100"
-        leaveTo="opacity-0"
       >
         {(ref) => (
           <div ref={ref} >
